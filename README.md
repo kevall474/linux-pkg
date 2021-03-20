@@ -1,8 +1,8 @@
-# Linux
+# Linux-Kernel-Builder
 
-Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, Hamad Al Marri, Con Kolivas and Alfred Chen.
+Linux kernel build for Archlinux with a patch-set by TK-Glitch, Piotr Górski, Hamad Al Marri, Con Kolivas and Alfred Chen.
 
-# Version
+## Versions
 
 ### Linux kernel
 
@@ -16,42 +16,41 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 - 5.12
 
-# Build
+# How-to
 
-### Build Linux kernel
+## Build Linux kernel
 
     git clone https://github.com/kevall474/Linux.git
     cd Linux/Linux
     env _cpu_sched=(1,2,3,4,5 or 6) _compiler=(1,2,3 or 4) makepkg -s
 
-#### Install
+### Install
 
     sudo pacman -U linux-kernel-(optional if cpu sched selected : muqss,bmq,pds,cacule,upds)
     sudo pacman -U linux-kernel-(optional if cpu sched selected : muqss,bmq,pds,caule,upds)-headers
 
-### Build Linux kernel
+## Build xanmod-linux kernel
 
     git clone https://github.com/kevall474/Linux.git
     cd Linux/XanMod
     env _compiler=(1,2,3 or 4) makepkg -s
 
-#### Install
+### Install
 
-    sudo pacman -U xanmod-kernel
-    sudo pacman -U xanmod-kernel-headers
-    
-### Build linux-api-headers
+    sudo pacman -U xanmod-kernel xanmod-kernel-headers
+
+## Build linux-api-headers
 
     git clone https://github.com/kevall474/Linux.git
     cd Linux
     cd linux-api-headers
     makepkg -si
 
-# Build variables
+# Build options/variables
 
-### Linux kernel
+## Linux kernel
 
-#### _cpu_sched
+### _cpu_sched
 
 - Will add a CPU Scheduler if you want :
 
@@ -64,7 +63,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 Leave this variable empty if you don't want to add a CPU Scheduler.
 
-#### _compiler
+### _compiler
 
 - Will set compiler to build the kernel :
 
@@ -75,9 +74,9 @@ Leave this variable empty if you don't want to add a CPU Scheduler.
 
 If not set it will build with GCC by default.
 
-### XanMod kernel
+## XanMod kernel
 
-#### _compiler
+### _compiler
 
 - Will set compiler to build the kernel :
 
@@ -90,12 +89,18 @@ If not set it will build with GCC by default.
 
 # Troubleshooting
 
-### The system isn't booting with the compiled kernel used a custom llvm/clang version
+## Common Issues
+
+- Dont forget to update your bootloader --> for example with grub:
+`sudo grub-mkconfig -o /boot/grub/grub.cfg`
+- On nvidia systems rebuild your mkinitcpio: `sudo mkinitcpio -P`
+
+## The system isn't booting with the compiled kernel used a custom llvm/clang version
 
 - If you're compiling with llvm-rc or llvm-git be sure to recompile the mesa-* lib32-mesa-* packages against it.
-- Systems with intel/nvidia graphics just need to compile them with env _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLANG
-- Systems with AMD graphics need to compile with env _llvm=y _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLANG | _llvm=y is optional. It's to enable LLVM by default since ACO is the default shader compiler.
-- After compiling install both packages with sudo pacman -U mesa-*.pkg.zst lib32-mesa-*.pkg.zst 
+- Systems with intel/nvidia graphics just need to compile them with `env _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLAN`
+- Systems with AMD graphics need to compile with `env _llvm=y _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLANG | _llvm=y` is optional. It's to enable LLVM by default since ACO is the default shader compiler.
+- After compiling install both packages with `sudo pacman -U mesa-*.pkg.zst lib32-mesa-*.pkg.zst`
 
 You will find the following packages here:
 - https://github.com/kevall474/LLVM
@@ -206,6 +211,35 @@ About CacULE Scheduler
 - RT and other runqueues are just the same as the CFS's.
 - Wake up tasks preempt currently running tasks if its interactivity score value is higher.
 
+## CacULE - Response Driven Balancer (RDB)
+This is an experimental load balancer for Cachy/CacULE. It is a lightweight
+load balancer which is a replacement of CFS load balancer. It migrates
+tasks based on their HRRN/Interactivity Scores (IS). Most of CFS load balancing-related
+updates (cfs and se updates loads) are removed. The RDB balancer follows CFS
+paradigm in which RDB balancing happen at the same points CFS does. RDB balancing happens
+in three functions: `newidle_balance`, `idle_balance`, and `active_balance`. The `newidle_balance`
+is called exactly at the same time as CFS did (when pick next task fails to find any task to run).
+The RDB `newidle_balance` pulls one task that is the highest HRRN/IS from any CPU. The RDB `idle_balance`
+is called in `trigger_load_balance` when CPU is idle, it does the same as `newidle_balance` but with
+slight changes since `newidle_balance` is a special case. The RDB `active_balance` checks if the current
+(NORMAL) runqueue has one task, if so, it pulls the highest of the highest HRRN/IS among all other CPUS. If the
+runqueue has more than one task, then it pulls any highest HRRN/IS (same as idle does). A CPU cannot pull a task
+from another CPU that has fewer tasks (when pull any). For the all three balancing
+`newidle_balance`, `idle_balance`, and `active_balance`, the cpu first tries to pull from a CPU that shares the same
+cache (`cpus_share_cache`). If can't pull any then it tries to pull from any CPU even though they are not in the same core.
+Only when pulling the highest of the highest HRRN/IS (i.e. `active_balance` when CPU has one task), there is no check for
+shared cache.
+
+Since `trigger_load_balance` is called for every tick, there is a guard time to prevent frequent tasks migration to reduce
+runqueues locking and to reduce unnecessary tasks migrations. The time is `3ms` after each `active_balance`. This time
+guard is specifically for HZ=500,1000. We don't want to run balancing every 2ms or 1ms to prevent regression in performance.
+Here is how frequent the `trigger_load_balance` would run balancer with given HZ values:
+* HZ=100 runs every ~10ms
+* HZ=250 runs every ~4ms
+* HZ=300 runs every ~3ms
+* HZ=500 runs every ~4ms
+* HZ=1000 runs every ~3ms
+
 # Update GRUB
 
     sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -213,6 +247,18 @@ About CacULE Scheduler
 # Contact info
 
 kevall474@tuta.io if you have any problems or bugs report.
+
+# Credits:
+
+- Linus Torvalds ---> For the linux kernel
+- Piotr Gorski <lucjan.lucjanov@gmail.com> <https://github.com/sirlucjan/kernel-patches> ---> For the patches and the base pkgbuild
+- Tk-Glitch <https://github.com/Tk-Glitch> ---> For some patches. base PKGBUILD and prepare script
+- Con Kolivas <kernel@kolivas.org> <http://ck.kolivas.org/> ---> For MuQSS patches
+- Hamad Al Marri <https://github.com/hamadmarri/cachy-sched> ---> For CacULE CPU Scheduler patch
+- Alfred Chen <https://gitlab.com/alfredchen/projectc> ---> For the BMQ/PDS CPU Scheduler patch
+- Credits: Joan Figueras <ffigue at gmail dot com> ---> For the base PKGBUILD
+- Credits: Andreas Radke <andyrtr@archlinux.org> ---> For the base PKGBUILD
+- Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org> ---> For the base PKGBUILD
 
 # Info
 
