@@ -1427,7 +1427,7 @@ cpu_arch(){
   > 54) MTIGERLAKE : Select this for third-generation 10 nm process processors in the Tiger Lake family.\n \
   > 55) MSAPPHIRERAPIDS : Select this for third-generation 10 nm process processors in the Sapphire Rapids family - GCC 11 required.\n \
   > 56) MALDERLAKE : Select this for twelfth-generation processors in the Alder Lake family - GCC 11 required.\n \
-  > 57) GENERIC_CPU : Generic x86-64 CPU. Run equally well on all x86-64 CPUs - GCC 11 required.\n \
+  > 57) GENERIC_CPU : Generic x86-64 CPU. Run equally well on all x86-64 CPUs.\n \
   > 58) GENERIC_CPU2 : Run equally well on all x86-64 CPUs with min support of x86-64-v2 - GCC 11 required.\n \
   > 59) GENERIC_CPU3 : Generic x86-64-v3 CPU with v3 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v3 - GCC 11 required.\n \
   > 60) GENERIC_CPU4 : Generic x86-64 CPU with v4 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v4 - GCC 11 required.\n \
