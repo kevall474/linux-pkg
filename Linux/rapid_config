@@ -100,8 +100,8 @@ rapid_config(){
   #scripts/config --enable CONFIG_CONTEXT_TRACKING
   #scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
 
-  msg2 "Enable Device Tree and Open Firmware support"
-  scripts/config --enable CONFIG_OF
+  msg2 "Disable Device Tree and Open Firmware support"
+  scripts/config --disable CONFIG_OF
 
   msg2 "Enable tristate V4L2 loopback device"
   scripts/config --module CONFIG_V4L2_LOOPBACK

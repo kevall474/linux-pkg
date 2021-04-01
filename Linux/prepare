@@ -90,7 +90,7 @@ configure(){
   plain ""
   plain "#########################################"
   plain "Set module compression"
-  read -rp "`echo $' > 1.GZIP\n > 2.XZ\n > 3.ZSTD\n > Default (XZ)\nchoice[1-3]: '`" _compression;
+  read -rp "`echo $' > 1.GZIP\n > 2.XZ\n > 3.ZSTD\n > Default (ZSTD)\nchoice[1-3]: '`" _compression;
   if [[ $_compression = "1" ]]; then
     msg2 "Set module compression to GZIP"
     scripts/config --enable CONFIG_MODULE_COMPRESS
@@ -110,11 +110,11 @@ configure(){
     scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
     scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   else
-    msg2 "Set module compression to XZ"
+    msg2 "Set module compression to ZSTD"
     scripts/config --enable CONFIG_MODULE_COMPRESS
-    scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD
     scripts/config --disable CONFIG_MODULE_COMPRESS_GZIP
-    scripts/config --enable CONFIG_MODULE_COMPRESS_XZ
+    scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
 
   sleep 2s
@@ -215,7 +215,7 @@ configure(){
   plain "#########################################"
   plain "Enable/disable FUNCTION_TRACER/GRAPH_TRACER"
   plain "Limits debugging and analyzing of the kernel"
-  read -rp "`echo $' > 1.Enable\n > 2.dDsable (possibly increase performance)\n > Default (Disable)\nchoice[1-2]: '`" _tracer;
+  read -rp "`echo $' > 1.Enable\n > 2.Disable (possibly increase performance)\n > Default (Disable)\nchoice[1-2]: '`" _tracer;
   if [[ $_tracer = "1" ]]; then
     msg2 "Enable FUNCTION_TRACER/GRAPH_TRACER"
     scripts/config --enable CONFIG_FUNCTION_TRACER
@@ -1601,7 +1601,7 @@ cpu_arch(){
   > 22) MEXCAVATOR : Select this for AMD Family 15h Excavator processors.\n \
   > 23) MZEN : Select this for AMD Family 17h Zen processors.\n \
   > 24) MZEN2 : Select this for AMD Family 17h Zen 2 processors.\n \
-  > 25) MZEN3 : Select this for AMD Family 19h Zen 3 processors.\n \
+  > 25) MZEN3 : Select this for AMD Family 19h Zen 3 processors - GCC 11 required.\n \
   > 26) MCRUSOE : Select this for a Transmeta Crusoe processor.\n \
   > 27) MEFFICEON : Select this for a Transmeta Efficeon processor.\n \
   > 28) MWINCHIPC6 : Select this for an IDT Winchip C6 chip.\n \
@@ -1631,12 +1631,12 @@ cpu_arch(){
   > 52) MCASCADELAKE : Select this for Xeon processors in the Cascade Lake family.\n \
   > 53) MCOOPERLAKE : Select this for Xeon processors in the Cooper Lake family.\n \
   > 54) MTIGERLAKE : Select this for third-generation 10 nm process processors in the Tiger Lake family.\n \
-  > 55) MSAPPHIRERAPIDS : Select this for third-generation 10 nm process processors in the Sapphire Rapids family.\n \
-  > 56) MALDERLAKE : Select this for twelfth-generation processors in the Alder Lake family.\n \
-  > 57) GENERIC_CPU : Generic x86-64 CPU. Run equally well on all x86-64 CPUs.\n \
-  > 58) GENERIC_CPU2 : Run equally well on all x86-64 CPUs with min support of x86-64-v2.\n \
-  > 59) GENERIC_CPU3 : Generic x86-64-v3 CPU with v3 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v3.\n \
-  > 60) GENERIC_CPU4 : Generic x86-64 CPU with v4 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v4.\n \
+  > 55) MSAPPHIRERAPIDS : Select this for third-generation 10 nm process processors in the Sapphire Rapids family - GCC 11 required.\n \
+  > 56) MALDERLAKE : Select this for twelfth-generation processors in the Alder Lake family - GCC 11 required.\n \
+  > 57) GENERIC_CPU : Generic x86-64 CPU. Run equally well on all x86-64 CPUs - GCC 11 required.\n \
+  > 58) GENERIC_CPU2 : Run equally well on all x86-64 CPUs with min support of x86-64-v2 - GCC 11 required.\n \
+  > 59) GENERIC_CPU3 : Generic x86-64-v3 CPU with v3 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v3 - GCC 11 required.\n \
+  > 60) GENERIC_CPU4 : Generic x86-64 CPU with v4 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v4 - GCC 11 required.\n \
   > 61) MNATIVE_INTEL : Intel-Native optimizations autodetected by GCC.\n \
   > 62) MNATIVE_AMD : AMD-Native optimizations autodetected by GCC.\n \
   > Default (57 : Gneric CPU)\nchoice[0-56]: '`" _microarchitecture
