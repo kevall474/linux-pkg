@@ -1395,7 +1395,7 @@ cpu_arch(){
   > 22) MEXCAVATOR : Select this for AMD Family 15h Excavator processors.\n \
   > 23) MZEN : Select this for AMD Family 17h Zen processors.\n \
   > 24) MZEN2 : Select this for AMD Family 17h Zen 2 processors.\n \
-  > 25) MZEN3 : Select this for AMD Family 19h Zen 3 processors - GCC 11 required.\n \
+  > 25) MZEN3 : Select this for AMD Family 19h Zen 3 processors - GCC 10.3 required.\n \
   > 26) MCRUSOE : Select this for a Transmeta Crusoe processor.\n \
   > 27) MEFFICEON : Select this for a Transmeta Efficeon processor.\n \
   > 28) MWINCHIPC6 : Select this for an IDT Winchip C6 chip.\n \
