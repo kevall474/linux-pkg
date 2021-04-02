@@ -120,7 +120,7 @@ prepare(){
   cd linux-$major
 
   # Apply XanMod patch
-  msg2 "Apple XanMod patch"
+  msg2 "Apply XanMod patch"
   patch -Np1 < ../patch-$versiontag
 
   # Apply any patch
