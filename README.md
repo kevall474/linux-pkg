@@ -8,10 +8,6 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 - 5.11.11
 
-### XanMod kernel
-
-- 5.11.11-xanmod1
-
 # Build
 
 ### Build Linux kernel
@@ -20,24 +16,9 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
     cd Linux/Linux
     env _cpu_sched=(1,2,3,4,5 or 6) _compiler=(1 or 2) makepkg -s
 
-### Build XanMod kernel
-
-    git clone https://github.com/kevall474/Linux.git
-    cd Linux/XanMod
-    env _compiler=(1 or 2) makepkg -s
-    
-### Build linux-api-headers
-
-    git clone https://github.com/kevall474/Linux.git
-    cd Linux
-    cd linux-api-headers
-    makepkg -si
-
 # Build variables
 
-### Linux kernel
-
-#### _cpu_sched
+### _cpu_sched
 
 - Will add a CPU Scheduler if you want :
 
@@ -50,18 +31,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 Leave this variable empty if you don't want to add a CPU Scheduler.
 
-#### _compiler
-
-- Will set compiler to build the kernel :
-
-        1 : GCC
-        2 : CLANG+LLVM
-
-If not set it will build with GCC by default.
-
-### XanMod kernel
-
-#### _compiler
+### _compiler
 
 - Will set compiler to build the kernel :
 
