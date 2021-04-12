@@ -115,7 +115,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.11.12
+pkgver=5.11.13
 major=5.11
 pkgrel=1
 arch=(x86_64)
@@ -163,7 +163,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/wine-patches/0007-v5.11-winesync.patch"
         "$patchsource/misc/vm.max_map_count.patch"
         "$patchsource/initramfs-patches/0001-initramfs-patches.patch")
-md5sums=("d3f93c35c0ba78cffeae4a77ff7a614b"  #linux-5.11.12.tar.xz
+md5sums=("0f4d1d453100020f3b58ab7922f284f7"  #linux-5.11.13.tar.xz
          "8431bf7b65880cfcade827da2b8089e4"  #config-5.11
          "4862b906d15306da32e36a0f3e99624a"  #0001-cpu-5.11-merge-graysky-s-patchset.patch
          "a724ee14cb7aee1cfa6e4d9770c94723"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
@@ -177,13 +177,13 @@ md5sums=("d3f93c35c0ba78cffeae4a77ff7a614b"  #linux-5.11.12.tar.xz
          "5ed7f1cae4a164bc201855a2768f7e1f"  #0005-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch
          "307f39a7c060ac3073607964091234c0"  #0001-futex2-resync-from-gitlab.collabora.com.patch
          "57f4afa1be10eec300542767942ad938"  #0001-clearlinux-patches.patch
-         "db7c48ff69c7163e6e4bbae5b1350e64"  #0001-ntfs3-patches.patch
+         "aecc37df9f4a28953c6759b82207aaf7"  #0001-ntfs3-patches.patch
          "18d1544e8ff22cd52f8a5ddf7b845579"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "3cf79ddcad9c0f659664bd6fc2ae30ec"  #0001-block-patches.patch
          "379a49cafda4a5448b7a873722eb1a96"  #0001-bfq-patches.patch
          "76d68d069b5947349933c6baba07cf2f"  #0001-aufs-20210308.patch
          "686d82306fff905945ffb6f0eede14d4"  #0001-bbr2-5.11-introduce-BBRv2.patch
-         "9370509e5f1ee530baf687450a57b4e7"  #0001-btrfs-patches.patch
+         "2d9f85cdf7d8c526b5eaa4341ac4058c"  #0001-btrfs-patches.patch
          "0ab93e8e3437a5093520c10cca741531"  #0001-v4l2loopback-5.11-merge-v0.12.5.patch
          "7547ce8af415e4d587258fdf928a7eee"  #0001-mm-patches.patch
          "49b4c1a2098d0f0584eb8d0eda2a60c9"  #0001-spadfs-5.11-merge-v1.0.13.patch
@@ -193,12 +193,12 @@ md5sums=("d3f93c35c0ba78cffeae4a77ff7a614b"  #linux-5.11.12.tar.xz
          "3b5866097de15af399841405bc844020"  #0001-Export-symbols-needed-by-Android-drivers.patch
          "0eda7e947dd25e6b77ea40d734deea8d"  #0002-android-Enable-building-ashmem-and-binder-as-modules.patch
          "9c37d7643710ffa49552cc43b96980ed"  #0001-ksm-patches.patch
-         "cdb86c7a5a9e094fda204ae92919f597"  #0001-zstd-patches.patch
+         "eccf701cb0f604c5fb9f06b500585889"  #0001-zstd-patches.patch
          "77e1f3171f7f773739c4f8bb9fb20795"  #0001-zstd-dev-patches.patch
          "4f5b46d26699b4f4e7d7bc153979d3e0"  #0001-lqx-patches.patch
          "ab8f21e210aec26c7825033d57433e33"  #0007-v5.11-winesync.patch
          "27e6001bacfcfca1c161bf6ef946a79b"  #vm.max_map_count.patch
-         "39d8fe1921a28bb6504f4eb23aa5d675"  #0001-initramfs-patches.patch)
+         "39d8fe1921a28bb6504f4eb23aa5d675") #0001-initramfs-patches.patch)
 #zenify workarround with CacULE
 if [[ $_cpu_sched != "4" ]] && [[ $_cpu_sched != "6" ]]; then
  source+=("$patchsource/misc/zenify.patch")
@@ -211,8 +211,12 @@ elif [[ $_cpu_sched = "2" ]] || [[ $_cpu_sched = "3" ]]; then
   source+=("${patchsource}/prjc-patches/0009-prjc_v5.11-r3.patch")
   md5sums+=("3ed563f52e61ceabcb8dea99256635c2")  #0009-prjc_v5.11-r3.patch
 elif [[ $_cpu_sched = "4" ]] || [[ $_cpu_sched = "6" ]]; then
-  source+=("${patchsource}/cacule-patches/cacule-5.11.patch")
-  md5sums+=("b85d9c75a137a4278537386ca274da9d")  #cacule-5.11.patch
+  source+=("${patchsource}/cacule-patches/cacule-5.11.patch"
+           "${patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
+           "${patchsource}/cacule-patches/0003-cacule-Set-cacule_harsh_mode-enabled-by-default.patch")
+  md5sums+=("b85d9c75a137a4278537386ca274da9d"  #cacule-5.11.patch
+            "cdf2d612b6c1234ce124f0e8361fdc2e"  #0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch
+            "09ca141fe7aff2a0f426e1d79f45aba3") #0003-cacule-Set-cacule_harsh_mode-enabled-by-default.patch
 elif [[ $_cpu_sched = "5" ]]; then
   source+=("${patchsource}/upds-patches/0005-v5.11_undead-pds099o.patch")
   md5sums+=("1c6d05cffa90464a2ae6f9e00d670e50")  #0005-v5.11_undead-pds099o.patch
