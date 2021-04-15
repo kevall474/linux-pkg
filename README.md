@@ -6,7 +6,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 ### Linux kernel
 
-- 5.11.13
+- 5.11.14
 
 # Build
 
