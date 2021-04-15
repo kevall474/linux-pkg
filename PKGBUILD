@@ -136,9 +136,6 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/xanmod-patches/0001-xanmod-patches.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
         "$patchsource/zen-patches/0002-ZEN-intel-pstate-Implement-enable-parameter.patch"
-        #"$patchsource/zen-patches/0003-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch"
-        #"$patchsource/zen-patches/0004-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch"
-        #"$patchsource/zen-patches/0005-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch"
         "$patchsource/futex-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
@@ -172,9 +169,6 @@ md5sums=("4987e4b7cd8af4e36aeba3fca03f4d4a"  #linux-5.11.14.tar.xz
          "c87afb8937411d41e7460c4c80a67464"  #0001-xanmod-patches.patch
          "6042ba527a2379f858fbc099caa7dc70"  #0001-ZEN-Add-VHBA-driver.patch
          "930e035a6cb8f053e115ffe7347badb9"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
-         #"a146eab93adb7e47c3f4cd5603cbaa80"  #0003-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch
-         #"d6ddba87c8232b66def0974ccb972379"  #0004-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch
-         #"5ed7f1cae4a164bc201855a2768f7e1f"  #0005-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch
          "307f39a7c060ac3073607964091234c0"  #0001-futex2-resync-from-gitlab.collabora.com.patch
          "57f4afa1be10eec300542767942ad938"  #0001-clearlinux-patches.patch
          "aecc37df9f4a28953c6759b82207aaf7"  #0001-ntfs3-patches.patch
