@@ -167,8 +167,8 @@ md5sums=("4987e4b7cd8af4e36aeba3fca03f4d4a"  #linux-5.11.14.tar.xz
          "d15597054a4c5e405f980d07d5eac11a"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
          "f99b82d6f424d1a729a9b8c5a1be2b84"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
          "c87afb8937411d41e7460c4c80a67464"  #0001-xanmod-patches.patch
-         "6042ba527a2379f858fbc099caa7dc70"  #0001-ZEN-Add-VHBA-driver.patch
-         "930e035a6cb8f053e115ffe7347badb9"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
+         "a4d549a5463bbd988727f93ac08034d1"  #0001-ZEN-Add-VHBA-driver.patch
+         "c1fb8dc16fe1933184c57f43449223a7"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
          "307f39a7c060ac3073607964091234c0"  #0001-futex2-resync-from-gitlab.collabora.com.patch
          "57f4afa1be10eec300542767942ad938"  #0001-clearlinux-patches.patch
          "aecc37df9f4a28953c6759b82207aaf7"  #0001-ntfs3-patches.patch
