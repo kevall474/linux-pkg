@@ -251,7 +251,10 @@ prepare(){
   configure
 
   cpu_arch
-
+  
+  # Automation building with rapid_config
+  # Uncomment rapid_config and comment out configure and cpu_arch
+  # rapid_config is meant to work with build.sh for automation building
   #rapid_config
 
   # Setting localversion
