@@ -64,7 +64,7 @@ fi
 
 ###################################################################################
 
-# This section set the pkgbase based on the cpu scheduler. So user can build different package based on the cpu schduler for testing.
+# This section set the pkgbase based on the cpu scheduler, so user can build different package based on the cpu scheduler.
 if [[ $_cpu_sched = "1" ]]; then
   if [[ "$_compiler" = "1" ]]; then
     pkgbase=linux-kernel-muqss-gcc
@@ -246,13 +246,13 @@ prepare(){
 
   # Customize the kernel
   source "${startdir}"/prepare
-  #source "${startdir}"/rapid_config
-
-  #rapid_config
+  source "${startdir}"/rapid_config
 
   configure
 
   cpu_arch
+  
+  #rapid_config
 
   # Setting localversion
   msg2 "Setting localversion..."
