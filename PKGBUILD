@@ -251,7 +251,7 @@ prepare(){
   configure
 
   cpu_arch
-  
+
   #rapid_config
 
   # Setting localversion

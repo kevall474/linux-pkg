@@ -1550,17 +1550,17 @@ configure(){
 
     plain ""
     plain "#########################################"
-    plain "Apply suggested config by Hamad Al Marri"
+    plain "Apply suggested config by Hamad Al Marri?"
     read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (No)\nchoice[1-2]: '`" _suggest_cacule
     if [[ $_suggest_cacule = "1" ]]; then
       msg2 "Apply suggested config"
-      msg2 "Security Cacule"
+      # Security
+      msg2 "Security"
       scripts/config --disable CONFIG_SECURITY
       scripts/config --disable CONFIG_HARDENED_USERCOPY
-      msg2 "General Setup Cacule"
+      # General Setup
+      msg2 "General Setup"
       scripts/config --disable CONFIG_EXPERT
-      #scripts/config --disable CONFIG_SCHED_AUTOGROUP
-      #scripts/config --disable CONFIG_CGROUP_SCHED
       scripts/config --disable CONFIG_BSD_PROCESS_ACCT
       scripts/config --disable CONFIG_TASK_XACCT
       scripts/config --disable CONFIG_PSI
@@ -1575,28 +1575,35 @@ configure(){
       scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
       scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
       scripts/config --disable CONFIG_PROFILING
-      msg2 "Processor type and features Cacule"
+      # Processor type and features
+      msg2 "Processor type and features"
       scripts/config --disable CONFIG_RETPOLINE
       scripts/config --disable CONFIG_X86_5LEVEL
       scripts/config --disable CONFIG_KEXEC
       scripts/config --disable CONFIG_KEXEC_FILE
       scripts/config --disable CONFIG_CRASH_DUMP
-      #scripts/config --set-val CONFIG_NR_CPUS "12"
-      msg2 "Power Cacule"
+      #scripts/config --set_val CONFIG_NR_CPUS (# number of cpus)
+      # if you are not using this kernel as guest in a virtual machine,
+      # then disable CONFIG_HYPERVISOR_GUEST
+      #scripts/config --disable CONFIG_HYPERVISOR_GUEST
+      # Power
+      msg2 "Power"
       scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
       scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
       scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
-      msg2 "General architecture-dependent options Cacule"
+      # General architecture-dependent options
+      msg2 "General architecture-dependent options"
       scripts/config --disable CONFIG_KPROBES
       scripts/config --disable CONFIG_STACKPROTECTOR
       scripts/config --disable CONFIG_VMAP_STACK
-      msg2 "Kernel hacking Cacule"
+      # Kernel hacking
+      msg2 "Kernel hacking"
       scripts/config --disable CONFIG_FTRACE
       scripts/config --disable CONFIG_DEBUG_KERNEL
       scripts/config --disable CONFIG_PAGE_EXTENSION
+      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
       scripts/config --disable CONFIG_PRINTK_TIME
       scripts/config --disable CONFIG_DEBUG_INFO
-      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
       scripts/config --disable CONFIG_ENABLE_MUST_CHECK
       scripts/config --disable CONFIG_STRIP_ASM_SYMS
       scripts/config --disable CONFIG_UNUSED_SYMBOLS
@@ -1616,13 +1623,14 @@ configure(){
       scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
       scripts/config --disable CONFIG_DETECT_HUNG_TASK
       scripts/config --disable CONFIG_WQ_WATCHDOG
+      scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
       scripts/config --disable CONFIG_SCHED_DEBUG
       scripts/config --disable CONFIG_SCHEDSTATS
-      scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
       scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
+      scripts/config --disable CONFIG_STACKTRACE
       scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
-      scripts/config --disable CONFIG_RCU_TRACE
       scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+      scripts/config --disable CONFIG_RCU_TRACE
       scripts/config --disable CONFIG_FAULT_INJECTION
       scripts/config --disable CONFIG_LATENCYTOP
       scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
@@ -1656,17 +1664,17 @@ configure(){
 
     plain ""
     plain "#########################################"
-    plain "Apply suggested config by Hamad Al Marri"
+    plain "Apply suggested config by Hamad Al Marri?"
     read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (No)\nchoice[1-2]: '`" _suggest_cacule
     if [[ $_suggest_cacule = "1" ]]; then
       msg2 "Apply suggested config"
-      msg2 "Security Cacule"
+      # Security
+      msg2 "Security"
       scripts/config --disable CONFIG_SECURITY
       scripts/config --disable CONFIG_HARDENED_USERCOPY
-      msg2 "General Setup Cacule"
+      # General Setup
+      msg2 "General Setup"
       scripts/config --disable CONFIG_EXPERT
-      #scripts/config --disable CONFIG_SCHED_AUTOGROUP
-      #scripts/config --disable CONFIG_CGROUP_SCHED
       scripts/config --disable CONFIG_BSD_PROCESS_ACCT
       scripts/config --disable CONFIG_TASK_XACCT
       scripts/config --disable CONFIG_PSI
@@ -1681,28 +1689,35 @@ configure(){
       scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
       scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
       scripts/config --disable CONFIG_PROFILING
-      msg2 "Processor type and features Cacule"
+      # Processor type and features
+      msg2 "Processor type and features"
       scripts/config --disable CONFIG_RETPOLINE
       scripts/config --disable CONFIG_X86_5LEVEL
       scripts/config --disable CONFIG_KEXEC
       scripts/config --disable CONFIG_KEXEC_FILE
       scripts/config --disable CONFIG_CRASH_DUMP
-      #scripts/config --set-val CONFIG_NR_CPUS "12"
-      msg2 "Power Cacule"
+      #scripts/config --set_val CONFIG_NR_CPUS (# number of cpus)
+      # if you are not using this kernel as guest in a virtual machine,
+      # then disable CONFIG_HYPERVISOR_GUEST
+      #scripts/config --disable CONFIG_HYPERVISOR_GUEST
+      # Power
+      msg2 "Power"
       scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
       scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
       scripts/config --disable CONFIG_CPU_FREQ_GOV_ONDEMAND
-      msg2 "General architecture-dependent options Cacule"
+      # General architecture-dependent options
+      msg2 "General architecture-dependent options"
       scripts/config --disable CONFIG_KPROBES
       scripts/config --disable CONFIG_STACKPROTECTOR
       scripts/config --disable CONFIG_VMAP_STACK
-      msg2 "Kernel hacking Cacule"
+      # Kernel hacking
+      msg2 "Kernel hacking"
       scripts/config --disable CONFIG_FTRACE
       scripts/config --disable CONFIG_DEBUG_KERNEL
       scripts/config --disable CONFIG_PAGE_EXTENSION
+      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
       scripts/config --disable CONFIG_PRINTK_TIME
       scripts/config --disable CONFIG_DEBUG_INFO
-      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
       scripts/config --disable CONFIG_ENABLE_MUST_CHECK
       scripts/config --disable CONFIG_STRIP_ASM_SYMS
       scripts/config --disable CONFIG_UNUSED_SYMBOLS
@@ -1722,13 +1737,14 @@ configure(){
       scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
       scripts/config --disable CONFIG_DETECT_HUNG_TASK
       scripts/config --disable CONFIG_WQ_WATCHDOG
+      scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
       scripts/config --disable CONFIG_SCHED_DEBUG
       scripts/config --disable CONFIG_SCHEDSTATS
-      scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
       scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
+      scripts/config --disable CONFIG_STACKTRACE
       scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
-      scripts/config --disable CONFIG_RCU_TRACE
       scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+      scripts/config --disable CONFIG_RCU_TRACE
       scripts/config --disable CONFIG_FAULT_INJECTION
       scripts/config --disable CONFIG_LATENCYTOP
       scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
