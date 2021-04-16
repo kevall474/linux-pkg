@@ -115,7 +115,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.11.14
+pkgver=5.11.15
 major=5.11
 pkgrel=1
 arch=(x86_64)
@@ -160,7 +160,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/wine-patches/0007-v5.11-winesync.patch"
         "$patchsource/misc/vm.max_map_count.patch"
         "$patchsource/initramfs-patches/0001-initramfs-patches.patch")
-md5sums=("4987e4b7cd8af4e36aeba3fca03f4d4a"  #linux-5.11.14.tar.xz
+md5sums=("d15043aa64a4b420019168f385b4216f"  #linux-5.11.15.tar.xz
          "8431bf7b65880cfcade827da2b8089e4"  #config-5.11
          "fcb1edf2e91ff227c44aeac8b42409aa"  #0001-cpu-5.11-merge-graysky-s-patchset.patch
          "a724ee14cb7aee1cfa6e4d9770c94723"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
