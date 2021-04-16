@@ -161,7 +161,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc/vm.max_map_count.patch"
         "$patchsource/initramfs-patches/0001-initramfs-patches.patch")
 md5sums=("d15043aa64a4b420019168f385b4216f"  #linux-5.11.15.tar.xz
-         "8431bf7b65880cfcade827da2b8089e4"  #config-5.11
+         "2af355d97f95713297c707c740e4f432"  #config-5.11
          "fcb1edf2e91ff227c44aeac8b42409aa"  #0001-cpu-5.11-merge-graysky-s-patchset.patch
          "a724ee14cb7aee1cfa6e4d9770c94723"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
          "d15597054a4c5e405f980d07d5eac11a"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
