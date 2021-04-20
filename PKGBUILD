@@ -247,6 +247,7 @@ prepare(){
   # Customize the kernel
   source "${startdir}"/prepare
   source "${startdir}"/rapid_config
+  source "${startdir}"/strip_down
 
   configure
 
@@ -256,6 +257,9 @@ prepare(){
   # Uncomment rapid_config and comment out configure and cpu_arch
   # rapid_config is meant to work with build.sh for automation building
   #rapid_config
+  
+  # strip_down script
+  #strip_down
 
   # Setting localversion
   msg2 "Setting localversion..."
