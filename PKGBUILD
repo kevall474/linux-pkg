@@ -115,7 +115,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.11.15
+pkgver=5.11.16
 major=5.11
 pkgrel=1
 arch=(x86_64)
@@ -130,16 +130,17 @@ patchsource=https://raw.githubusercontent.com/kevall474/kernel-patches/main/$maj
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "config-5.11"
         "$patchsource/cpu-patches/0001-cpu-5.11-merge-graysky-s-patchset.patch"
-        "$patchsource/zen-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch"
+        "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
         "$patchsource/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "$patchsource/misc/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/xanmod-patches/0001-xanmod-patches.patch"
+        "$patchsource/zen-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
+        "$patchsource/zen-patches/0003-ZEN-vhba-Update-to-20210418.patch"
         "$patchsource/zen-patches/0002-ZEN-intel-pstate-Implement-enable-parameter.patch"
         "$patchsource/futex-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
-        "$patchsource/misc/0002-init-Kconfig-enable-O3-for-all-arches.patch"
         "$patchsource/block-patches/0001-block-patches.patch"
         "$patchsource/bfq-patches/0001-bfq-patches.patch"
         "$patchsource/aufs-patches/0001-aufs-20210412.patch"
@@ -160,21 +161,22 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/wine-patches/0007-v5.11-winesync.patch"
         "$patchsource/misc/vm.max_map_count.patch"
         "$patchsource/initramfs-patches/0001-initramfs-patches.patch")
-md5sums=("d15043aa64a4b420019168f385b4216f"  #linux-5.11.15.tar.xz
+md5sums=("c7536df1e1e3d03621092d732c8a5b6e"  #linux-5.11.16.tar.xz
          "2af355d97f95713297c707c740e4f432"  #config-5.11
          "fcb1edf2e91ff227c44aeac8b42409aa"  #0001-cpu-5.11-merge-graysky-s-patchset.patch
-         "a724ee14cb7aee1cfa6e4d9770c94723"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+         "d16247a3ccca283c96577dc138cf9572"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "d15597054a4c5e405f980d07d5eac11a"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
          "f99b82d6f424d1a729a9b8c5a1be2b84"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
          "c87afb8937411d41e7460c4c80a67464"  #0001-xanmod-patches.patch
-         "a4d549a5463bbd988727f93ac08034d1"  #0001-ZEN-Add-VHBA-driver.patch
-         "c1fb8dc16fe1933184c57f43449223a7"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
+         "6dfd8a5a0bcf8fe205213e36d70770a6"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+         "29aa42972ef0aaf3d879ba33a22a7d2e"  #0001-ZEN-Add-VHBA-driver.patch
+         "5618bf0ec5602a794e6a2b67f81b3ec8"  #0003-ZEN-vhba-Update-to-20210418.patch
+         "7fb92823fa7d9f7a79d650444561c18d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
          "307f39a7c060ac3073607964091234c0"  #0001-futex2-resync-from-gitlab.collabora.com.patch
          "57f4afa1be10eec300542767942ad938"  #0001-clearlinux-patches.patch
          "aecc37df9f4a28953c6759b82207aaf7"  #0001-ntfs3-patches.patch
-         "18d1544e8ff22cd52f8a5ddf7b845579"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "3cf79ddcad9c0f659664bd6fc2ae30ec"  #0001-block-patches.patch
-         "379a49cafda4a5448b7a873722eb1a96"  #0001-bfq-patches.patch
+         "f506e2aad80616f7334fabcb1cbaed0d"  #0001-bfq-patches.patch
          "5c8d12d4577e46ba118e4f18469c7f49"  #0001-aufs-20210412.patch
          "686d82306fff905945ffb6f0eede14d4"  #0001-bbr2-5.11-introduce-BBRv2.patch
          "2d9f85cdf7d8c526b5eaa4341ac4058c"  #0001-btrfs-patches.patch
@@ -188,7 +190,7 @@ md5sums=("d15043aa64a4b420019168f385b4216f"  #linux-5.11.15.tar.xz
          "0eda7e947dd25e6b77ea40d734deea8d"  #0002-android-Enable-building-ashmem-and-binder-as-modules.patch
          "9c37d7643710ffa49552cc43b96980ed"  #0001-ksm-patches.patch
          "eccf701cb0f604c5fb9f06b500585889"  #0001-zstd-patches.patch
-         "77e1f3171f7f773739c4f8bb9fb20795"  #0001-zstd-dev-patches.patch
+         "d8f8f4d1c025952b3022126273b62c93"  #0001-zstd-dev-patches.patch
          "95b7d848ff2dc7bf7779a6177420c02a"  #0001-lqx-patches.patch
          "ab8f21e210aec26c7825033d57433e33"  #0007-v5.11-winesync.patch
          "27e6001bacfcfca1c161bf6ef946a79b"  #vm.max_map_count.patch
@@ -252,12 +254,12 @@ prepare(){
   configure
 
   cpu_arch
-  
+
   # Automation building with rapid_config
   # Uncomment rapid_config and comment out configure and cpu_arch
   # rapid_config is meant to work with build.sh for automation building
   #rapid_config
-  
+
   # strip_down script
   #strip_down
 
