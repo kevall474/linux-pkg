@@ -172,7 +172,7 @@ md5sums=("SKIP"
          "SKIP"
          "SKIP")
 #zenify workarround with CacULE
-if [[ $_cpu_sched != "4" ]] && [[ $_cpu_sched != "6" ]]; then
+if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
  source+=("$patchsource/misc-patches/zenify.patch")
  md5sums+=("8e71f0c43157654c4105224d89cc6709")  #zenify.patch
 fi
