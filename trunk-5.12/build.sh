@@ -22,7 +22,6 @@ env _cpu_sched=4 makepkg -s
 
 rm -rf pkg/ src/
 
-
 # clang build
 
 env _compiler=2 makepkg -s
