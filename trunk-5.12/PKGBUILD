@@ -203,10 +203,11 @@ prepare(){
     patch -Np1 < "../$src"
   done
 
-  if [[ $_cpu_sched = "1" ]]; then
-    msg2 "Applying patch patch-5.$major-ck1"
-    patch -Np1 < ../patch-$major-ck1
- fi
+  # patch command for muqss
+  #if [[ $_cpu_sched = "CPU SCHED ORDER NUMBER" ]]; then
+  #  msg2 "Applying patch patch-5.$major-ck1"
+  #  patch -Np1 < ../patch-$major-ck1
+  #fi
 
   # Copy the config file first
   # Copy "${srcdir}"/config to linux-${pkgver}/.config
