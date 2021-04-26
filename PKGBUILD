@@ -201,13 +201,13 @@ if [[ $_cpu_sched != "4" ]] && [[ $_cpu_sched != "6" ]]; then
  md5sums+=("8e71f0c43157654c4105224d89cc6709")  #zenify.patch
 fi
 if [[ $_cpu_sched = "1" ]]; then
- source+=("$patchsource/muqss-patches/patch-5.11-ck1")
+ source+=("$patchsource/muqss-patches/patch-$major-ck1")
  md5sums+=("SKIP")
 elif [[ $_cpu_sched = "2" ]] || [[ $_cpu_sched = "3" ]]; then
   source+=("${patchsource}/prjc-patches/0009-prjc_v5.11-r3.patch")
   md5sums+=("3ed563f52e61ceabcb8dea99256635c2")  #0009-prjc_v5.11-r3.patch
 elif [[ $_cpu_sched = "4" ]] || [[ $_cpu_sched = "6" ]]; then
-  source+=("${patchsource}/cacule-patches/cacule-5.11.patch"
+  source+=("${patchsource}/cacule-patches/cacule-$major.patch"
            "${patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
            "${patchsource}/cacule-patches/0003-cacule-Set-cacule_harsh_mode-enabled-by-default.patch")
   md5sums+=("b85d9c75a137a4278537386ca274da9d"  #cacule-5.11.patch
@@ -237,9 +237,9 @@ prepare(){
   done
 
   if [[ $_cpu_sched = "1" ]]; then
-    msg2 "Applying patch patch-5.11-ck1"
-    patch -Np1 < ../patch-5.11-ck1
- fi
+    msg2 "Applying patch patch-$major-ck1"
+    patch -Np1 < ../patch-5.$major-ck1
+  fi
 
   # Copy the config file first
   # Copy "${srcdir}"/config to linux-${pkgver}/.config

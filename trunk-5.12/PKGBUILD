@@ -177,7 +177,7 @@ if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
  md5sums+=("8e71f0c43157654c4105224d89cc6709")  #zenify.patch
 fi
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
-  source+=("${patchsource}/cacule-patches/cacule-5.12.patch"
+  source+=("${patchsource}/cacule-patches/cacule-$major.patch"
            "${patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
            "${patchsource}/cacule-patches/0003-cacule-Set-cacule_harsh_mode-enabled-by-default.patch")
   md5sums+=("SKIP"  #cacule-5.12.patch
