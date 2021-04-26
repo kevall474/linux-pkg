@@ -20,6 +20,8 @@
 #Set CPU Scheduler
 #Set '1' for CacULE CPU Scheduler
 #Set '2' for CacULE-RDB CPU Scheduler
+#Set '3' for BMQ CPU Scheduler
+#Set '4' for PDS CPU Scheduler
 #Leave empty for no CPU Scheduler
 #Default is empty. It will build with no cpu scheduler. To build with cpu shceduler just use : env _cpu_sched=(1,2 or 3) makepkg -s
 if [ -z ${_cpu_sched+x} ]; then
@@ -72,6 +74,18 @@ elif [[ $_cpu_sched = "2" ]]; then
     pkgbase=linux-kernel-cacule-rdb-gcc
   elif [[ "$_compiler" = "2" ]]; then
     pkgbase=linux-kernel-cacule-rdb-clang
+  fi
+elif [[ $_cpu_sched = "3" ]]; then
+  if [[ "$_compiler" = "1" ]]; then
+    pkgbase=linux-kernel-bmq-gcc
+  elif [[ "$_compiler" = "2" ]]; then
+    pkgbase=linux-kernel-bmq-clang
+  fi
+elif [[ $_cpu_sched = "4" ]]; then
+  if [[ "$_compiler" = "1" ]]; then
+    pkgbase=linux-kernel-pds-gcc
+  elif [[ "$_compiler" = "2" ]]; then
+    pkgbase=linux-kernel-pds-clang
   fi
 else
   if [[ "$_compiler" = "1" ]]; then
@@ -183,6 +197,9 @@ if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
   md5sums+=("SKIP"  #cacule-5.12.patch
             "cdf2d612b6c1234ce124f0e8361fdc2e"  #0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch
             "09ca141fe7aff2a0f426e1d79f45aba3") #0003-cacule-Set-cacule_harsh_mode-enabled-by-default.patch
+elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
+  source+=("${patchsource}/prjc-patches/0009-prjc_v$major-r0.patch")
+  md5sums+=("SKIP")  #0009-prjc_v5.12-r0.patch
 fi
 
 export KBUILD_BUILD_HOST=archlinux

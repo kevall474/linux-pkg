@@ -432,6 +432,24 @@ rapid_config(){
     scripts/config --disable CONFIG_KGDB
     scripts/config --disable CONFIG_EARLY_PRINTK
     scripts/config --disable CONFIG_DOUBLEFAULT
+  elif [[ $_cpu_sched = "3" ]]; then
+    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler..."
+    scripts/config --enable CONFIG_SCHED_ALT
+    msg2 "Enable BMQ CPU scheduler..."
+    scripts/config --enable CONFIG_SCHED_BMQ
+    scripts/config --disable CONFIG_SCHED_PDS
+    msg2 "Disable CFS"
+    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+    scripts/config --disable CONFIG_CFS_BANDWIDTH
+  elif [[ $_cpu_sched = "4" ]]; then
+    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler..."
+    scripts/config --enable CONFIG_SCHED_ALT
+    msg2 "Enable PDS CPU scheduler..."
+    scripts/config --disable CONFIG_SCHED_BMQ
+    scripts/config --enable CONFIG_SCHED_PDS
+    msg2 "Disable CFS"
+    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+    scripts/config --disable CONFIG_CFS_BANDWIDTH
   else
     msg2 "Enable CFS"
     scripts/config --enable CONFIG_FAIR_GROUP_SCHED
