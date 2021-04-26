@@ -648,288 +648,288 @@ strip_down(){
 
   sleep 2s
 
-  # Filesystem
-  msg2 "Disable uneeded filesystem support"
-  # Disable 9p
-  echo "Disable 9p"
-  scripts/config --disable CONFIG_9P_FS
-  scripts/config --disable CONFIG_9P_FSCACHE
-  scripts/config --disable CONFIG_9P_FS_POSIX_ACL
-  scripts/config --disable CONFIG_9P_FS_SECURITY
-  # Disable Adfs
-  scripts/config --disable CONFIG_ADFS_FS
-  scripts/config --disable CONFIG_ADFS_FS_RW
-  # Disable Affs (Amiga FFS file system support)
-  echo "Disable AFFS (Amiga FFS file system support)"
-  scripts/config --disable CONFIG_AFFS_FS
-  # Disable Afs (Andrew File System support (AFS))
-  echo "Disable Afs (Andrew File System support (AFS))"
-  scripts/config --disable CONFIG_AFS_FS
-  scripts/config --disable CONFIG_AFS_DEBUG
-  scripts/config --disable CONFIG_AFS_FSCACHE
-  scripts/config --disable CONFIG_AFS_DEBUG_CURSOR
-  # Disable Befs (BeOS file system (BeFS) support (read only))
-  echo "Disable Befs (BeOS file system (BeFS) support (read only))"
-  scripts/config --disable CONFIG_BEFS_FS
-  scripts/config --disable CONFIG_BEFS_DEBUG
-  # Disable Bfs (BFS file system support)
-  echo "Disable Bfs (BFS file system support)"
-  scripts/config --disable CONFIG_BFS_FS
-  # Disable Cachefiles (Filesystem caching on files)
-  echo "Disable Cachefiles (Filesystem caching on files)"
-  scripts/config --disable CONFIG_CACHEFILES
-  scripts/config --disable CONFIG_CACHEFILES_DEBUG
-  scripts/config --disable CONFIG_CACHEFILES_HISTOGRAM
-  # Disable Ceph (Ceph distributed file system)
-  echo "Disable Ceph (Ceph distributed file system)"
-  scripts/config --disable CONFIG_CEPH_FS
-  scripts/config --disable CONFIG_CEPH_FSCACHE
-  scripts/config --disable CONFIG_CEPH_FS_POSIX_ACL
-  scripts/config --disable CONFIG_CEPH_FS_SECURITY_LABEL
-  # Disable coda (Coda file system support (advanced network fs))
-  echo "Disable coda (Coda file system support (advanced network fs))"
-  scripts/config --disable CONFIG_CODA_FS
-  # Disable Configfs (Userspace-driven configuration filesystem)
-  echo "Disable Configfs (Userspace-driven configuration filesystem)"
-  scripts/config --disable CONFIG_CONFIGFS_FS
-  # Disable Cramfs (Compressed ROM file system support (cramfs))
-  echo "Disable Cramfs (Compressed ROM file system support (cramfs))"
-  scripts/config --disable CONFIG_CRAMFS
-  scripts/config --disable CONFIG_CRAMFS_BLOCKDEV
-  scripts/config --disable CONFIG_CRAMFS_MTD
-  # Disable Dlm (Distributed Lock Manager (DLM))
-  echo "Disable Dlm (Distributed Lock Manager (DLM))"
-  scripts/config --disable CONFIG_DLM
-  scripts/config --disable CONFIG_DLM_DEBUG
-  # Disable Efs (EFS file system support (read only))
-  echo "Disable Efs (EFS file system support (read only))"
-  scripts/config --disable CONFIG_EFS_FS
-  # Disable Erofs
-  echo "Disable Erofs"
-  scripts/config --disable CONFIG_EROFS_FS
-  scripts/config --disable CONFIG_EROFS_FS_DEBUG
-  scripts/config --disable CONFIG_EROFS_FS_XATTR
-  scripts/config --disable CONFIG_EROFS_FS_POSIX_ACL
-  scripts/config --disable CONFIG_EROFS_FS_SECURITY
-  scripts/config --disable CONFIG_EROFS_FS_ZIP
-  scripts/config --disable CONFIG_EROFS_FS_CLUSTER_PAGE_LIMIT
-  # Disable ext2 support
-  echo "Disable ext2"
-  scripts/config --disable CONFIG_EXT2_FS
-  scripts/config --disable CONFIG_EXT2_FS_XATTR
-  scripts/config --disable CONFIG_EXT2_FS_POSIX_ACL
-  scripts/config --disable CONFIG_EXT2_FS_SECURITY
-  # Disable ext3 support
-  echo "Disable ext3"
-  scripts/config --disable CONFIG_EXT3_FS
-  scripts/config --disable CONFIG_EXT3_FS_POSIX_ACL
-  scripts/config --disable CONFIG_EXT3_FS_SECURITY
-  # Disable F2fs
-  echo "Disable F2fs"
-  scripts/config --disable CONFIG_F2FS_FS
-  scripts/config --disable CONFIG_F2FS_STAT_FS
-  scripts/config --disable CONFIG_F2FS_FS_XATTR
-  scripts/config --disable CONFIG_F2FS_FS_POSIX_ACL
-  scripts/config --disable CONFIG_F2FS_FS_SECURITY
-  scripts/config --disable CONFIG_F2FS_CHECK_FS
-  scripts/config --disable CONFIG_F2FS_IO_TRACE
-  scripts/config --disable CONFIG_F2FS_FAULT_INJECTION
-  scripts/config --disable CONFIG_F2FS_FS_COMPRESSION
-  scripts/config --disable CONFIG_F2FS_FS_LZO
-  scripts/config --disable CONFIG_F2FS_FS_LZ4
-  scripts/config --disable CONFIG_F2FS_FS_ZSTD
-  scripts/config --disable CONFIG_F2FS_FS_LZORLE
-  # Disable FreeVxfs
-  echo "Disable FreeVxfs"
-  scripts/config --disable CONFIG_VXFS_FS
-  # Disable Fscache (General filesystem local caching manager)
-  echo "Disable Fscache (General filesystem local caching manager)"
-  scripts/config --disable CONFIG_FSCACHE
-  scripts/config --disable CONFIG_FSCACHE_STATS
-  scripts/config --disable CONFIG_FSCACHE_HISTOGRAM
-  scripts/config --disable CONFIG_FSCACHE_DEBUG
-  scripts/config --disable CONFIG_FSCACHE_OBJECT_LIST
-  # Disable Gfs2
-  echo "DIsable Gfs2"
-  scripts/config --disable CONFIG_GFS2_FS
-  scripts/config --disable CONFIG_GFS2_FS_LOCKING_DLM
-  # Disable Hfs (Apple Macintosh file system support)
-  echo "Disable Hfs (Apple Macintosh file system support)"
-  scripts/config --disable CONFIG_HFS_FS
-  # Disable Hfsplus (Apple Extended HFS file system support)
-  echo "Disable Hfsplus (Apple Extended HFS file system support)"
-  scripts/config --disable CONFIG_HFSPLUS_FS
-  # Disable Hpfs (OS/2 HPFS file system support)
-  echo "Disable Hpfs (OS/2 HPFS file system support)"
-  scripts/config --disable CONFIG_HPFS_FS
-  # Disable Isofs (ISO 9660 CDROM file system support)
-  echo "Disable Isofs (ISO 9660 CDROM file system support)"
-  scripts/config --disable CONFIG_ISO9660_FS
-  scripts/config --disable CONFIG_JOLIET
-  scripts/config --disable CONFIG_ZISOFS
-  # Disable Jffs2
-  echo "Disable Jffs2"
-  scripts/config --disable CONFIG_JFFS2_FS
-  scripts/config --disable CONFIG_JFFS2_FS_DEBUG
-  scripts/config --disable CONFIG_JFFS2_FS_WRITEBUFFER
-  scripts/config --disable CONFIG_JFFS2_FS_WBUF_VERIFY
-  scripts/config --disable CONFIG_JFFS2_SUMMARY
-  scripts/config --disable CONFIG_JFFS2_FS_XATTR
-  scripts/config --disable CONFIG_JFFS2_FS_POSIX_ACL
-  scripts/config --disable CONFIG_JFFS2_FS_SECURITY
-  scripts/config --disable CONFIG_JFFS2_COMPRESSION_OPTIONS
-  scripts/config --disable CONFIG_JFFS2_ZLIB
-  scripts/config --disable CONFIG_JFFS2_LZO
-  scripts/config --disable CONFIG_JFFS2_RTIME
-  scripts/config --disable CONFIG_JFFS2_RUBIN
-  scripts/config --disable CONFIG_JFFS2_CMODE_NONE
-  scripts/config --disable CONFIG_JFFS2_CMODE_PRIORITY
-  scripts/config --disable CONFIG_JFFS2_CMODE_SIZE
-  scripts/config --disable CONFIG_JFFS2_CMODE_FAVOURLZO
-  # Disable Jfs
-  echo "Disable Jfs"
-  scripts/config --disable CONFIG_JFS_FS
-  scripts/config --disable CONFIG_JFS_POSIX_ACL
-  scripts/config --disable CONFIG_JFS_SECURITY
-  scripts/config --disable CONFIG_JFS_DEBUG
-  scripts/config --disable CONFIG_JFS_STATISTICS
-  # Disable Kernfs
-  echo "Disable Kernfs"
-  scripts/config --disable CONFIG_KERNFS
-  # Disable Minix
-  echo "Disable Minix"
-  scripts/config --disable CONFIG_MINIX_FS
-  scripts/config --disable CONFIG_MINIX_FS_NATIVE_ENDIAN
-  scripts/config --disable CONFIG_MINIX_FS_BIG_ENDIAN_16BIT_INDEXED
-  # Disable Notify
-  echo "Disable Notify"
-  scripts/config --disable CONFIG_FSNOTIFY
-  # Disable Ocfs2
-  echo "Disable Ocfs2"
-  scripts/config --disable CONFIG_OCFS2_FS
-  scripts/config --disable CONFIG_OCFS2_FS_O2CB
-  scripts/config --disable CONFIG_OCFS2_FS_USERSPACE_CLUSTER
-  scripts/config --disable CONFIG_OCFS2_FS_STATS
-  scripts/config --disable CONFIG_OCFS2_DEBUG_MASKLOG
-  scripts/config --disable CONFIG_OCFS2_DEBUG_FS
-  # Disable Orangefs
-  echo "Disable Orangefs"
-  scripts/config --disable CONFIG_ORANGEFS_FS
-  # Disable Overlayfs
-  echo "Disable Overlayfs"
-  scripts/config --disable CONFIG_OVERLAY_FS
-  scripts/config --disable CONFIG_OVERLAY_FS_REDIRECT_DIR
-  scripts/config --disable CONFIG_OVERLAY_FS_REDIRECT_ALWAYS_FOLLOW
-  scripts/config --disable CONFIG_OVERLAY_FS_INDEX
-  scripts/config --disable CONFIG_OVERLAY_FS_NFS_EXPORT
-  scripts/config --disable CONFIG_OVERLAY_FS_XINO_AUTO
-  scripts/config --disable CONFIG_OVERLAY_FS_METACOPY
-  # Disable Pstore
-  echo "Disable Pstore"
-  scripts/config --disable CONFIG_PSTORE
-  scripts/config --disable CONFIG_PSTORE_DEFAULT_KMSG_BYTES
-  scripts/config --disable CONFIG_PSTORE_DEFLATE_COMPRESS
-  scripts/config --disable CONFIG_PSTORE_LZO_COMPRESS
-  scripts/config --disable CONFIG_PSTORE_LZ4_COMPRESS
-  scripts/config --disable CONFIG_PSTORE_LZ4HC_COMPRESS
-  scripts/config --disable CONFIG_PSTORE_842_COMPRESS
-  scripts/config --disable CONFIG_PSTORE_ZSTD_COMPRESS
-  scripts/config --disable CONFIG_PSTORE_COMPRESS
-  scripts/config --disable CONFIG_PSTORE_COMPRESS_DEFAULT
-  scripts/config --disable CONFIG_PSTORE_CONSOLE
-  scripts/config --disable CONFIG_PSTORE_PMSG
-  scripts/config --disable CONFIG_PSTORE_FTRACE
-  scripts/config --disable CONFIG_PSTORE_RAM
-  scripts/config --disable CONFIG_PSTORE_ZONE
-  scripts/config --disable CONFIG_PSTORE_BLK
-  scripts/config --disable CONFIG_PSTORE_BLK_BLKDEV
-  scripts/config --disable CONFIG_PSTORE_BLK_KMSG_SIZE
-  scripts/config --disable CONFIG_PSTORE_BLK_MAX_REASON
-  scripts/config --disable CONFIG_PSTORE_BLK_PMSG_SIZE
-  scripts/config --disable CONFIG_PSTORE_BLK_CONSOLE_SIZE
-  scripts/config --disable CONFIG_PSTORE_BLK_FTRACE_SIZE
-  # Disable Qnx4
-  echo "Disable Qnx4"
-  scripts/config --disable CONFIG_QNX4FS_FS
-  # Disable Qnx6
-  echo "Disable Qnx6"
-  scripts/config --disable CONFIG_QNX6FS_FS
-  scripts/config --disable CONFIG_QNX6FS_DEBUG
-  # Disable Quota
-  echo "Disable Quota"
-  scripts/config --disable CONFIG_QUOTA
-  scripts/config --disable CONFIG_QUOTA_NETLINK_INTERFACE
-  scripts/config --disable CONFIG_PRINT_QUOTA_WARNING
-  scripts/config --disable CONFIG_QUOTA_DEBUG
-  scripts/config --disable CONFIG_QUOTA_TREE
-  scripts/config --disable CONFIG_QFMT_V1
-  scripts/config --disable CONFIG_QFMT_V2
-  scripts/config --disable CONFIG_QUOTACTL
-  # Disable Reiserfs
-  echo "Disable Reiserfs"
-  scripts/config --disable CONFIG_REISERFS_FS
-  scripts/config --disable CONFIG_REISERFS_CHECK
-  scripts/config --disable CONFIG_REISERFS_PROC_INFO
-  scripts/config --disable CONFIG_REISERFS_FS_XATTR
-  scripts/config --disable CONFIG_REISERFS_FS_POSIX_ACL
-  scripts/config --disable CONFIG_REISERFS_FS_SECURITY
-  # Disable Romfs
-  echo "Disable Romfs"
-  scripts/config --disable CONFIG_ROMFS_FS
-  # Disable Squashfs
-  echo "Disable Squashfs"
-  scripts/config --disable CONFIG_SQUASHFS
-  scripts/config --disable CONFIG_SQUASHFS_FILE_CACHE
-  scripts/config --disable CONFIG_SQUASHFS_FILE_DIRECT
-  scripts/config --disable CONFIG_SQUASHFS_DECOMP_SINGLE
-  scripts/config --disable CONFIG_SQUASHFS_DECOMP_MULTI
-  scripts/config --disable CONFIG_SQUASHFS_DECOMP_MULTI_PERCPU
-  scripts/config --disable CONFIG_SQUASHFS_XATTR
-  scripts/config --disable CONFIG_SQUASHFS_ZLIB
-  scripts/config --disable CONFIG_SQUASHFS_LZ4
-  scripts/config --disable CONFIG_SQUASHFS_LZO
-  scripts/config --disable CONFIG_SQUASHFS_XZ
-  scripts/config --disable CONFIG_SQUASHFS_ZSTD
-  scripts/config --disable CONFIG_SQUASHFS_4K_DEVBLK_SIZE
-  scripts/config --disable CONFIG_SQUASHFS_EMBEDDED
-  scripts/config --disable CONFIG_SQUASHFS_FRAGMENT_CACHE_SIZE
-  # Disable Sysv
-  echo "Disable Sysv"
-  scripts/config --disable CONFIG_SYSV_FS
-  # Disable Ubifs
-  echo "Disable Ubifs"
-  scripts/config --disable CONFIG_UBIFS_FS
-  scripts/config --disable CONFIG_UBIFS_FS_ADVANCED_COMPR
-  scripts/config --disable CONFIG_UBIFS_FS_LZO
-  scripts/config --disable CONFIG_UBIFS_FS_ZLIB
-  scripts/config --disable CONFIG_UBIFS_FS_ZSTD
-  scripts/config --disable CONFIG_UBIFS_ATIME_SUPPORT
-  scripts/config --disable CONFIG_UBIFS_FS_XATTR
-  scripts/config --disable CONFIG_UBIFS_FS_SECURITY
-  scripts/config --disable CONFIG_UBIFS_FS_AUTHENTICATION
-  # Disable Udf
-  echo "Disable Udf"
-  scripts/config --disable CONFIG_UDF_FS
-  # Disable Ufs
-  echo "Disable Ufs"
-  scripts/config --disable CONFIG_UFS_FS
-  scripts/config --disable CONFIG_UFS_FS_WRITE
-  scripts/config --disable CONFIG_UFS_DEBUG
-  # Disable Xfs
-  echo "Disable Xfs"
-  scripts/config --disable CONFIG_XFS_FS
-  scripts/config --disable CONFIG_XFS_SUPPORT_V4
-  scripts/config --disable CONFIG_XFS_QUOTA
-  scripts/config --disable CONFIG_XFS_POSIX_ACL
-  scripts/config --disable CONFIG_XFS_RT
-  scripts/config --disable CONFIG_XFS_ONLINE_SCRUB
-  scripts/config --disable CONFIG_XFS_ONLINE_REPAIR
-  scripts/config --disable CONFIG_XFS_WARN
-  scripts/config --disable CONFIG_XFS_DEBUG
-  scripts/config --disable CONFIG_XFS_ASSERT_FATAL
-  # Disable Zonefs
-  echo "Disable Zonefs"
-  scripts/config --disable CONFIG_ZONEFS_FS
+  ## Filesystem
+  #msg2 "Disable uneeded filesystem support"
+  ## Disable 9p
+  #echo "Disable 9p"
+  #scripts/config --disable CONFIG_9P_FS
+  #scripts/config --disable CONFIG_9P_FSCACHE
+  #scripts/config --disable CONFIG_9P_FS_POSIX_ACL
+  #scripts/config --disable CONFIG_9P_FS_SECURITY
+  ## Disable Adfs
+  #scripts/config --disable CONFIG_ADFS_FS
+  #scripts/config --disable CONFIG_ADFS_FS_RW
+  ## Disable Affs (Amiga FFS file system support)
+  #echo "Disable AFFS (Amiga FFS file system support)"
+  #scripts/config --disable CONFIG_AFFS_FS
+  ## Disable Afs (Andrew File System support (AFS))
+  #echo "Disable Afs (Andrew File System support (AFS))"
+  #scripts/config --disable CONFIG_AFS_FS
+  #scripts/config --disable CONFIG_AFS_DEBUG
+  #scripts/config --disable CONFIG_AFS_FSCACHE
+  #scripts/config --disable CONFIG_AFS_DEBUG_CURSOR
+  ## Disable Befs (BeOS file system (BeFS) support (read only))
+  #echo "Disable Befs (BeOS file system (BeFS) support (read only))"
+  #scripts/config --disable CONFIG_BEFS_FS
+  #scripts/config --disable CONFIG_BEFS_DEBUG
+  ## Disable Bfs (BFS file system support)
+  #echo "Disable Bfs (BFS file system support)"
+  #scripts/config --disable CONFIG_BFS_FS
+  ## Disable Cachefiles (Filesystem caching on files)
+  #echo "Disable Cachefiles (Filesystem caching on files)"
+  #scripts/config --disable CONFIG_CACHEFILES
+  #scripts/config --disable CONFIG_CACHEFILES_DEBUG
+  #scripts/config --disable CONFIG_CACHEFILES_HISTOGRAM
+  ## Disable Ceph (Ceph distributed file system)
+  #echo "Disable Ceph (Ceph distributed file system)"
+  #scripts/config --disable CONFIG_CEPH_FS
+  #scripts/config --disable CONFIG_CEPH_FSCACHE
+  #scripts/config --disable CONFIG_CEPH_FS_POSIX_ACL
+  #scripts/config --disable CONFIG_CEPH_FS_SECURITY_LABEL
+  ## Disable coda (Coda file system support (advanced network fs))
+  #echo "Disable coda (Coda file system support (advanced network fs))"
+  #scripts/config --disable CONFIG_CODA_FS
+  ## Disable Configfs (Userspace-driven configuration filesystem)
+  #echo "Disable Configfs (Userspace-driven configuration filesystem)"
+  #scripts/config --disable CONFIG_CONFIGFS_FS
+  ## Disable Cramfs (Compressed ROM file system support (cramfs))
+  #echo "Disable Cramfs (Compressed ROM file system support (cramfs))"
+  #scripts/config --disable CONFIG_CRAMFS
+  #scripts/config --disable CONFIG_CRAMFS_BLOCKDEV
+  #scripts/config --disable CONFIG_CRAMFS_MTD
+  ## Disable Dlm (Distributed Lock Manager (DLM))
+  #echo "Disable Dlm (Distributed Lock Manager (DLM))"
+  #scripts/config --disable CONFIG_DLM
+  #scripts/config --disable CONFIG_DLM_DEBUG
+  ## Disable Efs (EFS file system support (read only))
+  #echo "Disable Efs (EFS file system support (read only))"
+  #scripts/config --disable CONFIG_EFS_FS
+  ## Disable Erofs
+  #echo "Disable Erofs"
+  #scripts/config --disable CONFIG_EROFS_FS
+  #scripts/config --disable CONFIG_EROFS_FS_DEBUG
+  #scripts/config --disable CONFIG_EROFS_FS_XATTR
+  #scripts/config --disable CONFIG_EROFS_FS_POSIX_ACL
+  #scripts/config --disable CONFIG_EROFS_FS_SECURITY
+  #scripts/config --disable CONFIG_EROFS_FS_ZIP
+  #scripts/config --disable CONFIG_EROFS_FS_CLUSTER_PAGE_LIMIT
+  ## Disable ext2 support
+  #echo "Disable ext2"
+  #scripts/config --disable CONFIG_EXT2_FS
+  #scripts/config --disable CONFIG_EXT2_FS_XATTR
+  #scripts/config --disable CONFIG_EXT2_FS_POSIX_ACL
+  #scripts/config --disable CONFIG_EXT2_FS_SECURITY
+  ## Disable ext3 support
+  #echo "Disable ext3"
+  #scripts/config --disable CONFIG_EXT3_FS
+  #scripts/config --disable CONFIG_EXT3_FS_POSIX_ACL
+  #scripts/config --disable CONFIG_EXT3_FS_SECURITY
+  ## Disable F2fs
+  #echo "Disable F2fs"
+  #scripts/config --disable CONFIG_F2FS_FS
+  #scripts/config --disable CONFIG_F2FS_STAT_FS
+  #scripts/config --disable CONFIG_F2FS_FS_XATTR
+  #scripts/config --disable CONFIG_F2FS_FS_POSIX_ACL
+  #scripts/config --disable CONFIG_F2FS_FS_SECURITY
+  #scripts/config --disable CONFIG_F2FS_CHECK_FS
+  #scripts/config --disable CONFIG_F2FS_IO_TRACE
+  #scripts/config --disable CONFIG_F2FS_FAULT_INJECTION
+  #scripts/config --disable CONFIG_F2FS_FS_COMPRESSION
+  #scripts/config --disable CONFIG_F2FS_FS_LZO
+  #scripts/config --disable CONFIG_F2FS_FS_LZ4
+  #scripts/config --disable CONFIG_F2FS_FS_ZSTD
+  #scripts/config --disable CONFIG_F2FS_FS_LZORLE
+  ## Disable FreeVxfs
+  #echo "Disable FreeVxfs"
+  #scripts/config --disable CONFIG_VXFS_FS
+  ## Disable Fscache (General filesystem local caching manager)
+  #echo "Disable Fscache (General filesystem local caching manager)"
+  #scripts/config --disable CONFIG_FSCACHE
+  #scripts/config --disable CONFIG_FSCACHE_STATS
+  #scripts/config --disable CONFIG_FSCACHE_HISTOGRAM
+  #scripts/config --disable CONFIG_FSCACHE_DEBUG
+  #scripts/config --disable CONFIG_FSCACHE_OBJECT_LIST
+  ## Disable Gfs2
+  #echo "DIsable Gfs2"
+  #scripts/config --disable CONFIG_GFS2_FS
+  #scripts/config --disable CONFIG_GFS2_FS_LOCKING_DLM
+  ## Disable Hfs (Apple Macintosh file system support)
+  #echo "Disable Hfs (Apple Macintosh file system support)"
+  #scripts/config --disable CONFIG_HFS_FS
+  ## Disable Hfsplus (Apple Extended HFS file system support)
+  #echo "Disable Hfsplus (Apple Extended HFS file system support)"
+  #scripts/config --disable CONFIG_HFSPLUS_FS
+  ## Disable Hpfs (OS/2 HPFS file system support)
+  #echo "Disable Hpfs (OS/2 HPFS file system support)"
+  #scripts/config --disable CONFIG_HPFS_FS
+  ## Disable Isofs (ISO 9660 CDROM file system support)
+  #echo "Disable Isofs (ISO 9660 CDROM file system support)"
+  #scripts/config --disable CONFIG_ISO9660_FS
+  #scripts/config --disable CONFIG_JOLIET
+  #scripts/config --disable CONFIG_ZISOFS
+  ## Disable Jffs2
+  #echo "Disable Jffs2"
+  #scripts/config --disable CONFIG_JFFS2_FS
+  #scripts/config --disable CONFIG_JFFS2_FS_DEBUG
+  #scripts/config --disable CONFIG_JFFS2_FS_WRITEBUFFER
+  #scripts/config --disable CONFIG_JFFS2_FS_WBUF_VERIFY
+  #scripts/config --disable CONFIG_JFFS2_SUMMARY
+  #scripts/config --disable CONFIG_JFFS2_FS_XATTR
+  #scripts/config --disable CONFIG_JFFS2_FS_POSIX_ACL
+  #scripts/config --disable CONFIG_JFFS2_FS_SECURITY
+  #scripts/config --disable CONFIG_JFFS2_COMPRESSION_OPTIONS
+  #scripts/config --disable CONFIG_JFFS2_ZLIB
+  #scripts/config --disable CONFIG_JFFS2_LZO
+  #scripts/config --disable CONFIG_JFFS2_RTIME
+  #scripts/config --disable CONFIG_JFFS2_RUBIN
+  #scripts/config --disable CONFIG_JFFS2_CMODE_NONE
+  #scripts/config --disable CONFIG_JFFS2_CMODE_PRIORITY
+  #scripts/config --disable CONFIG_JFFS2_CMODE_SIZE
+  #scripts/config --disable CONFIG_JFFS2_CMODE_FAVOURLZO
+  ## Disable Jfs
+  #echo "Disable Jfs"
+  #scripts/config --disable CONFIG_JFS_FS
+  #scripts/config --disable CONFIG_JFS_POSIX_ACL
+  #scripts/config --disable CONFIG_JFS_SECURITY
+  #scripts/config --disable CONFIG_JFS_DEBUG
+  #scripts/config --disable CONFIG_JFS_STATISTICS
+  ## Disable Kernfs
+  #echo "Disable Kernfs"
+  #scripts/config --disable CONFIG_KERNFS
+  ## Disable Minix
+  #echo "Disable Minix"
+  #scripts/config --disable CONFIG_MINIX_FS
+  #scripts/config --disable CONFIG_MINIX_FS_NATIVE_ENDIAN
+  #scripts/config --disable CONFIG_MINIX_FS_BIG_ENDIAN_16BIT_INDEXED
+  ## Disable Notify
+  #echo "Disable Notify"
+  #scripts/config --disable CONFIG_FSNOTIFY
+  ## Disable Ocfs2
+  #echo "Disable Ocfs2"
+  #scripts/config --disable CONFIG_OCFS2_FS
+  #scripts/config --disable CONFIG_OCFS2_FS_O2CB
+  #scripts/config --disable CONFIG_OCFS2_FS_USERSPACE_CLUSTER
+  #scripts/config --disable CONFIG_OCFS2_FS_STATS
+  #scripts/config --disable CONFIG_OCFS2_DEBUG_MASKLOG
+  #scripts/config --disable CONFIG_OCFS2_DEBUG_FS
+  ## Disable Orangefs
+  #echo "Disable Orangefs"
+  #scripts/config --disable CONFIG_ORANGEFS_FS
+  ## Disable Overlayfs
+  #echo "Disable Overlayfs"
+  #scripts/config --disable CONFIG_OVERLAY_FS
+  #scripts/config --disable CONFIG_OVERLAY_FS_REDIRECT_DIR
+  #scripts/config --disable CONFIG_OVERLAY_FS_REDIRECT_ALWAYS_FOLLOW
+  #scripts/config --disable CONFIG_OVERLAY_FS_INDEX
+  #scripts/config --disable CONFIG_OVERLAY_FS_NFS_EXPORT
+  #scripts/config --disable CONFIG_OVERLAY_FS_XINO_AUTO
+  #scripts/config --disable CONFIG_OVERLAY_FS_METACOPY
+  ## Disable Pstore
+  #echo "Disable Pstore"
+  #scripts/config --disable CONFIG_PSTORE
+  #scripts/config --disable CONFIG_PSTORE_DEFAULT_KMSG_BYTES
+  #scripts/config --disable CONFIG_PSTORE_DEFLATE_COMPRESS
+  #scripts/config --disable CONFIG_PSTORE_LZO_COMPRESS
+  #scripts/config --disable CONFIG_PSTORE_LZ4_COMPRESS
+  #scripts/config --disable CONFIG_PSTORE_LZ4HC_COMPRESS
+  #scripts/config --disable CONFIG_PSTORE_842_COMPRESS
+  #scripts/config --disable CONFIG_PSTORE_ZSTD_COMPRESS
+  #scripts/config --disable CONFIG_PSTORE_COMPRESS
+  #scripts/config --disable CONFIG_PSTORE_COMPRESS_DEFAULT
+  #scripts/config --disable CONFIG_PSTORE_CONSOLE
+  #scripts/config --disable CONFIG_PSTORE_PMSG
+  #scripts/config --disable CONFIG_PSTORE_FTRACE
+  #scripts/config --disable CONFIG_PSTORE_RAM
+  #scripts/config --disable CONFIG_PSTORE_ZONE
+  #scripts/config --disable CONFIG_PSTORE_BLK
+  #scripts/config --disable CONFIG_PSTORE_BLK_BLKDEV
+  #scripts/config --disable CONFIG_PSTORE_BLK_KMSG_SIZE
+  #scripts/config --disable CONFIG_PSTORE_BLK_MAX_REASON
+  #scripts/config --disable CONFIG_PSTORE_BLK_PMSG_SIZE
+  #scripts/config --disable CONFIG_PSTORE_BLK_CONSOLE_SIZE
+  #scripts/config --disable CONFIG_PSTORE_BLK_FTRACE_SIZE
+  ## Disable Qnx4
+  #echo "Disable Qnx4"
+  #scripts/config --disable CONFIG_QNX4FS_FS
+  ## Disable Qnx6
+  #echo "Disable Qnx6"
+  #scripts/config --disable CONFIG_QNX6FS_FS
+  #scripts/config --disable CONFIG_QNX6FS_DEBUG
+  ## Disable Quota
+  #echo "Disable Quota"
+  #scripts/config --disable CONFIG_QUOTA
+  #scripts/config --disable CONFIG_QUOTA_NETLINK_INTERFACE
+  #scripts/config --disable CONFIG_PRINT_QUOTA_WARNING
+  #scripts/config --disable CONFIG_QUOTA_DEBUG
+  #scripts/config --disable CONFIG_QUOTA_TREE
+  #scripts/config --disable CONFIG_QFMT_V1
+  #scripts/config --disable CONFIG_QFMT_V2
+  #scripts/config --disable CONFIG_QUOTACTL
+  ## Disable Reiserfs
+  #echo "Disable Reiserfs"
+  #scripts/config --disable CONFIG_REISERFS_FS
+  #scripts/config --disable CONFIG_REISERFS_CHECK
+  #scripts/config --disable CONFIG_REISERFS_PROC_INFO
+  #scripts/config --disable CONFIG_REISERFS_FS_XATTR
+  #scripts/config --disable CONFIG_REISERFS_FS_POSIX_ACL
+  #scripts/config --disable CONFIG_REISERFS_FS_SECURITY
+  ## Disable Romfs
+  #echo "Disable Romfs"
+  #scripts/config --disable CONFIG_ROMFS_FS
+  ## Disable Squashfs
+  #echo "Disable Squashfs"
+  #scripts/config --disable CONFIG_SQUASHFS
+  #scripts/config --disable CONFIG_SQUASHFS_FILE_CACHE
+  #scripts/config --disable CONFIG_SQUASHFS_FILE_DIRECT
+  #scripts/config --disable CONFIG_SQUASHFS_DECOMP_SINGLE
+  #scripts/config --disable CONFIG_SQUASHFS_DECOMP_MULTI
+  #scripts/config --disable CONFIG_SQUASHFS_DECOMP_MULTI_PERCPU
+  #scripts/config --disable CONFIG_SQUASHFS_XATTR
+  #scripts/config --disable CONFIG_SQUASHFS_ZLIB
+  #scripts/config --disable CONFIG_SQUASHFS_LZ4
+  #scripts/config --disable CONFIG_SQUASHFS_LZO
+  #scripts/config --disable CONFIG_SQUASHFS_XZ
+  #scripts/config --disable CONFIG_SQUASHFS_ZSTD
+  #scripts/config --disable CONFIG_SQUASHFS_4K_DEVBLK_SIZE
+  #scripts/config --disable CONFIG_SQUASHFS_EMBEDDED
+  #scripts/config --disable CONFIG_SQUASHFS_FRAGMENT_CACHE_SIZE
+  ## Disable Sysv
+  #echo "Disable Sysv"
+  #scripts/config --disable CONFIG_SYSV_FS
+  ## Disable Ubifs
+  #echo "Disable Ubifs"
+  #scripts/config --disable CONFIG_UBIFS_FS
+  #scripts/config --disable CONFIG_UBIFS_FS_ADVANCED_COMPR
+  #scripts/config --disable CONFIG_UBIFS_FS_LZO
+  #scripts/config --disable CONFIG_UBIFS_FS_ZLIB
+  #scripts/config --disable CONFIG_UBIFS_FS_ZSTD
+  #scripts/config --disable CONFIG_UBIFS_ATIME_SUPPORT
+  #scripts/config --disable CONFIG_UBIFS_FS_XATTR
+  #scripts/config --disable CONFIG_UBIFS_FS_SECURITY
+  #scripts/config --disable CONFIG_UBIFS_FS_AUTHENTICATION
+  ## Disable Udf
+  #echo "Disable Udf"
+  #scripts/config --disable CONFIG_UDF_FS
+  ## Disable Ufs
+  #echo "Disable Ufs"
+  #scripts/config --disable CONFIG_UFS_FS
+  #scripts/config --disable CONFIG_UFS_FS_WRITE
+  #scripts/config --disable CONFIG_UFS_DEBUG
+  ## Disable Xfs
+  #echo "Disable Xfs"
+  #scripts/config --disable CONFIG_XFS_FS
+  #scripts/config --disable CONFIG_XFS_SUPPORT_V4
+  #scripts/config --disable CONFIG_XFS_QUOTA
+  #scripts/config --disable CONFIG_XFS_POSIX_ACL
+  #scripts/config --disable CONFIG_XFS_RT
+  #scripts/config --disable CONFIG_XFS_ONLINE_SCRUB
+  #scripts/config --disable CONFIG_XFS_ONLINE_REPAIR
+  #scripts/config --disable CONFIG_XFS_WARN
+  #scripts/config --disable CONFIG_XFS_DEBUG
+  #scripts/config --disable CONFIG_XFS_ASSERT_FATAL
+  ## Disable Zonefs
+  #echo "Disable Zonefs"
+  #scripts/config --disable CONFIG_ZONEFS_FS
 
   sleep 2s
 
