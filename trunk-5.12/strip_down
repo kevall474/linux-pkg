@@ -931,129 +931,129 @@ strip_down(){
   #echo "Disable Zonefs"
   #scripts/config --disable CONFIG_ZONEFS_FS
 
-  sleep 2s
+  #sleep 2s
 
-  # Enable Needed filesystem
-  msg2 "Enable Needed filesystem"
-  # Autofs (Kernel automounter support (supports v3, v4 and v5))
-  echo "Enable Autofs (Kernel automounter support (supports v3, v4 and v5))"
-  scripts/config --enable CONFIG_AUTOFS4_FS
-  scripts/config --enable CONFIG_AUTOFS_FS
-  # Btrfs
-  echo "Enable Btrfs"
-  scripts/config --enable CONFIG_BTRFS_FS
-  scripts/config --enable CONFIG_BTRFS_FS_POSIX_ACL
-  # Cifs
-  echo "Enable Cifs"
-  scripts/config --module CONFIG_CIFS
-  scripts/config --enable CONFIG_CIFS_ALLOW_INSECURE_LEGACY
-  scripts/config --enable CONFIG_CIFS_WEAK_PW_HASH
-  scripts/config --enable CONFIG_CIFS_UPCALL
-  scripts/config --enable CONFIG_CIFS_XATTR
-  scripts/config --enable CONFIG_CIFS_POSIX
-  scripts/config --enable CONFIG_CIFS_DFS_UPCALL
-  scripts/config --enable CONFIG_CIFS_SWN_UPCALL
-  scripts/config --enable CONFIG_CIFS_NFSD_EXPORT
-  scripts/config --enable CONFIG_CIFS_SMB_DIRECT
-  scripts/config --enable CONFIG_CIFS_FSCACHE
-  scripts/config --enable CONFIG_CIFS_ROOT
-  # Crypto
-  echo "Enable Crypto"
-  scripts/config --enable CONFIG_FS_ENCRYPTION
-  scripts/config --module CONFIG_FS_ENCRYPTION_ALGS
-  scripts/config --enable CONFIG_FS_ENCRYPTION_INLINE_CRYPT
-  # Ecryptfs
-  echo "Enable Ecryptfs"
-  scripts/config --enable CONFIG_ECRYPT_FS
-  scripts/config --enable CONFIG_ECRYPT_FS_MESSAGING
-  # Efivarfs
-  echo "Enable Efivarfs"
-  scripts/config --enable CONFIG_EFIVAR_FS
-  # Exfat
-  echo "Enable Exfat"
-  scripts/config --enable CONFIG_EXFAT_FS
-  scripts/config --set-val CONFIG_EXFAT_DEFAULT_IOCHARSET "utf8"
-  # Fully support ext4
-  echo "Enable ext4"
-  scripts/config --enable CONFIG_EXT4_FS
-  scripts/config --enable CONFIG_EXT4_USE_FOR_EXT2
-  scripts/config --enable CONFIG_EXT4_FS_POSIX_ACL
-  scripts/config --enable CONFIG_EXT4_FS_SECURITY
-  # Fat
-  echo "Enable Fat"
-  scripts/config --module CONFIG_FAT_FS
-  scripts/config --module CONFIG_MSDOS_FS
-  scripts/config --module CONFIG_VFAT_FS
-  scripts/config --set-val CONFIG_FAT_DEFAULT_CODEPAGE 437
-  scripts/config --set-val CONFIG_FAT_DEFAULT_IOCHARSET "ascii"
-  scripts/config --enable CONFIG_FAT_DEFAULT_UTF8
-  # Fuse
-  echo "Enable Fuse"
-  scripts/config --module CONFIG_FUSE_FS
-  scripts/config --module CONFIG_CUSE
-  scripts/config --module CONFIG_VIRTIO_FS
-  scripts/config --enable CONFIG_FUSE_DAX
-  # Jbd2
-  echo "Enable Jbd2"
-  scripts/config --enable CONFIG_JBD2
-  # Nfs
-  echo "Enable Nfs"
-  scripts/config --module CONFIG_CONFIG_NFS_FS
-  scripts/config --module CONFIG_CONFIG_NFS_V2
-  scripts/config --module CONFIG_CONFIG_NFS_V3
-  scripts/config --enable CONFIG_CONFIG_NFS_V3_ACL
-  scripts/config --module CONFIG_CONFIG_NFS_V4
-  scripts/config --enable CONFIG_CONFIG_NFS_SWAP
-  scripts/config --enable CONFIG_CONFIG_NFS_V4_1
-  scripts/config --enable CONFIG_CONFIG_NFS_V4_2
-  scripts/config --module CONFIG_CONFIG_PNFS_FILE_LAYOUT
-  scripts/config --module CONFIG_CONFIG_PNFS_BLOCK
-  scripts/config --module CONFIG_CONFIG_PNFS_FLEXFILE_LAYOUT
-  scripts/config --set-val CONFIG_CONFIG_NFS_V4_1_IMPLEMENTATION_ID_DOMAIN "kernel.org"
-  scripts/config --enable CONFIG_CONFIG_NFS_V4_1_MIGRATION
-  scripts/config --enable CONFIG_CONFIG_NFS_V4_SECURITY_LABEL
-  scripts/config --enable CONFIG_CONFIG_NFS_FSCACHE
-  scripts/config --enable CONFIG_CONFIG_NFS_USE_LEGACY_DNS
-  scripts/config --enable CONFIG_CONFIG_NFS_USE_KERNEL_DNS
-  scripts/config --enable CONFIG_CONFIG_NFS_DISABLE_UDP_SUPPORT
-  scripts/config --enable CONFIG_CONFIG_NFS_V4_2_READ_PLUS
-  # Nfsd
-  echo "Enable Nfsd"
-  scripts/config --module CONFIG_NFSD
-  scripts/config --enable CONFIG_NFSD_V2_ACL
-  scripts/config --enable CONFIG_NFSD_V3
-  scripts/config --enable CONFIG_NFSD_V3_ACL
-  scripts/config --enable CONFIG_NFSD_V4
-  scripts/config --enable CONFIG_NFSD_PNFS
-  scripts/config --enable CONFIG_NFSD_BLOCKLAYOUT
-  scripts/config --enable CONFIG_NFSD_SCSILAYOUT
-  scripts/config --enable CONFIG_NFSD_FLEXFILELAYOUT
-  scripts/config --enable CONFIG_NFSD_V4_2_INTER_SSC
-  scripts/config --enable CONFIG_NFSD_V4_SECURITY_LABEL
-  # Nilfs2
-  echo "Enable Nilfs2"
-  scripts/config --module CONFIG_NILFS2_FS
-  # Proc
-  echo "Enable proc"
-  scripts/config --enable CONFIG_PROC_FS
-  scripts/config --enable CONFIG_PROC_KCORE
-  scripts/config --enable CONFIG_PROC_VMCORE
-  scripts/config --enable CONFIG_PROC_VMCORE_DEVICE_DUMP
-  scripts/config --enable CONFIG_PROC_SYSCTL
-  scripts/config --enable CONFIG_PROC_PAGE_MONITOR
-  scripts/config --enable CONFIG_PROC_CHILDREN
-  scripts/config --enable CONFIG_PROC_PID_ARCH_STATUS
-  scripts/config --enable CONFIG_PROC_CPU_RESCTRL
-  # Sysfs
-  echo "Enable Sysfs"
-  scripts/config --enable CONFIG_SYSFS
-  # Unicode
-  echo "Enable UNicode"
-  scripts/config --enable CONFIG_UNICODE
-  scripts/config --enable CONFIG_UNICODE_NORMALIZATION_SELFTEST
-  # Vboxfs
-  echo "Enable Vboxfs"
-  scripts/config --enable CONFIG_VBOXSF_FS
+  ## Enable Needed filesystem
+  #msg2 "Enable Needed filesystem"
+  ## Autofs (Kernel automounter support (supports v3, v4 and v5))
+  ##echo "Enable Autofs (Kernel automounter support (supports v3, v4 and v5))"
+  #scripts/config --enable CONFIG_AUTOFS4_FS
+  #scripts/config --enable CONFIG_AUTOFS_FS
+  ## Btrfs
+  #echo "Enable Btrfs"
+  #scripts/config --enable CONFIG_BTRFS_FS
+  #scripts/config --enable CONFIG_BTRFS_FS_POSIX_ACL
+  ## Cifs
+  #echo "Enable Cifs"
+  #scripts/config --module CONFIG_CIFS
+  #scripts/config --enable CONFIG_CIFS_ALLOW_INSECURE_LEGACY
+  #scripts/config --enable CONFIG_CIFS_WEAK_PW_HASH
+  #scripts/config --enable CONFIG_CIFS_UPCALL
+  #scripts/config --enable CONFIG_CIFS_XATTR
+  #scripts/config --enable CONFIG_CIFS_POSIX
+  #scripts/config --enable CONFIG_CIFS_DFS_UPCALL
+  #scripts/config --enable CONFIG_CIFS_SWN_UPCALL
+  #scripts/config --enable CONFIG_CIFS_NFSD_EXPORT
+  #scripts/config --enable CONFIG_CIFS_SMB_DIRECT
+  #scripts/config --enable CONFIG_CIFS_FSCACHE
+  #scripts/config --enable CONFIG_CIFS_ROOT
+  ## Crypto
+  #echo "Enable Crypto"
+  #scripts/config --enable CONFIG_FS_ENCRYPTION
+  #scripts/config --module CONFIG_FS_ENCRYPTION_ALGS
+  #scripts/config --enable CONFIG_FS_ENCRYPTION_INLINE_CRYPT
+  ## Ecryptfs
+  #echo "Enable Ecryptfs"
+  #scripts/config --enable CONFIG_ECRYPT_FS
+  #scripts/config --enable CONFIG_ECRYPT_FS_MESSAGING
+  ## Efivarfs
+  #echo "Enable Efivarfs"
+  #scripts/config --enable CONFIG_EFIVAR_FS
+  ## Exfat
+  #echo "Enable Exfat"
+  #scripts/config --enable CONFIG_EXFAT_FS
+  #scripts/config --set-val CONFIG_EXFAT_DEFAULT_IOCHARSET "utf8"
+  ## Fully support ext4
+  #echo "Enable ext4"
+  #scripts/config --enable CONFIG_EXT4_FS
+  #scripts/config --enable CONFIG_EXT4_USE_FOR_EXT2
+  #scripts/config --enable CONFIG_EXT4_FS_POSIX_ACL
+  #scripts/config --enable CONFIG_EXT4_FS_SECURITY
+  ## Fat
+  #echo "Enable Fat"
+  #scripts/config --module CONFIG_FAT_FS
+  #scripts/config --module CONFIG_MSDOS_FS
+  #scripts/config --module CONFIG_VFAT_FS
+  #scripts/config --set-val CONFIG_FAT_DEFAULT_CODEPAGE 437
+  #scripts/config --set-val CONFIG_FAT_DEFAULT_IOCHARSET "ascii"
+  #scripts/config --enable CONFIG_FAT_DEFAULT_UTF8
+  ## Fuse
+  #echo "Enable Fuse"
+  #scripts/config --module CONFIG_FUSE_FS
+  #scripts/config --module CONFIG_CUSE
+  #scripts/config --module CONFIG_VIRTIO_FS
+  #scripts/config --enable CONFIG_FUSE_DAX
+  ## Jbd2
+  #echo "Enable Jbd2"
+  #scripts/config --enable CONFIG_JBD2
+  ## Nfs
+  #echo "Enable Nfs"
+  #scripts/config --module CONFIG_CONFIG_NFS_FS
+  #scripts/config --module CONFIG_CONFIG_NFS_V2
+  #scripts/config --module CONFIG_CONFIG_NFS_V3
+  #scripts/config --enable CONFIG_CONFIG_NFS_V3_ACL
+  #scripts/config --module CONFIG_CONFIG_NFS_V4
+  #scripts/config --enable CONFIG_CONFIG_NFS_SWAP
+  #scripts/config --enable CONFIG_CONFIG_NFS_V4_1
+  #scripts/config --enable CONFIG_CONFIG_NFS_V4_2
+  #scripts/config --module CONFIG_CONFIG_PNFS_FILE_LAYOUT
+  #scripts/config --module CONFIG_CONFIG_PNFS_BLOCK
+  #scripts/config --module CONFIG_CONFIG_PNFS_FLEXFILE_LAYOUT
+  #scripts/config --set-val CONFIG_CONFIG_NFS_V4_1_IMPLEMENTATION_ID_DOMAIN "kernel.org"
+  #scripts/config --enable CONFIG_CONFIG_NFS_V4_1_MIGRATION
+  #scripts/config --enable CONFIG_CONFIG_NFS_V4_SECURITY_LABEL
+  #scripts/config --enable CONFIG_CONFIG_NFS_FSCACHE
+  #scripts/config --enable CONFIG_CONFIG_NFS_USE_LEGACY_DNS
+  #scripts/config --enable CONFIG_CONFIG_NFS_USE_KERNEL_DNS
+  #scripts/config --enable CONFIG_CONFIG_NFS_DISABLE_UDP_SUPPORT
+  #scripts/config --enable CONFIG_CONFIG_NFS_V4_2_READ_PLUS
+  ## Nfsd
+  #echo "Enable Nfsd"
+  #scripts/config --module CONFIG_NFSD
+  #scripts/config --enable CONFIG_NFSD_V2_ACL
+  #scripts/config --enable CONFIG_NFSD_V3
+  #scripts/config --enable CONFIG_NFSD_V3_ACL
+  #scripts/config --enable CONFIG_NFSD_V4
+  #scripts/config --enable CONFIG_NFSD_PNFS
+  #scripts/config --enable CONFIG_NFSD_BLOCKLAYOUT
+  #scripts/config --enable CONFIG_NFSD_SCSILAYOUT
+  #scripts/config --enable CONFIG_NFSD_FLEXFILELAYOUT
+  #scripts/config --enable CONFIG_NFSD_V4_2_INTER_SSC
+  #scripts/config --enable CONFIG_NFSD_V4_SECURITY_LABEL
+  ## Nilfs2
+  #echo "Enable Nilfs2"
+  #scripts/config --module CONFIG_NILFS2_FS
+  ## Proc
+  #echo "Enable proc"
+  #scripts/config --enable CONFIG_PROC_FS
+  #scripts/config --enable CONFIG_PROC_KCORE
+  #scripts/config --enable CONFIG_PROC_VMCORE
+  #scripts/config --enable CONFIG_PROC_VMCORE_DEVICE_DUMP
+  #scripts/config --enable CONFIG_PROC_SYSCTL
+  #scripts/config --enable CONFIG_PROC_PAGE_MONITOR
+  #scripts/config --enable CONFIG_PROC_CHILDREN
+  #scripts/config --enable CONFIG_PROC_PID_ARCH_STATUS
+  #scripts/config --enable CONFIG_PROC_CPU_RESCTRL
+  ## Sysfs
+  #echo "Enable Sysfs"
+  #scripts/config --enable CONFIG_SYSFS
+  ## Unicode
+  #echo "Enable UNicode"
+  #scripts/config --enable CONFIG_UNICODE
+  #scripts/config --enable CONFIG_UNICODE_NORMALIZATION_SELFTEST
+  ## Vboxfs
+  #echo "Enable Vboxfs"
+  #scripts/config --enable CONFIG_VBOXSF_FS
 
 #######################################
 
