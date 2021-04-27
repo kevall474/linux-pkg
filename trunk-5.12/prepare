@@ -1901,19 +1901,27 @@ rapid_config(){
   scripts/config --disable CONFIG_MODULE_SIG_SHA384
   scripts/config --enable CONFIG_MODULE_SIG_SHA512
   scripts/config  --set-val CONFIG_MODULE_SIG_HASH "sha512"
+  
+  sleep 2s
 
   msg2 "Set module compression to ZSTD"
   scripts/config --enable CONFIG_MODULE_COMPRESS
   scripts/config --disable CONFIG_MODULE_COMPRESS_GZIP
   scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
   scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+  
+  sleep 2s
 
   msg2 "Enable CONFIG_STACK_VALIDATION"
   scripts/config --enable CONFIG_STACK_VALIDATION
+  
+  sleep 2s
 
   msg2 "Enable IKCONFIG"
   scripts/config --enable CONFIG_IKCONFIG
   scripts/config --enable CONFIG_IKCONFIG_PROC
+  
+  sleep 2s
 
   msg2 "Disable NUMA"
   scripts/config --disable CONFIG_NUMA
@@ -1928,14 +1936,21 @@ rapid_config(){
   scripts/config --disable CONFIG_NODES_SHIFT
   scripts/config --undefine CONFIG_NODES_SHIFT
   scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
+  
+  sleep 2s
 
   msg2 "Disable FUNCTION_TRACER/GRAPH_TRACER"
   scripts/config --disable CONFIG_FUNCTION_TRACER
   scripts/config --disable CONFIG_STACK_TRACER
+  
+  sleep 2s
 
   msg2 "Disable CONFIG_USER_NS_UNPRIVILEGED"
   scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
-
+  
+  sleep 2s
+  
+  msg2 "Set CPU Frequency scaling CONFIG_CPU_FREQ_DEFAULT_GOV/CONFIG_CPU_FREQ_GOV for performance"
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
   scripts/config --disable CONFIG_CPU_FREQ_GOV_POWERSAVE
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
@@ -1948,6 +1963,8 @@ rapid_config(){
   scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
   scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+  
+  sleep 2s
 
   msg2 "Set CPU DEVFREQ GOV CONFIG_DEVFREQ_GOV for performance"
   scripts/config --disable CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND
@@ -1956,22 +1973,32 @@ rapid_config(){
   scripts/config --disable CONFIG_DEVFREQ_GOV_USERSPACE
   scripts/config --disable CONFIG_DEVFREQ_GOV_PASSIVE
   scripts/config --enable CONFIG_DEVFREQ_GOV_PERFORMANCE
+  
+  sleep 2s
 
   msg2 "Set PCIEASPM DRIVER to performance"
   scripts/config --enable CONFIG_PCIEASPM
   scripts/config --enable CONFIG_PCIEASPM_PERFORMANCE
+  
+  sleep 2s
 
   msg2 "Set CONFIG_PCIE_BUS for performance"
   scripts/config --enable CONFIG_PCIE_BUS_PERFORMANCE
+  
+  sleep 2s
 
   msg2 "Enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3"
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
   scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+  
+  sleep 2s
 
   msg2 "Set timer frequency to 1000HZ"
   scripts/config --enable CONFIG_HZ_1000
   scripts/config --set-val CONFIG_HZ 1000
+  
+  sleep 2s
 
   msg2 "Enable PREEMPT"
   scripts/config --disable CONFIG_PREEMPT_NONE
@@ -1979,6 +2006,8 @@ rapid_config(){
   scripts/config --enable CONFIG_PREEMPT
   scripts/config --enable CONFIG_PREEMPT_COUNT
   scripts/config --enable CONFIG_PREEMPTION
+  
+  sleep 2s
 
   msg2 "Set to full tickless"
   scripts/config --disable CONFIG_HZ_PERIODIC
@@ -1988,12 +2017,18 @@ rapid_config(){
   scripts/config --enable CONFIG_NO_HZ_COMMON
   #scripts/config --enable CONFIG_CONTEXT_TRACKING
   #scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
+  
+  sleep 2s
 
   msg2 "Enable Device Tree and Open Firmware support"
   scripts/config --enable CONFIG_OF
+  
+  sleep 2s
 
   msg2 "Enable tristate V4L2 loopback device"
   scripts/config --module CONFIG_V4L2_LOOPBACK
+  
+  sleep 2s
 
   msg2 "Enable ntfs"
   scripts/config --module CONFIG_NTFS_FS
@@ -2003,21 +2038,33 @@ rapid_config(){
   scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
   scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
   scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
+  
+  sleep 2s
 
   msg2 "Enable CONFIG_VHBA"
   scripts/config --module CONFIG_VHBA
+  
+  sleep 2s
 
   msg2 "Disabling Kyber I/O scheduler"
   scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
+  
+  sleep 2s
 
   msg2 "Enable Deadline I/O scheduler"
   scripts/config --enable CONFIG_MQ_IOSCHED_DEADLINE
+  
+  sleep 2s
 
   msg2 "Enable MQ-Deadline-Nodefault I/O scheduler"
   scripts/config --enable CONFIG_MQ_IOSCHED_DEADLINE_NODEFAULT
+  
+  sleep 2s
 
   msg2 "Enable CONFIG_BFQ_CGROUP_DEBUG..."
   scripts/config --enable CONFIG_BFQ_CGROUP_DEBUG
+  
+  sleep 2s
 
   msg2 "Disable debug options"
   scripts/config --disable CONFIG_SLUB_DEBUG
@@ -2116,22 +2163,34 @@ rapid_config(){
   scripts/config --disable CONFIG_ATM_IA_DEBUG
   scripts/config --disable CONFIG_ATM_FORE200E_DEBUG
   scripts/config --disable CONFIG_BCMA_DEBUG
+  
+  sleep 2s
 
   msg2 "Enable CONFIG_SCHED_AUTOGROUP_DEFAULT_ENABLED"
   scripts/config --enable CONFIG_SCHED_AUTOGROUP_DEFAULT_ENABLED
+  
+  sleep 2s
 
   msg2 "Enable CONFIG_ZENIFY"
   scripts/config --enable CONFIG_ZENIFY
+  
+  sleep 2s
 
   msg2 "Enable Fsync support"
   scripts/config --enable CONFIG_FUTEX
   scripts/config --enable CONFIG_FUTEX_PI
+  
+  sleep 2s
 
   msg2 "Enable Futex2 support"
   scripts/config --enable CONFIG_FUTEX2
+  
+  sleep 2s
 
   msg2 "Enable winesync support"
   scripts/config --module CONFIG_WINESYNC
+  
+  sleep 2s
 
   if [[ $_cpu_sched = "1" ]]; then
     msg2 "Enable CacULE CPU scheduler..."
@@ -2344,11 +2403,11 @@ rapid_config(){
     scripts/config --enable CONFIG_FAIR_GROUP_SCHED
     scripts/config --enable CONFIG_CFS_BANDWIDTH
   fi
+  
+  sleep 2s
 
   msg2 "Set CONFIG_GENERIC_CPU"
   scripts/config --enable CONFIG_GENERIC_CPU
-
-  plain""
 
   sleep 2s
 }
