@@ -1888,7 +1888,7 @@ cpu_arch(){
 
 rapid_config(){
 
-  plain""
+  plain ""
 
   msg2 "Set SIG level to SHA512"
   scripts/config --undefine MODULE_SIG_FORCE
