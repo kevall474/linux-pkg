@@ -1,0 +1,13 @@
+- Add AUFS filesystem to prepare script and rapid_config -> toggle option
+
+- Add TCP_CONG_BBR2 to prepare script and rapid_config -> toggle option
+
+- Add md5sums for the source
+
+- Add prjc-lru-patches https://github.com/sirlucjan/kernel-patches/tree/master/5.12/prjc-lru-patches
+
+- Add prjc-patches-fixes https://github.com/sirlucjan/kernel-patches/tree/master/5.12/prjc-patches-fixes-v2
+
+- Add lru-patches https://github.com/sirlucjan/kernel-patches/tree/master/5.12/lru-patches
+
+- Add CONFIG_UNEVICTABLE_FILE as toggle option provided by mm-patches

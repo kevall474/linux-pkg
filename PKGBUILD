@@ -18,14 +18,13 @@
 ################# CPU Scheduler #################
 
 #Set CPU Scheduler
-#Set '1' for MuQSS CPU Scheduler
-#Set '2' for BMQ CPU Scheduler
-#Set '3' for PDS CPU Scheduler
-#Set '4' for CacULE CPU Scheduler
-#Set '5' for UPDS CPU Scheduler
-#Set '6' for CacULE-RDB CPU Scheduler
+#Set '1' for CacULE CPU Scheduler
+#Set '2' for CacULE-RDB CPU Scheduler
+#Set '3' for BMQ CPU Scheduler
+#Set '4' for PDS CPU Scheduler
+#Set '5' for PDS CPU Scheduler
 #Leave empty for no CPU Scheduler
-#Default is empty. It will build with no cpu scheduler. To build with cpu shceduler just use : env _cpu_sched=(1,2 or 3) makepkg -s
+#Default is empty. It will build with no cpu scheduler. To build with cpu shceduler just use : env _cpu_sched=(1,2,3,4 or 5) makepkg -s
 if [ -z ${_cpu_sched+x} ]; then
   _cpu_sched=
 fi
@@ -67,39 +66,33 @@ fi
 # This section set the pkgbase based on the cpu scheduler, so user can build different package based on the cpu scheduler.
 if [[ $_cpu_sched = "1" ]]; then
   if [[ "$_compiler" = "1" ]]; then
-    pkgbase=linux-kernel-muqss-gcc
+    pkgbase=linux-kernel-cacule-gcc
   elif [[ "$_compiler" = "2" ]]; then
-    pkgbase=linux-kernel-muqss-clang
+    pkgbase=linux-kernel-cacule-clang
   fi
 elif [[ $_cpu_sched = "2" ]]; then
+  if [[ "$_compiler" = "1" ]]; then
+    pkgbase=linux-kernel-cacule-rdb-gcc
+  elif [[ "$_compiler" = "2" ]]; then
+    pkgbase=linux-kernel-cacule-rdb-clang
+  fi
+elif [[ $_cpu_sched = "3" ]]; then
   if [[ "$_compiler" = "1" ]]; then
     pkgbase=linux-kernel-bmq-gcc
   elif [[ "$_compiler" = "2" ]]; then
     pkgbase=linux-kernel-bmq-clang
   fi
-elif [[ $_cpu_sched = "3" ]]; then
+elif [[ $_cpu_sched = "4" ]]; then
   if [[ "$_compiler" = "1" ]]; then
     pkgbase=linux-kernel-pds-gcc
   elif [[ "$_compiler" = "2" ]]; then
     pkgbase=linux-kernel-pds-clang
   fi
-elif [[ $_cpu_sched = "4" ]]; then
-  if [[ "$_compiler" = "1" ]]; then
-    pkgbase=linux-kernel-cacule-gcc
-  elif [[ "$_compiler" = "2" ]]; then
-    pkgbase=linux-kernel-cacule-clang
-  fi
 elif [[ $_cpu_sched = "5" ]]; then
   if [[ "$_compiler" = "1" ]]; then
-    pkgbase=linux-kernel-upds-gcc
+    pkgbase=linux-kernel-muqss-gcc
   elif [[ "$_compiler" = "2" ]]; then
-    pkgbase=linux-kernel-upds-clang
-  fi
-elif [[ $_cpu_sched = "6" ]]; then
-  if [[ "$_compiler" = "1" ]]; then
-    pkgbase=linux-kernel-cacule-rdb-gcc
-  elif [[ "$_compiler" = "2" ]]; then
-    pkgbase=linux-kernel-cacule-rdb-clang
+    pkgbase=linux-kernel-muqss-clang
   fi
 else
   if [[ "$_compiler" = "1" ]]; then
@@ -115,8 +108,8 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.11.16
-major=5.11
+pkgver=5.12
+major=5.12
 pkgrel=1
 arch=(x86_64)
 url="https://www.kernel.org/"
@@ -128,94 +121,95 @@ makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules
              "rsync" "cpio" "inetutils" "gzip" "zstd" "xz")
 patchsource=https://raw.githubusercontent.com/kevall474/kernel-patches/main/$major
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
-        "config-5.11"
-        "$patchsource/cpu-patches/0001-cpu-5.11-merge-graysky-s-patchset.patch"
+        "config-$major"
+        "$patchsource/aufs-patches/0001-aufs-20210412.patch"
+        "$patchsource/bbr2-patches/0001-bbr2-5.12-introduce-BBRv2.patch"
+        "$patchsource/block-patches/0001-block-patches.patch"
+        "$patchsource/bfq-patches/0001-bfq-patches.patch"
+        "$patchsource/btrfs-patches/0001-btrfs-patches.patch"
+        "$patchsource/cpu-patches/0001-cpu-5.12-merge-graysky-s-patchset.patch"
         "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
-        "$patchsource/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
-        "$patchsource/misc/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
-        "$patchsource/xanmod-patches/0001-xanmod-patches.patch"
-        "$patchsource/zen-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
+        "$patchsource/futex-patches/0007-v5.12-fsync.patch"
+        "$patchsource/futex-patches/0007-v5.12-futex2_interface.patch"
+        "$patchsource/initramfs-patches/0001-initramfs-patches.patch"
+        "$patchsource/ksm-patches/0001-ksm-patches.patch"
+        "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
+        "$patchsource/lqx-patches/0001-Revert-net-tso-add-UDP-segmentation-support.patch"
+        "$patchsource/lqx-patches/0002-zen-Allow-MSR-writes-by-default.patch"
+        "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
+        "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
+        "$patchsource/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
+        "$patchsource/spadfs-patches/0001-spadfs-5.12-merge-v1.0.13.patch"
+        "$patchsource/zanmod-patches/0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
         "$patchsource/zen-patches/0003-ZEN-vhba-Update-to-20210418.patch"
         "$patchsource/zen-patches/0002-ZEN-intel-pstate-Implement-enable-parameter.patch"
-        "$patchsource/futex-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
-        "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
-        "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
-        "$patchsource/block-patches/0001-block-patches.patch"
-        "$patchsource/bfq-patches/0001-bfq-patches.patch"
-        "$patchsource/aufs-patches/0001-aufs-20210412.patch"
-        "$patchsource/bbr2-patches/0001-bbr2-5.11-introduce-BBRv2.patch"
-        "$patchsource/btrfs-patches/0001-btrfs-patches.patch"
-        "$patchsource/loopback-patches/0001-v4l2loopback-5.11-merge-v0.12.5.patch"
-        "$patchsource/mm-patches/0001-mm-patches.patch"
-        "$patchsource/spadfs-patches/0001-spadfs-5.11-merge-v1.0.13.patch"
-        "$patchsource/zswap-patches/0001-zswap-patches.patch"
-        "$patchsource/pf-patches/0001-pf-patches.patch"
-        "$patchsource/arch-patches/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "$patchsource/android-patches/0001-Export-symbols-needed-by-Android-drivers.patch"
-        "$patchsource/android-patches/0002-android-Enable-building-ashmem-and-binder-as-modules.patch"
-        "$patchsource/ksm-patches/0001-ksm-patches.patch"
+        "$patchsource/zen-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "$patchsource/zstd-patches/0001-zstd-patches.patch"
-        "$patchsource/zstd-patches/0001-zstd-dev-patches.patch"
-        "$patchsource/lqx-patches/0001-lqx-patches.patch"
-        "$patchsource/wine-patches/0007-v5.11-winesync.patch"
-        "$patchsource/misc/vm.max_map_count.patch"
-        "$patchsource/initramfs-patches/0001-initramfs-patches.patch")
-md5sums=("c7536df1e1e3d03621092d732c8a5b6e"  #linux-5.11.16.tar.xz
-         "2af355d97f95713297c707c740e4f432"  #config-5.11
-         "fcb1edf2e91ff227c44aeac8b42409aa"  #0001-cpu-5.11-merge-graysky-s-patchset.patch
-         "d16247a3ccca283c96577dc138cf9572"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
-         "d15597054a4c5e405f980d07d5eac11a"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
-         "f99b82d6f424d1a729a9b8c5a1be2b84"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
-         "c87afb8937411d41e7460c4c80a67464"  #0001-xanmod-patches.patch
-         "6dfd8a5a0bcf8fe205213e36d70770a6"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-         "29aa42972ef0aaf3d879ba33a22a7d2e"  #0001-ZEN-Add-VHBA-driver.patch
-         "5618bf0ec5602a794e6a2b67f81b3ec8"  #0003-ZEN-vhba-Update-to-20210418.patch
-         "7fb92823fa7d9f7a79d650444561c18d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
-         "307f39a7c060ac3073607964091234c0"  #0001-futex2-resync-from-gitlab.collabora.com.patch
-         "57f4afa1be10eec300542767942ad938"  #0001-clearlinux-patches.patch
-         "aecc37df9f4a28953c6759b82207aaf7"  #0001-ntfs3-patches.patch
-         "3cf79ddcad9c0f659664bd6fc2ae30ec"  #0001-block-patches.patch
-         "f506e2aad80616f7334fabcb1cbaed0d"  #0001-bfq-patches.patch
-         "5c8d12d4577e46ba118e4f18469c7f49"  #0001-aufs-20210412.patch
-         "686d82306fff905945ffb6f0eede14d4"  #0001-bbr2-5.11-introduce-BBRv2.patch
-         "2d9f85cdf7d8c526b5eaa4341ac4058c"  #0001-btrfs-patches.patch
-         "0ab93e8e3437a5093520c10cca741531"  #0001-v4l2loopback-5.11-merge-v0.12.5.patch
-         "7547ce8af415e4d587258fdf928a7eee"  #0001-mm-patches.patch
-         "49b4c1a2098d0f0584eb8d0eda2a60c9"  #0001-spadfs-5.11-merge-v1.0.13.patch
-         "64e629e48f15cc0ebddfee366386f17a"  #0001-zswap-patches.patch
-         "f7e7e6cddb72ad8ae741849dddb6e6fa"  #0001-pf-patches.patch
-         "e7ef63d6e6fb1ed9d8c2b4d3f65de86c"  #0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
-         "3b5866097de15af399841405bc844020"  #0001-Export-symbols-needed-by-Android-drivers.patch
-         "0eda7e947dd25e6b77ea40d734deea8d"  #0002-android-Enable-building-ashmem-and-binder-as-modules.patch
-         "9c37d7643710ffa49552cc43b96980ed"  #0001-ksm-patches.patch
-         "eccf701cb0f604c5fb9f06b500585889"  #0001-zstd-patches.patch
-         "d8f8f4d1c025952b3022126273b62c93"  #0001-zstd-dev-patches.patch
-         "95b7d848ff2dc7bf7779a6177420c02a"  #0001-lqx-patches.patch
-         "ab8f21e210aec26c7825033d57433e33"  #0007-v5.11-winesync.patch
-         "27e6001bacfcfca1c161bf6ef946a79b"  #vm.max_map_count.patch
-         "39d8fe1921a28bb6504f4eb23aa5d675") #0001-initramfs-patches.patch)
+        "$patchsource/zstd-dev-patches/0001-zstd-dev-patches.patch"
+        "$patchsource/misc-patches/0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch"
+        "$patchsource/misc-patches/0002-mm-Support-soft-dirty-flag-read-with-reset.patch"
+        "$patchsource/misc-patches/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
+        "$patchsource/misc-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
+        "$patchsource/misc-patches/0004-mm-set-8-megabytes-for-address_space-level-file-read.patch"
+        "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
+        "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
+        "$patchsource/misc-patches/vm.max_map_count.patch")
+md5sums=("SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP")
 #zenify workarround with CacULE
-if [[ $_cpu_sched != "4" ]] && [[ $_cpu_sched != "6" ]]; then
- source+=("$patchsource/misc/zenify.patch")
+if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
+ source+=("$patchsource/misc-patches/zenify.patch")
  md5sums+=("8e71f0c43157654c4105224d89cc6709")  #zenify.patch
 fi
-if [[ $_cpu_sched = "1" ]]; then
- source+=("$patchsource/muqss-patches/patch-$major-ck1")
- md5sums+=("SKIP")
-elif [[ $_cpu_sched = "2" ]] || [[ $_cpu_sched = "3" ]]; then
-  source+=("${patchsource}/prjc-patches/0009-prjc_v5.11-r3.patch")
-  md5sums+=("3ed563f52e61ceabcb8dea99256635c2")  #0009-prjc_v5.11-r3.patch
-elif [[ $_cpu_sched = "4" ]] || [[ $_cpu_sched = "6" ]]; then
+if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/cacule-$major.patch"
            "${patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
            "${patchsource}/cacule-patches/0003-cacule-Set-cacule_harsh_mode-enabled-by-default.patch")
-  md5sums+=("b85d9c75a137a4278537386ca274da9d"  #cacule-5.11.patch
+  md5sums+=("SKIP"  #cacule-5.12.patch
             "cdf2d612b6c1234ce124f0e8361fdc2e"  #0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch
             "09ca141fe7aff2a0f426e1d79f45aba3") #0003-cacule-Set-cacule_harsh_mode-enabled-by-default.patch
+elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
+  source+=("${patchsource}/prjc-patches/0009-prjc_v$major-r0.patch")
+  md5sums+=("SKIP")  #0009-prjc_v5.12-r0.patch
 elif [[ $_cpu_sched = "5" ]]; then
-  source+=("${patchsource}/upds-patches/0005-v5.11_undead-pds099o.patch")
-  md5sums+=("1c6d05cffa90464a2ae6f9e00d670e50")  #0005-v5.11_undead-pds099o.patch
+  source+=("${patchsource}/muqss-patches/patch-$major-ck1")
+  md5sums+=("SKIP")  #patch-5.12-ck1
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -236,9 +230,10 @@ prepare(){
     patch -Np1 < "../$src"
   done
 
-  if [[ $_cpu_sched = "1" ]]; then
+  # patch command for muqss
+  if [[ $_cpu_sched = "5" ]]; then
     msg2 "Applying patch patch-$major-ck1"
-    patch -Np1 < ../patch-5.$major-ck1
+    patch -Np1 < ../patch-$major-ck1
   fi
 
   # Copy the config file first
@@ -248,8 +243,6 @@ prepare(){
 
   # Customize the kernel
   source "${startdir}"/prepare
-  source "${startdir}"/rapid_config
-  source "${startdir}"/strip_down
 
   configure
 
