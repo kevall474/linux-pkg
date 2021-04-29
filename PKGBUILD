@@ -131,7 +131,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
         "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
         "$patchsource/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
-        "$patchsource/futex-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "$patchsource/futex2-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
         "$patchsource/initramfs-patches/0001-initramfs-patches.patch"
         "$patchsource/ksm-patches/0001-ksm-patches.patch"
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
