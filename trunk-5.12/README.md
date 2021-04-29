@@ -14,7 +14,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
     git clone https://github.com/kevall474/Linux.git
     cd Linux
-    env _cpu_sched=(1,2,3 or 4) _compiler=(1 or 2) makepkg -s
+    env _cpu_sched=(1,2,3,4 or 5) _compiler=(1 or 2) makepkg -s
 
 # Build variables
 
@@ -26,6 +26,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
         2 : CacULE-RDB by Hamad Al Marri
         3 : BMQ by Alfred Chen
         4 : PDS by Alfred Chen
+        5 : MuQSS by Con Kolivas
 
 Leave this variable empty if you don't want to add a CPU Scheduler.
 
@@ -37,20 +38,6 @@ Leave this variable empty if you don't want to add a CPU Scheduler.
         2 : CLANG+LLVM
 
 If not set it will build with GCC by default.
-
-# Troubleshooting
-
-### The system isn't booting with the compiled kernel used a custom llvm/clang (git version)
-
-- If you're compiling with llvm-git be sure to recompile the mesa-git lib32-mesa-git packages against it.
-- Systems with intel/nvidia graphics just need to compile them with env _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLANG
-- Systems with AMD graphics need to compile with env _llvm=y _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLANG | _llvm=y is optional. It's to enable LLVM by default since ACO is the default shader compiler.
-- After compiling install both packages with sudo pacman -U mesa-git lib32-mesa-git
-
-You will find the following packages here:
-- https://github.com/kevall474/llvm-git
-- https://github.com/kevall474/mesa-git
-
 
 # CPU Scheduler
 
@@ -132,9 +119,46 @@ run queues are kept as less as possible to reduce the migration cost. Cpumask
 data structure is widely used in cpu affinity checking and cpu preemption/
 selection to make PDS scalable with increasing cpu number.
 
+## MuQSS CPU Scheduler
+
+MuQSS - The Multiple Queue Skiplist Scheduler by Con Kolivas.
+
+MuQSS is a per-cpu runqueue variant of the original BFS scheduler with
+one 8 level skiplist per runqueue, and fine grained locking for much more
+scalability.
+
+The goal of the Multiple Queue Skiplist Scheduler, referred to as MuQSS from
+here on (pronounced mux) is to completely do away with the complex designs of
+the past for the cpu process scheduler and instead implement one that is very
+simple in basic design. The main focus of MuQSS is to achieve excellent desktop
+interactivity and responsiveness without heuristics and tuning knobs that are
+difficult to understand, impossible to model and predict the effect of, and when
+tuned to one workload cause massive detriment to another, while still being
+scalable to many CPUs and processes.
+
+MuQSS is best described as per-cpu multiple runqueue, O(log n) insertion, O(1)
+lookup, earliest effective virtual deadline first tickless design, loosely based
+on EEVDF (earliest eligible virtual deadline first) and my previous Staircase
+Deadline scheduler, and evolved from the single runqueue O(n) BFS scheduler.
+Each component shall be described in order to understand the significance of,
+and reasoning for it.
+
 # Update GRUB
 
     sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# Troubleshooting
+
+### The system isn't booting with the compiled kernel used a custom llvm/clang (git version)
+
+- If you're compiling with llvm-git be sure to recompile the mesa-git lib32-mesa-git packages against it.
+- Systems with intel/nvidia graphics just need to compile them with env _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLANG
+- Systems with AMD graphics need to compile with env _llvm=y _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLANG | _llvm=y is optional. It's to enable LLVM by default since ACO is the default shader compiler.
+- After compiling install both packages with sudo pacman -U mesa-git lib32-mesa-git
+
+You will find the following packages here:
+- https://github.com/kevall474/llvm-git
+- https://github.com/kevall474/mesa-git
 
 # Contact info
 

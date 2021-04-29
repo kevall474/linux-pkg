@@ -22,8 +22,9 @@
 #Set '2' for CacULE-RDB CPU Scheduler
 #Set '3' for BMQ CPU Scheduler
 #Set '4' for PDS CPU Scheduler
+#Set '5' for PDS CPU Scheduler
 #Leave empty for no CPU Scheduler
-#Default is empty. It will build with no cpu scheduler. To build with cpu shceduler just use : env _cpu_sched=(1,2,3 or 4) makepkg -s
+#Default is empty. It will build with no cpu scheduler. To build with cpu shceduler just use : env _cpu_sched=(1,2,3,4 or 5) makepkg -s
 if [ -z ${_cpu_sched+x} ]; then
   _cpu_sched=
 fi
@@ -86,6 +87,12 @@ elif [[ $_cpu_sched = "4" ]]; then
     pkgbase=linux-kernel-pds-gcc
   elif [[ "$_compiler" = "2" ]]; then
     pkgbase=linux-kernel-pds-clang
+  fi
+elif [[ $_cpu_sched = "5" ]]; then
+  if [[ "$_compiler" = "1" ]]; then
+    pkgbase=linux-kernel-muqss-gcc
+  elif [[ "$_compiler" = "2" ]]; then
+    pkgbase=linux-kernel-muqss-clang
   fi
 else
   if [[ "$_compiler" = "1" ]]; then
@@ -200,6 +207,9 @@ if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
 elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
   source+=("${patchsource}/prjc-patches/0009-prjc_v$major-r0.patch")
   md5sums+=("SKIP")  #0009-prjc_v5.12-r0.patch
+elif [[ $_cpu_sched = "5" ]]; then
+  source+=("${patchsource}/muqss-patches/patch-$major-ck1")
+  md5sums+=("SKIP")  #patch-5.12-ck1
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -221,10 +231,10 @@ prepare(){
   done
 
   # patch command for muqss
-  #if [[ $_cpu_sched = "CPU SCHED ORDER NUMBER" ]]; then
-  #  msg2 "Applying patch patch-5.$major-ck1"
-  #  patch -Np1 < ../patch-$major-ck1
-  #fi
+  if [[ $_cpu_sched = "5" ]]; then
+    msg2 "Applying patch patch-$major-ck1"
+    patch -Np1 < ../patch-$major-ck1
+  fi
 
   # Copy the config file first
   # Copy "${srcdir}"/config to linux-${pkgver}/.config

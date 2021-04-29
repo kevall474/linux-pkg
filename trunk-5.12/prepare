@@ -1615,6 +1615,137 @@ configure(){
     msg2 "Disable CFS"
     scripts/config --disable CONFIG_FAIR_GROUP_SCHED
     scripts/config --disable CONFIG_CFS_BANDWIDTH
+  elif [[ $_cpu_sched = "5" ]]; then
+    msg2 "Enable MuQSS"
+    scripts/config --enable CONFIG_SCHED_MC
+    scripts/config --enable CONFIG_SCHED_SMT
+    scripts/config --enable CONFIG_SMP
+    scripts/config --enable CONFIG_SCHED_MC_PRIO
+    scripts/config --enable CONFIG_SCHED_MUQSS
+
+    plain ""
+    plain "#########################################"
+    plain "MuQSS configuration"
+    plain ""
+    plain "Set CONFIG_RQ"
+    plain ""
+    plain "RQ_NONE : No sharing: This is the default behaviour where the CPU"
+    plain "scheduler has one runqueue per CPU, whether it is a physical or"
+    plain "logical CPU (hyperthread)."
+    plain ""
+    plain "RQ_SMT : SMT (hyperthread) siblings : With this option enabled,"
+    plain "the CPU scheduler will have one runqueue shared by SMT (hyperthread)"
+    plain "siblings. As these logical cores share one physical core, sharing"
+    plain "the runqueue resource can lead to decreased overhead, lower latency"
+    plain "and higher throughput."
+    plain ""
+    plain "RQ_MC : Multicore siblings : With this option enabled, the CPU"
+    plain "scheduler will have one runqueue shared by multicore siblings"
+    plain "in addition to any SMT siblings. As these physical cores share"
+    plain "caches, sharing the runqueue resource will lead to lower latency,"
+    plain "but its effects on overhead and throughput are less predictable. As"
+    plain "a general rule, 6 or fewer cores will likely benefit from this,"
+    plain "while larger CPUs will only derive a latency benefit. If your"
+    plain "workloads are primarily single threaded, this will possibly worsen"
+    plain "throughput. If you are only concerned about latency then enable this"
+    plain "regardless of how many cores you have."
+    plain ""
+    plain "RQ_MC_LLC : Multicore siblings (LLC) : With this option enabled, the"
+    plain "CPU scheduler will behave similarly as with Multicore siblings."
+    plain "This option takes LLC cache into account when scheduling tasks."
+    plain "Option may benefit CPUs with multiple LLC caches, such as Ryzen and"
+    plain "Xeon CPUs."
+    plain ""
+    plain "RQ_SMP : Symmetric Multi-Processing : With this option enabled, the"
+    plain "CPU scheduler will have one runqueue shared by all physical CPUs"
+    plain "unless they are on separate NUMA nodes. As physical CPUs usually do"
+    plain "not share resources, sharing the runqueue will normally worsen"
+    plain "throughput but improve latency. If you only care about latency"
+    plain "enable this"
+    plain ""
+    plain "RQ_ALL : With this option enabled, the CPU scheduler will have one"
+    plain "runqueue regardless of the architecture configuration, including"
+    plain "across NUMA nodes. This can substantially decrease throughput in"
+    plain "NUMA configurations, but light NUMA designs will not be dramatically"
+    plain "affected. This option should only be chosen if latency is the"
+    plain "prime concern."
+    plain ""
+    read -rp "`echo $' > 1.RQ_NONE\n > 2.RQ_SMT\n > 3.RQ_MC\n > 4.RQ_MC_LLC\n > 5.RQ_SMP\n > 6.RQ_ALL\n > Default (RQ_MC)\nchoice[1-6]: '`" _config_rq
+    if [[ $_config_rq = "1" ]]; then
+      msg2 "Set to RQ_NONE"
+      scripts/config --enable CONFIG_RQ_NONE
+      scripts/config --set-val CONFIG_SHARERQ 0
+      msg2 "Disable CFS"
+      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --disable CONFIG_CFS_BANDWIDTH
+    elif [[ $_config_rq = "2" ]]; then
+      msg2 "Set to RQ_SMT"
+      scripts/config --enable CONFIG_RQ_SMT
+      scripts/config --set-val CONFIG_SHARERQ 1
+      msg2 "Disable CFS"
+      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --disable CONFIG_CFS_BANDWIDTH
+
+      sleep 2
+
+      plain ""
+      plain "#########################################"
+      plain "Enable/disable CONFIG_SMT_NICE"
+      plain ""
+      plain "SMT nice support makes each logical CPU aware of what is running on"
+      plain "its hyperthread siblings, maintaining appropriate distribution of"
+      plain "CPU according to nice levels and scheduling policies at the expense"
+      plain "of slightly increased overhead."
+      plain "If unsure Enable"
+      plain ""
+      read -rp "`echo $' > 1.Disable\n > 2.Enable\n > Default (Enable)\nchoice[1-2]: '`" _smt_nice
+      if [[ $_smt_nice = "1" ]]; then
+        msg2 "Disable CONFIG_SMT_NICE"
+        scripts/config --disable CONFIG_SMT_NICE
+      elif [[ $_smt_nice = "2" ]]; then
+        msg2 "Enable CONFIG_SMT_NICE"
+        scripts/config --enable CONFIG_SMT_NICE
+      else
+        msg2 "Enable CONFIG_SMT_NICE"
+        scripts/config --enable CONFIG_SMT_NICE
+      fi
+
+    elif [[ $_config_rq = "3" ]]; then
+      msg2 "Set to RQ_MC"
+      scripts/config --enable CONFIG_RQ_MC
+      scripts/config --set-val CONFIG_SHARERQ 2
+      msg2 "Disable CFS"
+      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --disable CONFIG_CFS_BANDWIDTH
+    elif [[ $_config_rq = "4" ]]; then
+      msg2 "Set to RQ_MC_LLC"
+      scripts/config --enable CONFIG_RQ_MC_LLC
+      scripts/config --set-val CONFIG_SHARERQ 3
+      msg2 "Disable CFS"
+      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --disable CONFIG_CFS_BANDWIDTH
+    elif [[ $_config_rq = "5" ]]; then
+      msg2 "Set to RQ_SMP"
+      scripts/config --enable CONFIG_RQ_SMP
+      scripts/config --set-val CONFIG_SHARERQ 4
+      msg2 "Disable CFS"
+      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --disable CONFIG_CFS_BANDWIDTH
+    elif [[ $_config_rq = "6" ]]; then
+      msg2 "Set to RQ_ALL"
+      scripts/config --enable CONFIG_RQ_ALL
+      scripts/config --set-val CONFIG_SHARERQ 5
+      msg2 "Disable CFS"
+      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --disable CONFIG_CFS_BANDWIDTH
+    else
+      msg2 "Set to RQ_MC"
+      scripts/config --enable CONFIG_RQ_MC
+      scripts/config --set-val CONFIG_SHARERQ 2
+      msg2 "Disable CFS"
+      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+      scripts/config --disable CONFIG_CFS_BANDWIDTH
+    fi
   else
     msg2 "Enable CFS"
     scripts/config --enable CONFIG_FAIR_GROUP_SCHED
@@ -1901,7 +2032,7 @@ rapid_config(){
   scripts/config --disable CONFIG_MODULE_SIG_SHA384
   scripts/config --enable CONFIG_MODULE_SIG_SHA512
   scripts/config  --set-val CONFIG_MODULE_SIG_HASH "sha512"
-  
+
   sleep 2s
 
   msg2 "Set module compression to ZSTD"
@@ -1909,18 +2040,18 @@ rapid_config(){
   scripts/config --disable CONFIG_MODULE_COMPRESS_GZIP
   scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
   scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-  
+
   sleep 2s
 
   msg2 "Enable CONFIG_STACK_VALIDATION"
   scripts/config --enable CONFIG_STACK_VALIDATION
-  
+
   sleep 2s
 
   msg2 "Enable IKCONFIG"
   scripts/config --enable CONFIG_IKCONFIG
   scripts/config --enable CONFIG_IKCONFIG_PROC
-  
+
   sleep 2s
 
   msg2 "Disable NUMA"
@@ -1936,20 +2067,20 @@ rapid_config(){
   scripts/config --disable CONFIG_NODES_SHIFT
   scripts/config --undefine CONFIG_NODES_SHIFT
   scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
-  
+
   sleep 2s
 
   msg2 "Disable FUNCTION_TRACER/GRAPH_TRACER"
   scripts/config --disable CONFIG_FUNCTION_TRACER
   scripts/config --disable CONFIG_STACK_TRACER
-  
+
   sleep 2s
 
   msg2 "Disable CONFIG_USER_NS_UNPRIVILEGED"
   scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
-  
+
   sleep 2s
-  
+
   msg2 "Set CPU Frequency scaling CONFIG_CPU_FREQ_DEFAULT_GOV/CONFIG_CPU_FREQ_GOV for performance"
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
   scripts/config --disable CONFIG_CPU_FREQ_GOV_POWERSAVE
@@ -1963,7 +2094,7 @@ rapid_config(){
   scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
   scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
-  
+
   sleep 2s
 
   msg2 "Set CPU DEVFREQ GOV CONFIG_DEVFREQ_GOV for performance"
@@ -1973,31 +2104,31 @@ rapid_config(){
   scripts/config --disable CONFIG_DEVFREQ_GOV_USERSPACE
   scripts/config --disable CONFIG_DEVFREQ_GOV_PASSIVE
   scripts/config --enable CONFIG_DEVFREQ_GOV_PERFORMANCE
-  
+
   sleep 2s
 
   msg2 "Set PCIEASPM DRIVER to performance"
   scripts/config --enable CONFIG_PCIEASPM
   scripts/config --enable CONFIG_PCIEASPM_PERFORMANCE
-  
+
   sleep 2s
 
   msg2 "Set CONFIG_PCIE_BUS for performance"
   scripts/config --enable CONFIG_PCIE_BUS_PERFORMANCE
-  
+
   sleep 2s
 
   msg2 "Enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3"
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
   scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-  
+
   sleep 2s
 
   msg2 "Set timer frequency to 1000HZ"
   scripts/config --enable CONFIG_HZ_1000
   scripts/config --set-val CONFIG_HZ 1000
-  
+
   sleep 2s
 
   msg2 "Enable PREEMPT"
@@ -2006,7 +2137,7 @@ rapid_config(){
   scripts/config --enable CONFIG_PREEMPT
   scripts/config --enable CONFIG_PREEMPT_COUNT
   scripts/config --enable CONFIG_PREEMPTION
-  
+
   sleep 2s
 
   msg2 "Set to full tickless"
@@ -2017,17 +2148,17 @@ rapid_config(){
   scripts/config --enable CONFIG_NO_HZ_COMMON
   #scripts/config --enable CONFIG_CONTEXT_TRACKING
   #scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
-  
+
   sleep 2s
 
   msg2 "Enable Device Tree and Open Firmware support"
   scripts/config --enable CONFIG_OF
-  
+
   sleep 2s
 
   msg2 "Enable tristate V4L2 loopback device"
   scripts/config --module CONFIG_V4L2_LOOPBACK
-  
+
   sleep 2s
 
   msg2 "Enable ntfs"
@@ -2038,32 +2169,32 @@ rapid_config(){
   scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
   scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
   scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-  
+
   sleep 2s
 
   msg2 "Enable CONFIG_VHBA"
   scripts/config --module CONFIG_VHBA
-  
+
   sleep 2s
 
   msg2 "Disabling Kyber I/O scheduler"
   scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
-  
+
   sleep 2s
 
   msg2 "Enable Deadline I/O scheduler"
   scripts/config --enable CONFIG_MQ_IOSCHED_DEADLINE
-  
+
   sleep 2s
 
   msg2 "Enable MQ-Deadline-Nodefault I/O scheduler"
   scripts/config --enable CONFIG_MQ_IOSCHED_DEADLINE_NODEFAULT
-  
+
   sleep 2s
 
   msg2 "Enable CONFIG_BFQ_CGROUP_DEBUG..."
   scripts/config --enable CONFIG_BFQ_CGROUP_DEBUG
-  
+
   sleep 2s
 
   msg2 "Disable debug options"
@@ -2163,33 +2294,33 @@ rapid_config(){
   scripts/config --disable CONFIG_ATM_IA_DEBUG
   scripts/config --disable CONFIG_ATM_FORE200E_DEBUG
   scripts/config --disable CONFIG_BCMA_DEBUG
-  
+
   sleep 2s
 
   msg2 "Enable CONFIG_SCHED_AUTOGROUP_DEFAULT_ENABLED"
   scripts/config --enable CONFIG_SCHED_AUTOGROUP_DEFAULT_ENABLED
-  
+
   sleep 2s
 
   msg2 "Enable CONFIG_ZENIFY"
   scripts/config --enable CONFIG_ZENIFY
-  
+
   sleep 2s
 
   msg2 "Enable Fsync support"
   scripts/config --enable CONFIG_FUTEX
   scripts/config --enable CONFIG_FUTEX_PI
-  
+
   sleep 2s
 
   msg2 "Enable Futex2 support"
   scripts/config --enable CONFIG_FUTEX2
-  
+
   sleep 2s
 
   msg2 "Enable winesync support"
   scripts/config --module CONFIG_WINESYNC
-  
+
   sleep 2s
 
   if [[ $_cpu_sched = "1" ]]; then
@@ -2398,12 +2529,25 @@ rapid_config(){
     msg2 "Disable CFS"
     scripts/config --disable CONFIG_FAIR_GROUP_SCHED
     scripts/config --disable CONFIG_CFS_BANDWIDTH
+  elif [[ $_cpu_sched = "5" ]]; then
+    msg2 "Enable MuQSS"
+    scripts/config --enable CONFIG_SCHED_MC
+    scripts/config --enable CONFIG_SCHED_SMT
+    scripts/config --enable CONFIG_SMP
+    scripts/config --enable CONFIG_SCHED_MC_PRIO
+    scripts/config --enable CONFIG_SCHED_MUQSS
+    msg2 "Set to RQ_MC"
+    scripts/config --enable CONFIG_RQ_MC
+    scripts/config --set-val CONFIG_SHARERQ 2
+    msg2 "Disable CFS"
+    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+    scripts/config --disable CONFIG_CFS_BANDWIDTH
   else
     msg2 "Enable CFS"
     scripts/config --enable CONFIG_FAIR_GROUP_SCHED
     scripts/config --enable CONFIG_CFS_BANDWIDTH
   fi
-  
+
   sleep 2s
 
   msg2 "Set CONFIG_GENERIC_CPU"
