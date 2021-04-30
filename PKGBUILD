@@ -156,42 +156,42 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
-md5sums=("SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP")
+md5sums=("8c7420990de85f6754db287337da08b4"  #linux-5.12.tar.xz
+         "eb478b647cb6d91a1d96f7cbc194bcda"  #config-5.12
+         "e1277e0317a89e0975a3f9ecdad5c6b6"  #0001-aufs-20210412.patch
+         "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
+         "bb66298bf44eec02c61cb41afa0b39c6"  #0001-block-patches.patch
+         "85a23b6f0083fa40d8c014d431bf5f87"  #0001-bfq-patches.patch
+         "e0d2a6df4d4a0f64834606f1bdd3e54f"  #0001-btrfs-patches.patch
+         "5f77052b651f5e1bc4a98cb92eb39f31"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
+         "f785cffc211a32eaebca3696da76fbee"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "a61fa575fd689c39fe2f453331e18553"  #0001-clearlinux-patches.patch
+         "6f39e6d4f2f0253f317185b0c23e1f40"  #0001-futex-resync-from-gitlab.collabora.com.patch
+         "796a2a5f8c171bae377e87584450dbe3"  #0001-futex2-resync-from-gitlab.collabora.com.patch
+         "f671bb073df5312915ca3672ea9ecbff"  #0001-initramfs-patches.patch
+         "4a0118d6e5dfd3abbf35dd24229e8438"  #0001-ksm-patches.patch
+         "1536be060202287506c72d97b73baceb"  #0001-v4l2loopback-patches.patch
+         "d484e60f56a308bb456dedbbe139e086"  #0001-Revert-net-tso-add-UDP-segmentation-support.patch
+         "93a3ee2b38e20416cb67861eb37344e5"  #0002-zen-Allow-MSR-writes-by-default.patch
+         "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
+         "73038b6a7e3f0813b78374a8935a0c1a"  #0001-ntfs3-patches.patch
+         "2c048d095acfa50e6db0074088ef64c7"  #0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch
+         "9927fed074a7802a32a21801afc454a7"  #0001-spadfs-5.12-merge-v1.0.13.patch
+         "d576e05947d9ba19634717526ca5a3d4"  #0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch
+         "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
+         "bc5130f3f385737bbdf7e7a0cd8d361d"  #0003-ZEN-vhba-Update-to-20210418.patch
+         "8bd27bbf98714966f28c792be9b8590d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
+         "769a47f843589c2bbca050027f06db77"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+         "720339a269c42c41daaf805c7265e8b0"  #0001-zstd-patches.patch
+         "bca862bdbb3b677e6407c542622072bf"  #0001-zstd-dev-patches.patch
+         "d6b3bcd857e74530a9d0347c6dc05c13"  #0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
+         "1e7a53eae980951494ee630853d39d98"  #0002-mm-Support-soft-dirty-flag-read-with-reset.patch
+         "17de5f1bddeceae825b0a009ef9837d8"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
+         "22baa0b09b2604e1331f4d02e73bfd16"  #0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch
+         "01174db38e680ab4c3816555f27dee41"  #0004-mm-set-8-megabytes-for-address_space-level-file-read.patch
+         "388d99168ebf40c7b377715f07e41b25"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
+         "168a924c7c83ecdc872a9a1c6d1c8bdb"  #0006-add-acs-overrides_iommu.patch
+         "27e6001bacfcfca1c161bf6ef946a79b") #vm.max_map_count.patch
 #zenify workarround with CacULE
 if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
  source+=("$patchsource/misc-patches/zenify.patch")
