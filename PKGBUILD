@@ -179,7 +179,7 @@ md5sums=("8c7420990de85f6754db287337da08b4"  #linux-5.12.tar.xz
          "8bd27bbf98714966f28c792be9b8590d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
          "769a47f843589c2bbca050027f06db77"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
          "720339a269c42c41daaf805c7265e8b0"  #0001-zstd-patches.patch
-         "bca862bdbb3b677e6407c542622072bf"  #0001-zstd-dev-patches.patch
+         "656a242afa08394510f99bfbfa2a4209"  #0001-zstd-dev-patches.patch
          "d6b3bcd857e74530a9d0347c6dc05c13"  #0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
          "1e7a53eae980951494ee630853d39d98"  #0002-mm-Support-soft-dirty-flag-read-with-reset.patch
          "17de5f1bddeceae825b0a009ef9837d8"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
