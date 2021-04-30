@@ -856,7 +856,8 @@ configure(){
 
   sleep 2s
 
-  # uncomment spadfs because of build fail
+  # comment out spadfs/aufs because of build fail
+
   #plain ""
   #plain "#########################################"
   #plain "Enable/disable tristate SPADFS file system support"
@@ -944,8 +945,8 @@ configure(){
   #  scripts/config --disable AUFS_BRANCH_MAX_127
   #  scripts/config --enable AUFS_BRANCH_MAX_1023
   #fi
-
-  sleep 2s
+  #
+  #sleep 2s
 
   plain ""
   plain "#########################################"
