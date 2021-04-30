@@ -141,7 +141,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
         "$patchsource/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
         "$patchsource/spadfs-patches/0001-spadfs-5.12-merge-v1.0.13.patch"
-        "$patchsource/xanmod-patches/0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
+        "$patchsource/xanmod-patches/0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
         "$patchsource/zen-patches/0003-ZEN-vhba-Update-to-20210418.patch"
         "$patchsource/zen-patches/0002-ZEN-intel-pstate-Implement-enable-parameter.patch"
@@ -177,7 +177,7 @@ md5sums=("8c7420990de85f6754db287337da08b4"  #linux-5.12.tar.xz
          "73038b6a7e3f0813b78374a8935a0c1a"  #0001-ntfs3-patches.patch
          "2c048d095acfa50e6db0074088ef64c7"  #0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch
          "9927fed074a7802a32a21801afc454a7"  #0001-spadfs-5.12-merge-v1.0.13.patch
-         "d576e05947d9ba19634717526ca5a3d4"  #0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch
+         "ef1c78ab0e9b983868ffa2dac838ec46"  #0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch
          "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
          "bc5130f3f385737bbdf7e7a0cd8d361d"  #0003-ZEN-vhba-Update-to-20210418.patch
          "8bd27bbf98714966f28c792be9b8590d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
