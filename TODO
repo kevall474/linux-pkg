@@ -1,5 +1,3 @@
-- Add AUFS filesystem to prepare script and rapid_config -> toggle option
-
 - Add TCP_CONG_BBR2 to prepare script and rapid_config -> toggle option
 
 - Add prjc-lru-patches https://github.com/sirlucjan/kernel-patches/tree/master/5.12/prjc-lru-patches
