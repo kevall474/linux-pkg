@@ -256,8 +256,11 @@ prepare(){
   # strip_down script
   #strip_down
 
-  scripts/config --disable HAVE_GCC_PLUGINS
-  scripts/config --disable GCC_PLUGINS
+  # fix for GCC 12.0.0 (git version)
+  # plugins don't work
+  # disable plugins 
+  #scripts/config --disable HAVE_GCC_PLUGINS
+  #scripts/config --disable GCC_PLUGINS
 
   # Setting localversion
   msg2 "Setting localversion..."
