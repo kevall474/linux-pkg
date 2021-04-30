@@ -857,22 +857,95 @@ configure(){
   sleep 2s
 
   # uncomment spadfs because of build fail
-  #plain ""
-  #plain "#########################################"
-  #plain "Enable/disable tristate SPADFS file system support"
-  #read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _spadfs
-  #if [[ "$_spadfs" = "1" ]]; then
-  #  msg2 "Enable tristate SPADFS file system support"
-  #  scripts/config --module CONFIG_SPADFS_FS
-  #elif [[ "$_spadfs" = "2" ]]; then
-  #  msg2 "Disable tristate SPADFS file system support"
-  #  scripts/config --disable CONFIG_SPADFS_FS
-  #else
-  #  msg2 "Enable tristate V4L2 SPADFS file system support"
-  #  scripts/config --module CONFIG_SPADFS_FS
-  #fi
+  plain ""
+  plain "#########################################"
+  plain "Enable/disable tristate SPADFS file system support"
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _spadfs
+  if [[ "$_spadfs" = "1" ]]; then
+    msg2 "Enable tristate SPADFS file system support"
+    scripts/config --enable CONFIG_SPADFS_FS
+  elif [[ "$_spadfs" = "2" ]]; then
+    msg2 "Disable tristate SPADFS file system support"
+    scripts/config --enable CONFIG_SPADFS_FS
+  else
+    msg2 "Enable tristate V4L2 SPADFS file system support"
+    scripts/config --enable CONFIG_SPADFS_FS
+  fi
 
-  #sleep 2s
+  sleep 2s
+
+  plain ""
+  plain "#########################################"
+  plain "tristate Aufs (Advanced multi layered unification filesystem) support"
+  plain ""
+  plain "Aufs is a stackable unification filesystem such as Unionfs,"
+  plain "which unifies several directories and provides a merged single directory."
+  plain "In the early days, aufs was entirely re-designed and"
+  plain "re-implemented Unionfs Version 1.x series. Introducing many"
+  plain "original ideas, approaches and improvements, it becomes totally"
+  plain "different from Unionfs while keeping the basic features."
+  plain ""
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _aufs
+  if [[ "$_aufs" = "1" ]]; then
+    msg2 "Enable tristate AUFS file system support"
+    scripts/config --enable CONFIG_AUFS_FS
+
+    sleep 2s
+
+    plain ""
+    plain "#########################################"
+    plain "Set AUFS_BRANCH_MAX (Maximum number of branches)"
+    plain ""
+    plain "Specifies the maximum number of branches (or member directories)"
+    plain "in a single aufs. The larger value consumes more system"
+    plain "resources and has a minor impact to performance."
+    plain ""
+    read -rp "`echo $' > 1.127\n > 2.511\n > 3.1023\n > 4.32767\n > Default (1023)\nchoice[1-4]: '`" _aufs_branch
+    if [[ "$_aufs_branch" = "1" ]]; then
+      msg2 "Set AUFS_BRANCH_MAX to 127"
+      scripts/config --disable AUFS_BRANCH_MAX_32767
+      scripts/config --disable AUFS_BRANCH_MAX_1023
+      scripts/config --disable AUFS_BRANCH_MAX_511
+      scripts/config --enable AUFS_BRANCH_MAX_127
+    elif [[ "$_aufs_branch" = "2" ]]; then
+      msg2 "Set AUFS_BRANCH_MAX to 511"
+      scripts/config --disable AUFS_BRANCH_MAX_32767
+      scripts/config --disable AUFS_BRANCH_MAX_1023
+      scripts/config --disable AUFS_BRANCH_MAX_127
+      scripts/config --enable AUFS_BRANCH_MAX_511
+    elif [[ "$_aufs_branch" = "3" ]]; then
+      msg2 "Set AUFS_BRANCH_MAX to 1023"
+      scripts/config --disable AUFS_BRANCH_MAX_32767
+      scripts/config --disable AUFS_BRANCH_MAX_511
+      scripts/config --disable AUFS_BRANCH_MAX_127
+      scripts/config --enable AUFS_BRANCH_MAX_1023
+    elif [[ "$_aufs_branch" = "4" ]]; then
+      msg2 "Set AUFS_BRANCH_MAX to 32767"
+      scripts/config --disable AUFS_BRANCH_MAX_1023
+      scripts/config --disable AUFS_BRANCH_MAX_511
+      scripts/config --disable AUFS_BRANCH_MAX_127
+      scripts/config --enable AUFS_BRANCH_MAX_32767
+    else
+      msg2 "Set AUFS_BRANCH_MAX to 1023"
+      scripts/config --disable AUFS_BRANCH_MAX_32767
+      scripts/config --disable AUFS_BRANCH_MAX_511
+      scripts/config --disable AUFS_BRANCH_MAX_127
+      scripts/config --enable AUFS_BRANCH_MAX_1023
+    fi
+  elif [[ "$_aufs" = "2" ]]; then
+    msg2 "Disable tristate AUFS file system support"
+    scripts/config --disable CONFIG_AUFS_FS
+  else
+    msg2 "Enable tristate AUFS file system support"
+    scripts/config --enable CONFIG_AUFS_FS
+    msg2 "Set AUFS_BRANCH_MAX to 1023"
+    scripts/config --disable AUFS_BRANCH_MAX_32767
+    scripts/config --disable AUFS_BRANCH_MAX_511
+    scripts/config --disable AUFS_BRANCH_MAX_127
+    scripts/config --enable AUFS_BRANCH_MAX_1023
+  fi
+
+  sleep 2s
 
   plain ""
   plain "#########################################"
