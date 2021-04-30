@@ -122,7 +122,6 @@ makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules
 patchsource=https://raw.githubusercontent.com/kevall474/kernel-patches/main/$major
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "config-$major"
-        "$patchsource/aufs-patches/0001-aufs-20210412.patch"
         "$patchsource/bbr2-patches/0001-bbr2-5.12-introduce-BBRv2.patch"
         "$patchsource/block-patches/0001-block-patches.patch"
         "$patchsource/bfq-patches/0001-bfq-patches.patch"
@@ -140,7 +139,6 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
         "$patchsource/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
-        "$patchsource/spadfs-patches/0001-spadfs-5.12-merge-v1.0.13.patch"
         "$patchsource/xanmod-patches/0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
         "$patchsource/zen-patches/0003-ZEN-vhba-Update-to-20210418.patch"
@@ -158,7 +156,6 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/vm.max_map_count.patch")
 md5sums=("8c7420990de85f6754db287337da08b4"  #linux-5.12.tar.xz
          "eb478b647cb6d91a1d96f7cbc194bcda"  #config-5.12
-         "e1277e0317a89e0975a3f9ecdad5c6b6"  #0001-aufs-20210412.patch
          "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
          "bb66298bf44eec02c61cb41afa0b39c6"  #0001-block-patches.patch
          "85a23b6f0083fa40d8c014d431bf5f87"  #0001-bfq-patches.patch
@@ -176,7 +173,6 @@ md5sums=("8c7420990de85f6754db287337da08b4"  #linux-5.12.tar.xz
          "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
          "73038b6a7e3f0813b78374a8935a0c1a"  #0001-ntfs3-patches.patch
          "2c048d095acfa50e6db0074088ef64c7"  #0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch
-         "9927fed074a7802a32a21801afc454a7"  #0001-spadfs-5.12-merge-v1.0.13.patch
          "ef1c78ab0e9b983868ffa2dac838ec46"  #0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch
          "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
          "bc5130f3f385737bbdf7e7a0cd8d361d"  #0003-ZEN-vhba-Update-to-20210418.patch
