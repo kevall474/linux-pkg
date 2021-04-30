@@ -141,7 +141,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
         "$patchsource/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
         "$patchsource/spadfs-patches/0001-spadfs-5.12-merge-v1.0.13.patch"
-        "$patchsource/zanmod-patches/0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
+        "$patchsource/xanmod-patches/0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
         "$patchsource/zen-patches/0003-ZEN-vhba-Update-to-20210418.patch"
         "$patchsource/zen-patches/0002-ZEN-intel-pstate-Implement-enable-parameter.patch"
