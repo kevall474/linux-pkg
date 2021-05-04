@@ -33,6 +33,14 @@ fi
 
 ARCH=x86
 
+################################# GCC ################################
+
+# Grap GCC version
+# Workarround with GCC 12.0.0. Pluggins don't work, so we have to grap GCC version
+# and disable CONFIG_HAVE_GCC_PLUGINS/CONFIG_GCC_PLUGINS
+
+GCC_VERSION=$(gcc -dumpversion)
+
 ################################# CC/CXX/HOSTCC/HOSTCXX ################################
 
 #Set compiler to build the kernel
@@ -260,8 +268,15 @@ prepare(){
   # fix for GCC 12.0.0 (git version)
   # plugins don't work
   # disable plugins
-  #scripts/config --disable HAVE_GCC_PLUGINS
-  #scripts/config --disable GCC_PLUGINS
+  if [[ "$GCC_VERSION" = "12.0.0" ]]; then
+    sleep 2s
+    plain ""
+    msg2 "Disable CONFIG_HAVE_GCC_PLUGINS/CONFIG_GCC_PLUGINS"
+    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
+    scripts/config --disable CONFIG_GCC_PLUGINS
+    plain ""
+    sleep 2s
+  fi
 
   # Setting localversion
   msg2 "Setting localversion..."
