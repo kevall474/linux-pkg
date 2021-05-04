@@ -1112,13 +1112,13 @@ configure(){
   plain "Enable/disable CONFIG_BFQ_CGROUP_DEBUG"
   read -rp "`echo $' > 1.Disable\n > 2.Enable\n > Default (Enable)\nchoice[1-2]: '`" _bfq_cgroup
   if [[ "$_bfq_cgroup" = "1" ]]; then
-    msg2 "disable CONFIG_BFQ_CGROUP_DEBUG..."
+    msg2 "disable CONFIG_BFQ_CGROUP_DEBUG"
     scripts/config --disable CONFIG_BFQ_CGROUP_DEBUG
   elif [[ "$_bfq_cgroup" = "2" ]]; then
-    msg2 "Enable CONFIG_BFQ_CGROUP_DEBUG..."
+    msg2 "Enable CONFIG_BFQ_CGROUP_DEBUG"
     scripts/config --enable CONFIG_BFQ_CGROUP_DEBUG
   else
-    msg2 "Enable CONFIG_BFQ_CGROUP_DEBUG..."
+    msg2 "Enable CONFIG_BFQ_CGROUP_DEBUG"
     scripts/config --enable CONFIG_BFQ_CGROUP_DEBUG
   fi
 
@@ -2266,7 +2266,7 @@ rapid_config(){
 
   sleep 2s
 
-  msg2 "Enable CONFIG_BFQ_CGROUP_DEBUG..."
+  msg2 "Enable CONFIG_BFQ_CGROUP_DEBUG"
   scripts/config --enable CONFIG_BFQ_CGROUP_DEBUG
 
   sleep 2s
