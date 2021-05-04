@@ -108,7 +108,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.12
+pkgver=5.12.1
 major=5.12
 pkgrel=1
 arch=(x86_64)
@@ -154,12 +154,12 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
-md5sums=("8c7420990de85f6754db287337da08b4"  #linux-5.12.tar.xz
+md5sums=("b219cbeb3035ca74ec65f78be97183c3"  #linux-5.12.1.tar.xz
          "eb478b647cb6d91a1d96f7cbc194bcda"  #config-5.12
          "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
          "bb66298bf44eec02c61cb41afa0b39c6"  #0001-block-patches.patch
          "85a23b6f0083fa40d8c014d431bf5f87"  #0001-bfq-patches.patch
-         "e0d2a6df4d4a0f64834606f1bdd3e54f"  #0001-btrfs-patches.patch
+         "dd44d5a829cdc18c8e7f8d40f9d8e931"  #0001-btrfs-patches.patch
          "5f77052b651f5e1bc4a98cb92eb39f31"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
          "f785cffc211a32eaebca3696da76fbee"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "a61fa575fd689c39fe2f453331e18553"  #0001-clearlinux-patches.patch
@@ -195,17 +195,22 @@ if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
 fi
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/cacule-$major.patch"
-           "${patchsource}/cacule-patches/0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch"
-           "${patchsource}/cacule-patches/0003-cacule-Set-cacule_harsh_mode-enabled-by-default.patch")
-  md5sums+=("ff3696980dc9846c6c86cff9ae364b14"  #cacule-5.12.patch
-            "cdf2d612b6c1234ce124f0e8361fdc2e"  #0002-cacule-Change-default-preemption-latency-to-2ms-for-.patch
-            "09ca141fe7aff2a0f426e1d79f45aba3") #0003-cacule-Set-cacule_harsh_mode-enabled-by-default.patch
+           "${patchsource}/cacule-patches/0002-XANMOD-cacule-Change-default-preemption-latency-to-2.patch"
+           "${patchsource}/cacule-patches/0003-XANMOD-init-Kconfig-cacule-Set-SCHED_AUTOGROUP_DEFAU.patch")
+  md5sums+=("1a881779a4d4c3c613fa93ce605445e4"  #cacule-5.12.patch
+            "89a9cfb123d08c7b14319277f9c1307f"  #0002-XANMOD-cacule-Change-default-preemption-latency-to-2.patch
+            "ef1c78ab0e9b983868ffa2dac838ec46") #0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch
 elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
   source+=("${patchsource}/prjc-patches/0009-prjc_v$major-r0.patch")
   md5sums+=("7abf23bacb8274a97299cf9d89ead04a")  #0009-prjc_v5.12-r0.patch
 elif [[ $_cpu_sched = "5" ]]; then
   source+=("${patchsource}/muqss-patches/patch-$major-ck1")
   md5sums+=("8390ad22d4fff62945741b45e4385d02")  #patch-5.12-ck1
+fi
+# rdb patch
+if [[ $_cpu_sched = "2" ]]; then
+  source+=("${patchsource}/cacule-patches/rdb.patch")
+  md5sums+=("4915ee8d77e23d700b702bba82fb41fb")  #rdb.patch
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -254,7 +259,7 @@ prepare(){
 
   # fix for GCC 12.0.0 (git version)
   # plugins don't work
-  # disable plugins 
+  # disable plugins
   #scripts/config --disable HAVE_GCC_PLUGINS
   #scripts/config --disable GCC_PLUGINS
 
