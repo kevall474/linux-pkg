@@ -209,8 +209,8 @@ if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
             "89a9cfb123d08c7b14319277f9c1307f"  #0002-XANMOD-cacule-Change-default-preemption-latency-to-2.patch
             "73b8ebdb30868471332909a9e65f13f9") #0003-XANMOD-init-Kconfig-cacule-Set-SCHED_AUTOGROUP_DEFAU.patch
 elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
-  source+=("${patchsource}/prjc-patches/0009-prjc_v$major-r0.patch")
-  md5sums+=("7abf23bacb8274a97299cf9d89ead04a")  #0009-prjc_v5.12-r0.patch
+  source+=("${patchsource}/prjc-patches/prjc_v$major-r1.patch")
+  md5sums+=("c1f3a7c64781eb01d7c79e5d33c3155a")  #prjc_v5.12-r1.patch
 elif [[ $_cpu_sched = "5" ]]; then
   source+=("${patchsource}/muqss-patches/patch-$major-ck1")
   md5sums+=("8390ad22d4fff62945741b45e4385d02")  #patch-5.12-ck1
