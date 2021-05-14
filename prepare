@@ -691,13 +691,13 @@ configure(){
     if [[ $_cacule_timer = "1" ]];then
       msg2 "Enable 2000Hz timer"
       scripts/config --enable CONFIG_HZ_2000
-      scripts/config --set-val CONFIG_HZ_2000
-    elif [[ $_cacule_timer = "1" ]];then
+      scripts/config --set-val CONFIG_HZ 2000
+    elif [[ $_cacule_timer = "2" ]];then
       msg2 "Keep current timer"
     else
       msg2 "Enable 2000Hz timer"
       scripts/config --enable CONFIG_HZ_2000
-      scripts/config --set-val CONFIG_HZ_2000
+      scripts/config --set-val CONFIG_HZ 2000
     fi
 
     sleep 2s
