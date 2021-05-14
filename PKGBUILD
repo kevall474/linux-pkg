@@ -165,7 +165,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
 md5sums=("56841d62c09345fceea6309155dca1d0"  #linux-5.12.4.tar.xz
-         "b590445369ad1f5d29fed947d1a6477c"  #config-5.12
+         "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.12
          "d75a9251d181d16d2b8ce6d7cf600380"  #0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch
          "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
          "bb66298bf44eec02c61cb41afa0b39c6"  #0001-block-patches.patch
