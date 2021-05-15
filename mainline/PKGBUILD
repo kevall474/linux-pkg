@@ -197,17 +197,17 @@ prepare(){
   # Customize the kernel
   source "${startdir}"/prepare
 
-  #configure
+  configure
 
-  #cpu_arch
+  cpu_arch
 
   # Automation building with rapid_config
   # Uncomment rapid_config and comment out configure and cpu_arch
   # rapid_config is meant to work with build.sh for automation building
-  rapid_config
+  #rapid_config
 
   # strip_down script
-  strip_down
+  #strip_down
 
   # fix for GCC 12.0.0 (git version)
   # plugins don't work
