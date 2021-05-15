@@ -57,8 +57,8 @@ If not set it will build with GCC by default.
 
 - Will add a CPU Scheduler :
 
-        1 : BMQ by Alfred Chen
-	2 : PDS by Alfred Chen
+        1 : BMQ by Alfred Chen	
+        2 : PDS by Alfred Chen
 
 ### _compiler 
 
