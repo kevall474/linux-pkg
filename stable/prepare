@@ -3285,7 +3285,7 @@ sleep 2s
 # Disable uneeded iio drivers
 msg2 "Disable uneeded iio drivers"
 # Accelerometers
-echo "Disable accelerometers"
+echo "Disable Accelerometers"
 scripts/config --disable CONFIG_ADIS16201
 scripts/config --disable CONFIG_ADIS16209
 scripts/config --disable CONFIG_ADXL345
@@ -3458,7 +3458,7 @@ scripts/config --disable CONFIG_IIO_TRIGGERED_BUFFER
 echo "Disable Cdc drivers"
 scripts/config --disable CONFIG_AD7150
 # Chemical
-echo "Disable chemical drivers"
+echo "Disable Chemical drivers"
 scripts/config --disable CONFIG_ATLAS_PH_SENSOR
 scripts/config --disable CONFIG_ATLAS_EZO_SENSOR
 scripts/config --disable CONFIG_BME680
@@ -3474,7 +3474,7 @@ scripts/config --disable CONFIG_SENSIRION_SGP30
 scripts/config --disable CONFIG_SPS30
 scripts/config --disable CONFIG_VZ89X
 # Common
-echo "Disable common drivers"
+echo "Disable Common drivers"
 scripts/config --disable CONFIG_IIO_CROS_EC_SENSORS_CORE
 scripts/config --disable CONFIG_IIO_CROS_EC_SENSORS
 scripts/config --disable CONFIG_IIO_CROS_EC_SENSORS_LID_ANGLE
@@ -3606,7 +3606,7 @@ scripts/config --disable CONFIG_IIO_ST_LSM6DSX_I2C
 scripts/config --disable CONFIG_IIO_ST_LSM6DSX_SPI
 scripts/config --disable CONFIG_IIO_ST_LSM6DSX_I3C
 # Light
-echo "Disable light drivers"
+echo "Disable Light drivers"
 scripts/config --disable CONFIG_ACPI_ALS
 scripts/config --disable CONFIG_ADJD_S311
 scripts/config --disable CONFIG_ADUX1020
@@ -3691,7 +3691,7 @@ scripts/config --disable CONFIG_HID_SENSOR_DEVICE_ROTATION
 echo "Disable Position drivers"
 scripts/config --disable CONFIG_IQS624_POS
 # Position
-echo "Disable position drivers"
+echo "Disable Position drivers"
 scripts/config --disable CONFIG_IQS624_POS
 scripts/config --disable CONFIG_HID_SENSOR_CUSTOM_INTEL_HINGE
 # Potentiometers
@@ -3789,7 +3789,7 @@ sleep 2s
 # Disable some platform drivers
 msg2 "Disable some platform drivers"
 # Chrome
-echo "Disable ChromOS dirvers"
+echo "Disable ChromeOS dirvers"
 scripts/config --disable CONFIG_WILCO_EC
 scripts/config --disable CONFIG_WILCO_EC_DEBUGFS
 scripts/config --disable CONFIG_WILCO_EC_EVENTS
@@ -4158,6 +4158,8 @@ scripts/config --disable CONFIG_ANDROID_BINDER_DEVICES
 scripts/config --disable CONFIG_ANDROID_BINDER_IPC_SELFTEST
 
 #######################################
+
+plain ""
 
 sleep 2s
 }
