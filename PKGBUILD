@@ -22,7 +22,7 @@
 #Set '2' for CacULE-RDB CPU Scheduler
 #Set '3' for BMQ CPU Scheduler
 #Set '4' for PDS CPU Scheduler
-#Set '5' for PDS CPU Scheduler
+#Set '5' for MuQSS CPU Scheduler
 #Leave empty for no CPU Scheduler
 #Default is empty. It will build with no cpu scheduler. To build with cpu shceduler just use : env _cpu_sched=(1,2,3,4 or 5) makepkg -s
 if [ -z ${_cpu_sched+x} ]; then
