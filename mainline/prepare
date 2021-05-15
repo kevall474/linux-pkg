@@ -1418,7 +1418,7 @@ configure(){
   #  scripts/config --enable CONFIG_FUTEX
   #  scripts/config --enable CONFIG_FUTEX_PI
   #fi
-  # 
+  #
   #sleep 2s
   #
   #plain ""
@@ -1464,7 +1464,7 @@ configure(){
 
   plain ""
   if [[ $_cpu_sched = "1" ]]; then
-    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler..."
+    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
     scripts/config --enable CONFIG_SCHED_ALT
     msg2 "Enable BMQ CPU scheduler..."
     scripts/config --enable CONFIG_SCHED_BMQ
@@ -1473,7 +1473,7 @@ configure(){
     scripts/config --disable CONFIG_FAIR_GROUP_SCHED
     scripts/config --disable CONFIG_CFS_BANDWIDTH
   elif [[ $_cpu_sched = "2" ]]; then
-    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler..."
+    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
     scripts/config --enable CONFIG_SCHED_ALT
     msg2 "Enable PDS CPU scheduler..."
     scripts/config --disable CONFIG_SCHED_BMQ
@@ -1559,191 +1559,254 @@ cpu_arch(){
   > Default (57 : Gneric CPU)\nchoice[0-56]: '`" _microarchitecture
 
   if [[ "$_microarchitecture" = "1" ]]; then
+    msg2 "Set CONFIG_M486"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_M486
   elif [[ "$_microarchitecture" = "2" ]]; then
+    msg2 "Set CONFIG_M486"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_M486
   elif [[ "$_microarchitecture" = "3" ]]; then
+    msg2 "Set CONFIG_M586"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_M586
   elif [[ "$_microarchitecture" = "4" ]]; then
+    msg2 "Set CONFIG_M586TSC"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_M586TSC
   elif [[ "$_microarchitecture" = "5" ]]; then
+    msg2 "Set CONFIG_M586MMX"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_M586MMX
   elif [[ "$_microarchitecture" = "6" ]]; then
+    msg2 "Set CONFIG_M686"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_M686
   elif [[ "$_microarchitecture" = "7" ]]; then
+    msg2 "Set CONFIG_MPENTIUMII"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MPENTIUMII
   elif [[ "$_microarchitecture" = "8" ]]; then
+    msg2 "Set CONFIG_MPENTIUMIII"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MPENTIUMIII
   elif [[ "$_microarchitecture" = "9" ]]; then
+    msg2 "Set CONFIG_MPENTIUMM"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MPENTIUMM
   elif [[ "$_microarchitecture" = "10" ]]; then
+    msg2 "Set CONFIG_MPENTIUM4"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MPENTIUM4
   elif [[ "$_microarchitecture" = "11" ]]; then
+    msg2 "Set CONFIG_MK6"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MK6
   elif [[ "$_microarchitecture" = "12" ]]; then
+    msg2 "Set CONFIG_MK7"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MK7
   elif [[ "$_microarchitecture" = "13" ]]; then
+    msg2 "Set CONFIG_MK8"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MK8
   elif [[ "$_microarchitecture" = "14" ]]; then
+    msg2 "Set CONFIG_MK8SSE3"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MK8SSE3
   elif [[ "$_microarchitecture" = "15" ]]; then
+    msg2 "Set CONFIG_MK10"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MK10
   elif [[ "$_microarchitecture" = "16" ]]; then
+    msg2 "Set CONFIG_MBARCELONA"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MBARCELONA
   elif [[ "$_microarchitecture" = "17" ]]; then
+    msg2 "Set CONFIG_MBOBCAT"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MBOBCAT
   elif [[ "$_microarchitecture" = "18" ]]; then
+    msg2 "Set CONFIG_MJAGUAR"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MJAGUAR
   elif [[ "$_microarchitecture" = "19" ]]; then
+    msg2 "Set CONFIG_MBULLDOZER"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MBULLDOZER
   elif [[ "$_microarchitecture" = "20" ]]; then
+    msg2 "Set CONFIG_MPILEDRIVER"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MPILEDRIVER
   elif [[ "$_microarchitecture" = "21" ]]; then
+    msg2 "Set CONFIG_MSTEAMROLLER"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MSTEAMROLLER
   elif [[ "$_microarchitecture" = "22" ]]; then
+    msg2 "Set CONFIG_MEXCAVATOR"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MEXCAVATOR
   elif [[ "$_microarchitecture" = "23" ]]; then
+    msg2 "Set CONFIG_MZEN"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MZEN
   elif [[ "$_microarchitecture" = "24" ]]; then
+    msg2 "Set CONFIG_MZEN2"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MZEN2
   elif [[ "$_microarchitecture" = "25" ]]; then
+    msg2 "Set CONFIG_MZEN3"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MZEN3
   elif [[ "$_microarchitecture" = "26" ]]; then
+    msg2 " Set CONFIG_MCRUSOE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MCRUSOE
   elif [[ "$_microarchitecture" = "27" ]]; then
+    msg2 "Set CONFIG_MEFFICEON"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MEFFICEON
   elif [[ "$_microarchitecture" = "28" ]]; then
+    msg2 "Set CONFIG_MWINCHIPC6"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MWINCHIPC6
   elif [[ "$_microarchitecture" = "29" ]]; then
+    msg2 "Set CONFIG_MWINCHIP3D"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MWINCHIP3D
   elif [[ "$_microarchitecture" = "30" ]]; then
+    msg2 "Set CONFIG_MELAN"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MELAN
   elif [[ "$_microarchitecture" = "31" ]]; then
+    msg2 "Set CONFIG_MGEODEGX1"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MGEODEGX1
   elif [[ "$_microarchitecture" = "32" ]]; then
+    msg2 "Set CONFIG_MGEODE_LX"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MGEODE_LX
   elif [[ "$_microarchitecture" = "33" ]]; then
+    msg2 "Set CONFIG_MCYRIXII"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MCYRIXIII
   elif [[ "$_microarchitecture" = "34" ]]; then
+    msg2 "Set CONFIG_MVIAC3_2"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MVIAC3_2
   elif [[ "$_microarchitecture" = "35" ]]; then
+    msg2 "Set CONFIG_MVIAC7"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MVIAC7
   elif [[ "$_microarchitecture" = "36" ]]; then
+    msg2 "Set CONFIG_MPSC"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MPSC
   elif [[ "$_microarchitecture" = "37" ]]; then
+    msg2 "Set CONFIG_MATOM"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MATOM
   elif [[ "$_microarchitecture" = "38" ]]; then
+    msg2 "Set CONFIG_MCORE2"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MCORE2
   elif [[ "$_microarchitecture" = "39" ]]; then
+    msg2 "Set CONFIG_MNEHALEM"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MNEHALEM
   elif [[ "$_microarchitecture" = "40" ]]; then
+    msg2 "Set CONFIG_MWESTMERE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MWESTMERE
   elif [[ "$_microarchitecture" = "41" ]]; then
+    msg2 "Set CONFIG_MSILVERMONT"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MSILVERMONT
   elif [[ "$_microarchitecture" = "42" ]]; then
+    msg2 "Set CONFIG_MGOLDMONT"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MGOLDMONT
   elif [[ "$_microarchitecture" = "43" ]]; then
+    msg2 "Set CONFIG_MGOLDMONTPLUS"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MGOLDMONTPLUS
   elif [[ "$_microarchitecture" = "44" ]]; then
+    msg2 "Set CONFIG_MSANDYBRIDGE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MSANDYBRIDGE
   elif [[ "$_microarchitecture" = "45" ]]; then
+    msg2 "Set CONFIG_MIVYBRIDGE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MIVYBRIDGE
   elif [[ "$_microarchitecture" = "46" ]]; then
+    msg2 "Set CONFIG_MHASWELL"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MHASWELL
   elif [[ "$_microarchitecture" = "47" ]]; then
+    msg2 "Set CONFIG_MBROADWELL"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MBROADWELL
   elif [[ "$_microarchitecture" = "48" ]]; then
+    msg2 "Set CONFIG_MSKYLAKE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MSKYLAKE
   elif [[ "$_microarchitecture" = "49" ]]; then
+    msg2 "Set CONFIG_MSKYLAKEX"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MSKYLAKEX
   elif [[ "$_microarchitecture" = "50" ]]; then
+    msg2 "Set CONFIG_MCANNONLAKE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MCANNONLAKE
   elif [[ "$_microarchitecture" = "51" ]]; then
+    msg2 "Set CONFIG_MICELAKE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MICELAKE
   elif [[ "$_microarchitecture" = "52" ]]; then
+    msg2 "Set CONFIG_MCASCADELAK"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MCASCADELAKE
   elif [[ "$_microarchitecture" = "53" ]]; then
+    msg2 "Set CONFIG_MCOOPERLAKE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MCOOPERLAKE
   elif [[ "$_microarchitecture" = "54" ]]; then
+    msg2 "Set CONFIG_MTIGERLAKE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MTIGERLAKE
   elif [[ "$_microarchitecture" = "55" ]]; then
+    msg2 "Set CONFIG_MSAPPHIRERAPIDS"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MSAPPHIRERAPIDS
   elif [[ "$_microarchitecture" = "56" ]]; then
+    msg2 "Set CONFIG_MALDERLAKE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MALDERLAKE
   elif [[ "$_microarchitecture" = "57" ]]; then
+    msg2 "Set CONFIG_GENERIC_CPU"
     scripts/config --enable CONFIG_GENERIC_CPU
   elif [[ "$_microarchitecture" = "58" ]]; then
+    msg2 "Set CONFIG_GENERIC_CPU2"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_GENERIC_CPU2
   elif [[ "$_microarchitecture" = "59" ]]; then
+    msg2 "Set CONFIG_GENERIC_CPU3"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_GENERIC_CPU3
   elif [[ "$_microarchitecture" = "60" ]]; then
+    msg2 "Set CONFIG_GENERIC_CPU4"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_GENERIC_CPU4
   elif [[ "$_microarchitecture" = "61" ]]; then
+    msg2 "Set CONFIG_MNATIVE_INTEL"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MNATIVE_INTEL
   elif [[ "$_microarchitecture" = "62" ]]; then
+    msg2 "Set CONFIG_MNATIVE_AMD"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MNATIVE_AMD
   else
+    msg2 "Set CONFIG_GENERIC_CPU"
     scripts/config --enable CONFIG_GENERIC_CPU
   fi
 
@@ -2940,6 +3003,9 @@ scripts/config --disable CONFIG_IIO_BUFFER_DMAENGINE
 scripts/config --disable CONFIG_IIO_BUFFER_HW_CONSUMER
 scripts/config --disable CONFIG_IIO_KFIFO_BUF
 scripts/config --disable CONFIG_IIO_TRIGGERED_BUFFER
+# Cdc
+echo "Disable Cdc drivers"
+scripts/config --disable CONFIG_AD7150
 # Chemical
 echo "Disable chemical drivers"
 scripts/config --disable CONFIG_ATLAS_PH_SENSOR
@@ -2956,6 +3022,20 @@ scripts/config --disable CONFIG_SCD30_SERIAL
 scripts/config --disable CONFIG_SENSIRION_SGP30
 scripts/config --disable CONFIG_SPS30
 scripts/config --disable CONFIG_VZ89X
+# Common
+echo "Disable common drivers"
+scripts/config --disable CONFIG_IIO_CROS_EC_SENSORS_CORE
+scripts/config --disable CONFIG_IIO_CROS_EC_SENSORS
+scripts/config --disable CONFIG_IIO_CROS_EC_SENSORS_LID_ANGLE
+scripts/config --disable CONFIG_HID_SENSOR_IIO_COMMON
+scripts/config --disable CONFIG_HID_SENSOR_IIO_TRIGGER
+scripts/config --disable CONFIG_IIO_MS_SENSORS_I2C
+scripts/config --disable CONFIG_IIO_SCMI
+scripts/config --disable CONFIG_IIO_SSP_SENSORS_COMMONS
+scripts/config --disable CONFIG_IIO_SSP_SENSORHUB
+scripts/config --disable CONFIG_IIO_ST_SENSORS_I2C
+scripts/config --disable CONFIG_IIO_ST_SENSORS_SPI
+scripts/config --disable CONFIG_IIO_ST_SENSORS_CORE
 # Dac (Digital to analog converters)
 echo "Disable Dac (Digital to analog converters)"
 scripts/config --disable CONFIG_AD5064
@@ -2998,6 +3078,12 @@ scripts/config --disable CONFIG_TI_DAC5571
 scripts/config --disable CONFIG_TI_DAC7311
 scripts/config --disable CONFIG_TI_DAC7612
 scripts/config --disable CONFIG_VF610_DAC
+# Dummy
+echo "Disable Dummy drivers"
+scripts/config --disable CONFIG_IIO_DUMMY_EVGEN
+scripts/config --disable CONFIG_IIO_SIMPLE_DUMMY
+scripts/config --disable CONFIG_IIO_SIMPLE_DUMMY_EVENTS
+scripts/config --disable CONFIG_IIO_SIMPLE_DUMMY_BUFFER
 # Frequency
 echo "Disable Frequency Synthesizers drivers"
 scripts/config --disable CONFIG_AD9523
@@ -3068,6 +3154,61 @@ scripts/config --disable CONFIG_IIO_ST_LSM6DSX
 scripts/config --disable CONFIG_IIO_ST_LSM6DSX_I2C
 scripts/config --disable CONFIG_IIO_ST_LSM6DSX_SPI
 scripts/config --disable CONFIG_IIO_ST_LSM6DSX_I3C
+# Light
+echo "Disable light drivers"
+scripts/config --disable CONFIG_ACPI_ALS
+scripts/config --disable CONFIG_ADJD_S311
+scripts/config --disable CONFIG_ADUX1020
+scripts/config --disable CONFIG_AL3010
+scripts/config --disable CONFIG_AL3320A
+scripts/config --disable CONFIG_APDS9300
+scripts/config --disable CONFIG_APDS9960
+scripts/config --disable CONFIG_AS73211
+scripts/config --disable CONFIG_BH1750
+scripts/config --disable CONFIG_BH1780
+scripts/config --disable CONFIG_CM32181
+scripts/config --disable CONFIG_CM3232
+scripts/config --disable CONFIG_CM3323
+scripts/config --disable CONFIG_CM3605
+scripts/config --disable CONFIG_CM36651
+scripts/config --disable CONFIG_IIO_CROS_EC_LIGHT_PROX
+scripts/config --disable CONFIG_GP2AP002
+scripts/config --disable CONFIG_GP2AP020A00F
+scripts/config --disable CONFIG_IQS621_ALS
+scripts/config --disable CONFIG_SENSORS_ISL29018
+scripts/config --disable CONFIG_SENSORS_ISL29028
+scripts/config --disable CONFIG_ISL29125
+scripts/config --disable CONFIG_HID_SENSOR_ALS
+scripts/config --disable CONFIG_HID_SENSOR_PROX
+scripts/config --disable CONFIG_JSA1212
+scripts/config --disable CONFIG_RPR0521
+scripts/config --disable CONFIG_SENSORS_LM3533
+scripts/config --disable CONFIG_LTR501
+scripts/config --disable CONFIG_LV0104CS
+scripts/config --disable CONFIG_MAX44000
+scripts/config --disable CONFIG_MAX44009
+scripts/config --disable CONFIG_NOA1305
+scripts/config --disable CONFIG_OPT3001
+scripts/config --disable CONFIG_PA12203001
+scripts/config --disable CONFIG_SI1133
+scripts/config --disable CONFIG_SI1145
+scripts/config --disable CONFIG_STK3310
+scripts/config --disable CONFIG_ST_UVIS25
+scripts/config --disable CONFIG_ST_UVIS25_I2C
+scripts/config --disable CONFIG_ST_UVIS25_SPI
+scripts/config --disable CONFIG_TCS3414
+scripts/config --disable CONFIG_TCS3472
+scripts/config --disable CONFIG_SENSORS_TSL2563
+scripts/config --disable CONFIG_TSL2583
+scripts/config --disable CONFIG_TSL2772
+scripts/config --disable CONFIG_TSL4531
+scripts/config --disable CONFIG_US5182D
+scripts/config --disable CONFIG_VCNL4000
+scripts/config --disable CONFIG_VCNL4035
+scripts/config --disable CONFIG_VEML6030
+scripts/config --disable CONFIG_VEML6070
+scripts/config --disable CONFIG_VL6180
+scripts/config --disable CONFIG_ZOPT2201
 # Magnetometer
 echo "Disable Magnetometer drivers"
 scripts/config --disable CONFIG_AK8974
@@ -3098,6 +3239,10 @@ scripts/config --disable CONFIG_HID_SENSOR_DEVICE_ROTATION
 # Position
 echo "Disable Position drivers"
 scripts/config --disable CONFIG_IQS624_POS
+# Position
+echo "Disable position drivers"
+IQS624_POS
+HID_SENSOR_CUSTOM_INTEL_HINGE
 # Potentiometers
 echo "Disable Potentiometers drivers"
 scripts/config --disable CONFIG_AD5272
@@ -3172,6 +3317,9 @@ scripts/config --disable CONFIG_TMP007
 scripts/config --disable CONFIG_TSYS01
 scripts/config --disable CONFIG_TSYS02D
 scripts/config --disable CONFIG_MAX31856
+# Test
+echo "Disable Test drivers"
+scripts/config --disable CONFIG_IIO_TEST_FORMAT
 # Trigger
 echo "Disable Trigger drivers"
 scripts/config --disable CONFIG_IIO_HRTIMER_TRIGGER
@@ -3549,4 +3697,16 @@ scripts/config --disable CONFIG_BCMA_DEBUG
 
 sleep 2s
 
+############ Android ############
+
+msg2 "Disable Android drivers"
+scripts/config --disable CONFIG_ANDROID
+scripts/config --disable CONFIG_ANDROID_BINDER_IPC
+scripts/config --disable CONFIG_ANDROID_BINDERFS
+scripts/config --disable CONFIG_ANDROID_BINDER_DEVICES
+scripts/config --disable CONFIG_ANDROID_BINDER_IPC_SELFTEST
+
+#######################################
+
+sleep 2s
 }
