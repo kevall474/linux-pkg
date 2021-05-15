@@ -64,8 +64,8 @@ If not set it will build with GCC by default.
 
 - Will set the compiler to build the kernel :
 
-        1 : GCC
-	2 : CLANG+LLVM
+        1 : GCC 
+        2 : CLANG+LLVM
 
 If not set it will build with GCC by default.
 
