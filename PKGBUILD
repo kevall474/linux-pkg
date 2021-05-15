@@ -222,7 +222,7 @@ fi
 # rdb patch
 if [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/rdb.patch")
-  md5sums+=("4915ee8d77e23d700b702bba82fb41fb")  #rdb.patch
+  md5sums+=("SKIP")  #rdb.patch
 fi
 
 export KBUILD_BUILD_HOST=archlinux
