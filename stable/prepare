@@ -3692,8 +3692,8 @@ echo "Disable Position drivers"
 scripts/config --disable CONFIG_IQS624_POS
 # Position
 echo "Disable position drivers"
-IQS624_POS
-HID_SENSOR_CUSTOM_INTEL_HINGE
+scripts/config --disable CONFIG_IQS624_POS
+scripts/config --disable CONFIG_HID_SENSOR_CUSTOM_INTEL_HINGE
 # Potentiometers
 echo "Disable Potentiometers drivers"
 scripts/config --disable CONFIG_AD5272
