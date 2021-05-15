@@ -69,13 +69,13 @@ fi
 ###################################################################################
 
 # This section set the pkgbase based on the cpu scheduler, so user can build different package based on the cpu scheduler.
-if [[ $_cpu_sched = "3" ]]; then
+if [[ $_cpu_sched = "1" ]]; then
   if [[ "$_compiler" = "1" ]]; then
     pkgbase=mainline-kernel-bmq-gcc
   elif [[ "$_compiler" = "2" ]]; then
     pkgbase=mainline-kernel-bmq-clang
   fi
-elif [[ $_cpu_sched = "4" ]]; then
+elif [[ $_cpu_sched = "2" ]]; then
   if [[ "$_compiler" = "1" ]]; then
     pkgbase=mainline-kernel-pds-gcc
   elif [[ "$_compiler" = "2" ]]; then
