@@ -95,10 +95,10 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13rc1
+pkgver=5.13rc2
 major=5.13rc
 pkgrel=1
-versiontag=5.13-rc1
+versiontag=5.13-rc2
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL-2.0)
@@ -110,7 +110,6 @@ makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules
 patchsource=https://raw.githubusercontent.com/kevall474/kernel-patches/main/$major
 source=("https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-$versiontag.tar.gz"
         "config-$major"
-        "$patchsource/arch-patches/0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch"
         "$patchsource/block-patches/0001-block-patches.patch"
         "$patchsource/cpu-patches/0001-cpu-5.12-merge-graysky-s-patchset.patch"
         "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
@@ -139,8 +138,7 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snap
 	"$patchsource/misc-patches/zenify.patch")
 md5sums=("SKIP"  #linux-5.12.4.tar.xz
          "SKIP"  #config-5.12
-         "d75a9251d181d16d2b8ce6d7cf600380"  #0002-drm-i915-dp-Use-slow-and-wide-link-training-for-ever.patch
-         "bb66298bf44eec02c61cb41afa0b39c6"  #0001-block-patches.patch
+         "SKIP"  #0001-block-patches.patch
          "5f77052b651f5e1bc4a98cb92eb39f31"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
          "f785cffc211a32eaebca3696da76fbee"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "SKIP"  #0002-clear-patches.patch
@@ -149,14 +147,14 @@ md5sums=("SKIP"  #linux-5.12.4.tar.xz
          "d484e60f56a308bb456dedbbe139e086"  #0001-Revert-net-tso-add-UDP-segmentation-support.patch
          "93a3ee2b38e20416cb67861eb37344e5"  #0002-zen-Allow-MSR-writes-by-default.patch
          "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
-         "73038b6a7e3f0813b78374a8935a0c1a"  #0001-ntfs3-patches.patch
+         "SKIP"  #0001-ntfs3-patches.patch
          "2c048d095acfa50e6db0074088ef64c7"  #0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch
          "SKIP"  #0007-v5.13-winesync.patch
          "ef1c78ab0e9b983868ffa2dac838ec46"  #0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch
          "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
          "bc5130f3f385737bbdf7e7a0cd8d361d"  #0003-ZEN-vhba-Update-to-20210418.patch
          "8bd27bbf98714966f28c792be9b8590d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
-         "a3897b93471a1d7aeeab0e2160962174"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+         "SKIP"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
          "d6b3bcd857e74530a9d0347c6dc05c13"  #0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
          "1e7a53eae980951494ee630853d39d98"  #0002-mm-Support-soft-dirty-flag-read-with-reset.patch
          "17de5f1bddeceae825b0a009ef9837d8"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
