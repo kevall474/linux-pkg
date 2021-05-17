@@ -1466,7 +1466,7 @@ configure(){
   if [[ $_cpu_sched = "1" ]]; then
     msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
     scripts/config --enable CONFIG_SCHED_ALT
-    msg2 "Enable BMQ CPU scheduler..."
+    msg2 "Enable BMQ CPU scheduler"
     scripts/config --enable CONFIG_SCHED_BMQ
     scripts/config --disable CONFIG_SCHED_PDS
     msg2 "Disable CFS"
@@ -1475,7 +1475,7 @@ configure(){
   elif [[ $_cpu_sched = "2" ]]; then
     msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
     scripts/config --enable CONFIG_SCHED_ALT
-    msg2 "Enable PDS CPU scheduler..."
+    msg2 "Enable PDS CPU scheduler"
     scripts/config --disable CONFIG_SCHED_BMQ
     scripts/config --enable CONFIG_SCHED_PDS
     msg2 "Disable CFS"
@@ -2122,33 +2122,20 @@ rapid_config(){
   sleep 2s
 
   if [[ $_cpu_sched = "1" ]]; then
-    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler..."
+    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
     scripts/config --enable CONFIG_SCHED_ALT
-    msg2 "Enable BMQ CPU scheduler..."
+    msg2 "Enable BMQ CPU scheduler"
     scripts/config --enable CONFIG_SCHED_BMQ
     scripts/config --disable CONFIG_SCHED_PDS
     msg2 "Disable CFS"
     scripts/config --disable CONFIG_FAIR_GROUP_SCHED
     scripts/config --disable CONFIG_CFS_BANDWIDTH
   elif [[ $_cpu_sched = "2" ]]; then
-    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler..."
+    msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
     scripts/config --enable CONFIG_SCHED_ALT
-    msg2 "Enable PDS CPU scheduler..."
+    msg2 "Enable PDS CPU scheduler"
     scripts/config --disable CONFIG_SCHED_BMQ
     scripts/config --enable CONFIG_SCHED_PDS
-    msg2 "Disable CFS"
-    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-    scripts/config --disable CONFIG_CFS_BANDWIDTH
-  elif [[ $_cpu_sched = "5" ]]; then
-    msg2 "Enable MuQSS"
-    scripts/config --enable CONFIG_SCHED_MC
-    scripts/config --enable CONFIG_SCHED_SMT
-    scripts/config --enable CONFIG_SMP
-    scripts/config --enable CONFIG_SCHED_MC_PRIO
-    scripts/config --enable CONFIG_SCHED_MUQSS
-    msg2 "Set to RQ_MC"
-    scripts/config --enable CONFIG_RQ_MC
-    scripts/config --set-val CONFIG_SHARERQ 2
     msg2 "Disable CFS"
     scripts/config --disable CONFIG_FAIR_GROUP_SCHED
     scripts/config --disable CONFIG_CFS_BANDWIDTH
