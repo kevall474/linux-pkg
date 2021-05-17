@@ -1532,15 +1532,15 @@ configure(){
 
   plain ""
   if [[ $_cpu_sched = "1" ]]; then
-    msg2 "Enable CacULE CPU scheduler..."
+    msg2 "Enable CacULE CPU scheduler"
     scripts/config --enable CONFIG_CACULE_SCHED
     #msg2 "Disable CFS"
     #scripts/config --disable CONFIG_FAIR_GROUP_SCHED
     #scripts/config --disable CONFIG_CFS_BANDWIDTH
   elif [[ $_cpu_sched = "2" ]]; then
-    msg2 "Enable CacULE CPU scheduler..."
+    msg2 "Enable CacULE CPU scheduler"
     scripts/config --enable CONFIG_CACULE_SCHED
-    msg2 "Enable CacULE-RDB CPU scheduler..."
+    msg2 "Enable CacULE-RDB CPU scheduler"
     scripts/config --enable CONFIG_CACULE_RDB
     #msg2 "Disable CFS"
     #scripts/config --disable CONFIG_FAIR_GROUP_SCHED
@@ -1548,7 +1548,7 @@ configure(){
   elif [[ $_cpu_sched = "3" ]]; then
     msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
     scripts/config --enable CONFIG_SCHED_ALT
-    msg2 "Enable BMQ CPU scheduler..."
+    msg2 "Enable BMQ CPU scheduler"
     scripts/config --enable CONFIG_SCHED_BMQ
     scripts/config --disable CONFIG_SCHED_PDS
     msg2 "Disable CFS"
@@ -1557,7 +1557,7 @@ configure(){
   elif [[ $_cpu_sched = "4" ]]; then
     msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
     scripts/config --enable CONFIG_SCHED_ALT
-    msg2 "Enable PDS CPU scheduler..."
+    msg2 "Enable PDS CPU scheduler"
     scripts/config --disable CONFIG_SCHED_BMQ
     scripts/config --enable CONFIG_SCHED_PDS
     msg2 "Disable CFS"
@@ -2459,13 +2459,13 @@ rapid_config(){
   sleep 2s
 
   if [[ $_cpu_sched = "1" ]]; then
-    msg2 "Enable CacULE CPU scheduler..."
+    msg2 "Enable CacULE CPU scheduler"
     scripts/config --enable CONFIG_CACULE_SCHED
     #msg2 "Disable CFS"
     #scripts/config --disable CONFIG_FAIR_GROUP_SCHED
     #scripts/config --disable CONFIG_CFS_BANDWIDTH
   elif [[ $_cpu_sched = "2" ]]; then
-    msg2 "Enable CacULE CPU scheduler..."
+    msg2 "Enable CacULE CPU scheduler"
     scripts/config --enable CONFIG_CACULE_SCHED
     msg2 "Enable CacULE-RDB CPU scheduler..."
     scripts/config --enable CONFIG_CACULE_RDB
@@ -2512,7 +2512,7 @@ rapid_config(){
   sleep 2s
 
   if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
-    msg2 "Apply suggested config"
+    msg2 "Apply suggested config by Hamad Al Marri for CacULE"
     # General Setup
     echo "General Setup"
     sleep 1s
