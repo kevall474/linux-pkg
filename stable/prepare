@@ -594,6 +594,10 @@ configure(){
   plain "#########################################"
   plain "Set Optimization"
   plain ""
+  plain "Optimize for performance (-O1) : Choosing this option will pass -O1"
+  plain "to your compiler resulting in basal optimization, possibly speeding" 
+  plain "up compilation."
+  plain ""
   plain "Optimize for performance (-O2) : This is the default optimization level"
   plain "for the kernel, building with the "-O2""
   plain "compiler flag for best performance and most helpful compile-time warnings."
@@ -604,19 +608,28 @@ configure(){
   plain "Optimize for size (-Os) : Choosing this option will pass "-Os" to your"
   plain "compiler resulting in a smaller kernel."
   plain ""
-  read -rp "`echo $' > 1.Optimize for performance(-O2)\n > 2.Optimize for performance(-O3)\n > 3.Optimize for size(-Os)\n > Default (Optimize for performance (-O3))\nchoice[1-3]: '`" _optimize
+  read -rp "`echo $' > 1.Optimize for performance (-O1)\n > 2.Optimize for performance(-O2)\n > 3.Optimize for performance(-O3)\n > 4.Optimize for size(-Os)\n > Default (Optimize for performance (-O3))\nchoice[1-4]: '`" _optimize
   if [[ "$_optimize" = "1" ]]; then
+    msg2 "Enable CC_OPTIMIZE_BASAL"
+    scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+    scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+    scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
+    scripts/config --enable CONFIG_CC_OPTIMIZE_BASAL
+  elif [[ "$_optimize" = "1" ]]; then
     msg2 "Enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE"
+    scripts/config --disable CONFIG_CC_OPTIMIZE_BASAL
     scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
     scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
     scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
   elif [[ "$_optimize" = "2" ]]; then
     msg2 "Enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3"
+    scripts/config --disable CONFIG_CC_OPTIMIZE_BASAL
     scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
     scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
     scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
   elif [[ "$_optimize" = "3" ]]; then
-    msg2 "Enable CONFIG_CC_OPTIMIZE_FOR_SIZE..."
+    msg2 "Enable CONFIG_CC_OPTIMIZE_FOR_SIZE"
+    scripts/config --disable CONFIG_CC_OPTIMIZE_BASAL
     scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
     scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
     scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_SIZE
