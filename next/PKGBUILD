@@ -103,6 +103,7 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
         "$patchsource/lqx-patches/0001-Revert-net-tso-add-UDP-segmentation-support.patch"
         "$patchsource/lqx-patches/0002-zen-Allow-MSR-writes-by-default.patch"
+        "$patchsource/lqx-patches/0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch"
         "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
         "$patchsource/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
@@ -123,13 +124,14 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
 md5sums=("65134c2576a35bb1f9ed02e0a0b309b6"  #linux-next-next-20210521.tar.gz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "bd0d2bc5b6fb0ee4791b88ba96b8d745"  #0001-block-patches.patch
-         "5f77052b651f5e1bc4a98cb92eb39f31"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
-         "f785cffc211a32eaebca3696da76fbee"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "e1845877808139745afb90addeadecde"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
+         "099c0c368e62e6fd66bdff1f7e8fe756"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "31a83ad2d5c11e560c7bfdfd59659c84"  #0002-clear-patches.patch
          "4a0118d6e5dfd3abbf35dd24229e8438"  #0001-ksm-patches.patch
          "1536be060202287506c72d97b73baceb"  #0001-v4l2loopback-patches.patch
-         "d484e60f56a308bb456dedbbe139e086"  #0001-Revert-net-tso-add-UDP-segmentation-support.patch
-         "93a3ee2b38e20416cb67861eb37344e5"  #0002-zen-Allow-MSR-writes-by-default.patch
+         "fb58a797f4cf483c4a907bb9af453150"  #0001-Revert-net-tso-add-UDP-segmentation-support.patch
+         "76932b2bab1de71b01c58a79cf9c597a"  #0002-zen-Allow-MSR-writes-by-default.patch
+         "e7397ae0a6e4b1d8acfcfdd4dde5b8b7"  #0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch
          "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
          "0be00d5f33139773a7cd9fd57c1a2666"  #0001-ntfs3-patches.patch
          "2c048d095acfa50e6db0074088ef64c7"  #0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch
@@ -138,7 +140,7 @@ md5sums=("65134c2576a35bb1f9ed02e0a0b309b6"  #linux-next-next-20210521.tar.gz
          "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
          "bc5130f3f385737bbdf7e7a0cd8d361d"  #0003-ZEN-vhba-Update-to-20210418.patch
          "8bd27bbf98714966f28c792be9b8590d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
-         "c4772e838d10e1428ea9da739ae1de7f"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+         "2d415de8d73d7acb43a2f7058a063ee3"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
          "1e7a53eae980951494ee630853d39d98"  #0002-mm-Support-soft-dirty-flag-read-with-reset.patch
          "17de5f1bddeceae825b0a009ef9837d8"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
          "22baa0b09b2604e1331f4d02e73bfd16"  #0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch
