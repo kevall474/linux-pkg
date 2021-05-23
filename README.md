@@ -10,7 +10,11 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 ### Mainline
 
-- 5.13-rc1
+- 5.13-rc2
+
+### Next
+
+- 5.13-rc2-next-20210521
 
 # Build
 
