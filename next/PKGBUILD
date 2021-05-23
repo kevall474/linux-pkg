@@ -18,8 +18,6 @@
 ################# CPU Scheduler #################
 
 #Set CPU Scheduler
-#Set '1' for BMQ CPU Scheduler
-#Set '2' for PDS CPU Scheduler
 #Leave empty for no CPU Scheduler
 #Default is empty. It will build with no cpu scheduler. To build with cpu shceduler just use : env _cpu_sched=(1,2,3,4 or 5) makepkg -s
 if [ -z ${_cpu_sched+x} ]; then
