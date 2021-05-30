@@ -116,7 +116,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.12.6
+pkgver=5.12.8
 major=5.12
 pkgrel=1
 arch=(x86_64)
@@ -144,7 +144,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/ksm-patches/0001-ksm-patches.patch"
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
         "$patchsource/lqx-patches/0001-Revert-net-tso-add-UDP-segmentation-support.patch"
-        "$patchsource/lqx-patches/0002-zen-Allow-MSR-writes-by-default.patch"
+        "$patchsource/lqx-patches/0001-zen-Allow-MSR-writes-by-default.patch"
         "$patchsource/lqx-patches/0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch"
         "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
@@ -165,12 +165,12 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
-md5sums=("fc7a5199fc49eddff6ddbf1577280e1a"  #linux-5.12.6.tar.xz
+md5sums=("SKIP"  #linux-5.12.8.tar.xz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.12
          "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
          "bd0d2bc5b6fb0ee4791b88ba96b8d745"  #0001-block-patches.patch
-         "a3fafce386cf5b23918ee8206ad5ad75"  #0001-bfq-patches.patch
-         "02f81f4ca7a4964d48c698f6845c69c2"  #0001-btrfs-patches.patch
+         "SKIP"  #0001-bfq-patches.patch
+         "SKIP"  #0001-btrfs-patches.patch
          "e1845877808139745afb90addeadecde"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
          "099c0c368e62e6fd66bdff1f7e8fe756"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "3fea2a5acdbbeb415bd60769317fab0b"  #0003-init-Kconfig-add-O1-flag.patch
@@ -181,7 +181,7 @@ md5sums=("fc7a5199fc49eddff6ddbf1577280e1a"  #linux-5.12.6.tar.xz
          "4a0118d6e5dfd3abbf35dd24229e8438"  #0001-ksm-patches.patch
          "1536be060202287506c72d97b73baceb"  #0001-v4l2loopback-patches.patch
          "fb58a797f4cf483c4a907bb9af453150"  #0001-Revert-net-tso-add-UDP-segmentation-support.patch
-         "76932b2bab1de71b01c58a79cf9c597a"  #0002-zen-Allow-MSR-writes-by-default.patch
+         "SKIP"  #0001-zen-Allow-MSR-writes-by-default.patch
          "e7397ae0a6e4b1d8acfcfdd4dde5b8b7"  #0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch
          "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
          "0be00d5f33139773a7cd9fd57c1a2666"  #0001-ntfs3-patches.patch
