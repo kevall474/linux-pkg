@@ -30,6 +30,12 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
     cd Linux/mainline
     env _cpu_sched=(1 or 2) _compiler=(1 or 2) makepkg -s
 
+### Build Next kernel
+
+    git clone https://github.com/kevall474/Linux
+    cd Linux/next
+    env _compiler=(1 or 2) makepkg -s
+
 # Build variables
 
 ## Stable kernel
