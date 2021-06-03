@@ -108,6 +108,11 @@ About CacULE Scheduler
 - RT and other runqueues are just the same as the CFS's.
 - Wake up tasks preempt currently running tasks if its interactivity score value is higher.
 
+## RDB load balancer
+
+An experimental load balancer for CacULE. It is a lightweight load balancer which is a replacement of CFS load balancer.
+It migrates tasks based on their interactivity scores.
+
 ## BMQ CPU Scheduler
 
 BitMap Queue CPU scheduler, referred to as BMQ from here on, is an evolution
