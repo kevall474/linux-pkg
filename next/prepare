@@ -1400,27 +1400,27 @@ configure(){
 
   sleep 2s
 
-  #plain ""
-  #plain "#########################################"
-  #plain "Enable support for fsync, an experimental replacement for esync in"
-  #plain "Valve Proton 4.11+"
-  #read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _fsync
-  #if [[ "$_fsync" = "1" ]]; then
-  #  msg2 "Enable Fsync support"
-  #  scripts/config --enable CONFIG_FUTEX
-  #  scripts/config --enable CONFIG_FUTEX_PI
-  #elif [[ "$_fsync" = "2" ]]; then
-  #  msg2 "Disable Fsync support"
-  #  scripts/config --disable CONFIG_FUTEX
-  #  scripts/config --disable CONFIG_FUTEX_PI
-  #else
-  #  msg2 "Enable Fsync support"
-  #  scripts/config --enable CONFIG_FUTEX
-  #  scripts/config --enable CONFIG_FUTEX_PI
-  #fi
-  #
-  #sleep 2s
-  #
+  plain ""
+  plain "#########################################"
+  plain "Enable support for fsync, an experimental replacement for esync in"
+  plain "Valve Proton 4.11+"
+  read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _fsync
+  if [[ "$_fsync" = "1" ]]; then
+    msg2 "Enable Fsync support"
+    scripts/config --enable CONFIG_FUTEX
+    scripts/config --enable CONFIG_FUTEX_PI
+  elif [[ "$_fsync" = "2" ]]; then
+    msg2 "Disable Fsync support"
+    scripts/config --disable CONFIG_FUTEX
+    scripts/config --disable CONFIG_FUTEX_PI
+  else
+    msg2 "Enable Fsync support"
+    scripts/config --enable CONFIG_FUTEX
+    scripts/config --enable CONFIG_FUTEX_PI
+  fi
+
+  sleep 2s
+  
   #plain ""
   #plain "#########################################"
   #plain "Enable support for futex2, an experimental replacement for esync and"

@@ -595,7 +595,7 @@ configure(){
   plain "Set Optimization"
   plain ""
   plain "Optimize for performance (-O1) : Choosing this option will pass -O1"
-  plain "to your compiler resulting in basal optimization, possibly speeding" 
+  plain "to your compiler resulting in basal optimization, possibly speeding"
   plain "up compilation."
   plain ""
   plain "Optimize for performance (-O2) : This is the default optimization level"
@@ -2253,6 +2253,7 @@ rapid_config(){
   sleep 2s
 
   msg2 "Enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3"
+  scripts/config --disable CONFIG_CC_OPTIMIZE_BASAL
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
   scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3

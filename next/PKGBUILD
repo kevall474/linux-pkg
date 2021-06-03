@@ -78,10 +78,10 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13rc2.next.20210521
+pkgver=5.13rc2.next.20210602
 major=5.13rc
 pkgrel=1
-versiontag=20210521
+versiontag=20210602
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL-2.0)
@@ -101,7 +101,6 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
         "$patchsource/lqx-patches/0001-Revert-net-tso-add-UDP-segmentation-support.patch"
         "$patchsource/lqx-patches/0002-zen-Allow-MSR-writes-by-default.patch"
-        "$patchsource/lqx-patches/0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch"
         "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
         "$patchsource/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
@@ -119,9 +118,9 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch"
         "$patchsource/misc-patches/zenify.patch")
-md5sums=("65134c2576a35bb1f9ed02e0a0b309b6"  #linux-next-next-20210521.tar.gz
+md5sums=("079e96c0efcb6ebb6b3bec26d35c1b73"  #linux-next-next-20210602.tar.gz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
-         "bd0d2bc5b6fb0ee4791b88ba96b8d745"  #0001-block-patches.patch
+         "7e3227523f7b5e43cd9544255bcac110"  #0001-block-patches.patch
          "e1845877808139745afb90addeadecde"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
          "099c0c368e62e6fd66bdff1f7e8fe756"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "31a83ad2d5c11e560c7bfdfd59659c84"  #0002-clear-patches.patch
@@ -129,7 +128,6 @@ md5sums=("65134c2576a35bb1f9ed02e0a0b309b6"  #linux-next-next-20210521.tar.gz
          "1536be060202287506c72d97b73baceb"  #0001-v4l2loopback-patches.patch
          "fb58a797f4cf483c4a907bb9af453150"  #0001-Revert-net-tso-add-UDP-segmentation-support.patch
          "76932b2bab1de71b01c58a79cf9c597a"  #0002-zen-Allow-MSR-writes-by-default.patch
-         "e7397ae0a6e4b1d8acfcfdd4dde5b8b7"  #0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch
          "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
          "0be00d5f33139773a7cd9fd57c1a2666"  #0001-ntfs3-patches.patch
          "2c048d095acfa50e6db0074088ef64c7"  #0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch
