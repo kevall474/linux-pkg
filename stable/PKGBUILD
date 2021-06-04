@@ -116,7 +116,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.12.8
+pkgver=5.12.9
 major=5.12
 pkgrel=1
 arch=(x86_64)
@@ -165,7 +165,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
-md5sums=("77cb5ae53f13405dac2a5bcb887a274a"  #linux-5.12.8.tar.xz
+md5sums=("26f7023824e9867359ec78a4f2b50958"  #linux-5.12.9.tar.xz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.12
          "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
          "7e3227523f7b5e43cd9544255bcac110"  #0001-block-patches.patch
