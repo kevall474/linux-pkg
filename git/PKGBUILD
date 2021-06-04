@@ -205,10 +205,9 @@ prepare(){
 
   # remove linux github source from source add do a git clone --depth=1 for fast cloning
 
-  if ! dir linux; then
-    rm -rf linux
-    git clone --depth=1 https://github.com/torvalds/linux.git
-  fi
+  rm -rf linux
+
+  git clone --depth=1 https://github.com/torvalds/linux.git
 
   cd linux
 
