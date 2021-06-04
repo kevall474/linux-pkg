@@ -78,7 +78,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13rc2.next.20210604
+pkgver=5.13rc4.next.20210604
 major=5.13rc
 pkgrel=1
 versiontag=20210604
