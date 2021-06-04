@@ -214,8 +214,8 @@ prepare(){
   done
 
   # Copy the config file first
-  # Copy "${srcdir}"/config to linux-${pkgver}/.config
-  msg2 "Copy "${srcdir}"/config to linux-$pkgver/.config"
+  # Copy "${srcdir}"/config-$major to linux-${pkgver}/.config
+  msg2 "Copy "${srcdir}"/config-$major to linux-$pkgver/.config"
   cp "${srcdir}"/config-$major .config
 
   # Customize the kernel
