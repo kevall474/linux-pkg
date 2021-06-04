@@ -118,7 +118,7 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch"
         "$patchsource/misc-patches/zenify.patch")
-md5sums=("079e96c0efcb6ebb6b3bec26d35c1b73"  #linux-next-next-20210602.tar.gz
+md5sums=("SKIP"  #linux-next-next-20210604.tar.gz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "7e3227523f7b5e43cd9544255bcac110"  #0001-block-patches.patch
          "e1845877808139745afb90addeadecde"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
