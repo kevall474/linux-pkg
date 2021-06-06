@@ -96,6 +96,7 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/block-patches/0001-block-patches.patch"
         "$patchsource/cpu-patches/0001-cpu-5.12-merge-graysky-s-patchset.patch"
         "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
+        "https://raw.githubusercontent.com/kevall474/kernel-patches/main/patch/0001-init-Kconfig-add-O1-flag.patch"
         "$patchsource/clearlinux-patches/0002-clear-patches.patch"
         "$patchsource/ksm-patches/0001-ksm-patches.patch"
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
@@ -123,6 +124,7 @@ md5sums=("SKIP"  #linux-next-next-20210604.tar.gz
          "7e3227523f7b5e43cd9544255bcac110"  #0001-block-patches.patch
          "e1845877808139745afb90addeadecde"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
          "099c0c368e62e6fd66bdff1f7e8fe756"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "SKIP"
          "31a83ad2d5c11e560c7bfdfd59659c84"  #0002-clear-patches.patch
          "4a0118d6e5dfd3abbf35dd24229e8438"  #0001-ksm-patches.patch
          "1536be060202287506c72d97b73baceb"  #0001-v4l2loopback-patches.patch
