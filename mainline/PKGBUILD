@@ -151,7 +151,7 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snap
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch"
-	      "$patchsource/misc-patches/zenify.patch")
+        "$patchsource/misc-patches/zenify.patch")
 md5sums=("c89241a7b9270aee65605a17d4a7d385"  #linux-5.13-rc4.tar.gz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "7e3227523f7b5e43cd9544255bcac110"  #0001-block-patches.patch
@@ -181,7 +181,7 @@ md5sums=("c89241a7b9270aee65605a17d4a7d385"  #linux-5.13-rc4.tar.gz
          "388d99168ebf40c7b377715f07e41b25"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
          "168a924c7c83ecdc872a9a1c6d1c8bdb"  #0006-add-acs-overrides_iommu.patch
          "27e6001bacfcfca1c161bf6ef946a79b"  #vm.max_map_count.patch
-	       "8e71f0c43157654c4105224d89cc6709") #zenify.patch
+         "8e71f0c43157654c4105224d89cc6709") #zenify.patch
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/cacule-5.13.patch")
   md5sums+=("SKIP")  #cacule-5.12.patch
