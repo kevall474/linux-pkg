@@ -14,7 +14,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 ### Next
 
-- 5.13-rc4-next-20210604
+- 5.13-rc5-next-20210607
 
 ### Git
 
