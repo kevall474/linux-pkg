@@ -109,10 +109,10 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13rc4
+pkgver=5.13rc5
 major=5.13rc
 pkgrel=1
-versiontag=5.13-rc4
+versiontag=5.13-rc5
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL-2.0)
@@ -152,12 +152,12 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snap
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch"
         "$patchsource/misc-patches/zenify.patch")
-md5sums=("c89241a7b9270aee65605a17d4a7d385"  #linux-5.13-rc4.tar.gz
+md5sums=("e82886b33e0f2028fd1bbf670c8b0890"  #linux-5.13-rc5.tar.gz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
-         "7e3227523f7b5e43cd9544255bcac110"  #0001-block-patches.patch
-         "e1845877808139745afb90addeadecde"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
-         "099c0c368e62e6fd66bdff1f7e8fe756"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
-         "3fea2a5acdbbeb415bd60769317fab0b"  #0003-init-Kconfig-add-O1-flag.patch
+         "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
+         "9b77023d39e270fcdc00a0c1b09862b2"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
+         "499f2450c4f324889696f257710d761d"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "5a3ceb9ba8702e06926b1438d7cdda2b"  #0003-init-Kconfig-add-O1-flag.patch
          "31a83ad2d5c11e560c7bfdfd59659c84"  #0002-clear-patches.patch
          "93070c9a3e5433461dda4065215821ed"  #0007-v5.13-futex2_interface.patch
          "4a0118d6e5dfd3abbf35dd24229e8438"  #0001-ksm-patches.patch
