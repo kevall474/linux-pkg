@@ -78,10 +78,10 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13rc5.next.20210607
+pkgver=5.13rc5.next.20210609
 major=5.13rc
 pkgrel=1
-versiontag=20210607
+versiontag=20210609
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL-2.0)
@@ -119,7 +119,7 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch"
         "$patchsource/misc-patches/zenify.patch")
-md5sums=("a61a38ba460303d01220b1d3c9f2d679"  #linux-next-next-20210607.tar.gz
+md5sums=("1b97be802ba6fda1b7191c893930f36b"  #linux-next-next-20210609.tar.gz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
          "9b77023d39e270fcdc00a0c1b09862b2"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
