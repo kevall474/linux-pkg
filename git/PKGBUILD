@@ -149,7 +149,8 @@ source=("config-$major"
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch"
-        "$patchsource/misc-patches/zenify.patch")
+        "$patchsource/misc-patches/zenify.patch"
+        "https://raw.githubusercontent.com/kevall474/kernel-patches/main/patch/0001-remove-scm_version-fonction-for-git-package.patch")
 md5sums=("596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
          "9b77023d39e270fcdc00a0c1b09862b2"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
@@ -178,7 +179,8 @@ md5sums=("596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "388d99168ebf40c7b377715f07e41b25"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
          "168a924c7c83ecdc872a9a1c6d1c8bdb"  #0006-add-acs-overrides_iommu.patch
          "27e6001bacfcfca1c161bf6ef946a79b"  #vm.max_map_count.patch
-         "8e71f0c43157654c4105224d89cc6709") #zenify.patch
+         "8e71f0c43157654c4105224d89cc6709"  #zenify.patch
+         "SKIP")
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
  source+=("${patchsource}/cacule-patches/cacule-5.13.patch")
  md5sums+=("SKIP")  #cacule-5.12.patch
@@ -229,14 +231,14 @@ prepare(){
   # Customize the kernel
   source "${startdir}"/prepare
 
-  configure
+  #configure
 
-  cpu_arch
+  #cpu_arch
 
   # Automation building with rapid_config
   # Uncomment rapid_config and comment out configure and cpu_arch
   # rapid_config is meant to work with build.sh for automation building
-  #rapid_config
+  rapid_config
 
   # strip_down script
   #strip_down
