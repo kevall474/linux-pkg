@@ -134,7 +134,7 @@ source=("config-$major"
         "$patchsource/lqx-patches/0002-zen-Allow-MSR-writes-by-default.patch"
         "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
-        "$patchsource/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
+        "$patchsource/pf-patches/0001-pf-patches.patch"
         "$patchsource/wine-patches/0007-v5.13-winesync.patch"
         "$patchsource/xanmod-patches/0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
@@ -164,7 +164,7 @@ md5sums=("596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "76932b2bab1de71b01c58a79cf9c597a"  #0002-zen-Allow-MSR-writes-by-default.patch
          "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
          "0be00d5f33139773a7cd9fd57c1a2666"  #0001-ntfs3-patches.patch
-         "2c048d095acfa50e6db0074088ef64c7"  #0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch
+         "004184322bf51da2c158d3900e55d3a2"  #0001-pf-patches.patch
          "9573b92353399343db8a691c9b208300"  #0007-v5.13-winesync.patch
          "ef1c78ab0e9b983868ffa2dac838ec46"  #0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch
          "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
@@ -180,18 +180,18 @@ md5sums=("596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "168a924c7c83ecdc872a9a1c6d1c8bdb"  #0006-add-acs-overrides_iommu.patch
          "27e6001bacfcfca1c161bf6ef946a79b"  #vm.max_map_count.patch
          "8e71f0c43157654c4105224d89cc6709"  #zenify.patch
-         "SKIP")
+         "c4a7f772f748827fa98a8b289ac68711") #0001-remove-scm_version-fonction-for-git-package.patch
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
  source+=("${patchsource}/cacule-patches/cacule-5.13.patch")
- md5sums+=("SKIP")  #cacule-5.12.patch
+ md5sums+=("3ca8422d760cb4c346f5b19161d593d1")  #cacule-5.13.patch
 elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
  source+=("${patchsource}/prjc-patches/0009-prjc_v5.13-r0.patch")
- md5sums+=("SKIP")  #prjc_v5.13-r0.patch
+ md5sums+=("1b222eba97dc694e926d6ef20901d7f8")  #0009-prjc_v5.13-r0.patch
 fi
 # rdb patch
 if [[ $_cpu_sched = "2" ]]; then
  source+=("${patchsource}/cacule-patches/rdb-5.13.patch")
- md5sums+=("SKIP")  #rdb.patch
+ md5sums+=("7011daaaf4d91ffdb4b4c99aa5e696e0")  #rdb-5.13.patch
 fi
 
 export KBUILD_BUILD_HOST=archlinux

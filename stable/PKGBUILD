@@ -116,7 +116,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.12.9
+pkgver=5.12.10
 major=5.12
 pkgrel=1
 arch=(x86_64)
@@ -148,7 +148,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/lqx-patches/0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch"
         "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
-        "$patchsource/pf-patches/0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch"
+        "$patchsource/pf-patches/0001-pf-patches.patch"
         "$patchsource/wine-patches/0007-v5.12-winesync.patch"
         "$patchsource/xanmod-patches/0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
@@ -165,15 +165,15 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
-md5sums=("26f7023824e9867359ec78a4f2b50958"  #linux-5.12.9.tar.xz
+md5sums=("7a3d78b97103f2b64c8c8592c1dfbe8d"  #linux-5.12.10.tar.xz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.12
          "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
-         "7e3227523f7b5e43cd9544255bcac110"  #0001-block-patches.patch
-         "3dbdb1573abe429ccd60278913227248"  #0001-bfq-patches.patch
-         "bca270ba93620ef894c794d32e291e35"  #0001-btrfs-patches.patch
-         "e1845877808139745afb90addeadecde"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
-         "099c0c368e62e6fd66bdff1f7e8fe756"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
-         "3fea2a5acdbbeb415bd60769317fab0b"  #0003-init-Kconfig-add-O1-flag.patch
+         "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
+         "f0c611e207b3787dc656d44dc8adb28d"  #0001-bfq-patches.patch
+         "a0dbbea9529bf2a8a703f9c551d0a97b"  #0001-btrfs-patches.patch
+         "9b77023d39e270fcdc00a0c1b09862b2"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
+         "499f2450c4f324889696f257710d761d"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "5a3ceb9ba8702e06926b1438d7cdda2b"  #0003-init-Kconfig-add-O1-flag.patch
          "6211ffdc7b63aa11af4abbfb2c360559"  #0001-clearlinux-patches.patch
          "d06bede79a8068a551d71fd2f48ac999"  #0001-futex-resync-from-gitlab.collabora.com.patch
          "0a11ab08e496dff03326347efb982fa0"  #0001-futex2-resync-from-gitlab.collabora.com.patch
@@ -185,7 +185,7 @@ md5sums=("26f7023824e9867359ec78a4f2b50958"  #linux-5.12.9.tar.xz
          "e7397ae0a6e4b1d8acfcfdd4dde5b8b7"  #0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch
          "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
          "0be00d5f33139773a7cd9fd57c1a2666"  #0001-ntfs3-patches.patch
-         "2c048d095acfa50e6db0074088ef64c7"  #0001-genirq-i2c-Provide-and-use-generic_dispatch_irq.patch
+         "004184322bf51da2c158d3900e55d3a2"  #0001-pf-patches.patch
          "9573b92353399343db8a691c9b208300"  #0007-v5.12-winesync.patch
          "ef1c78ab0e9b983868ffa2dac838ec46"  #0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch
          "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
@@ -211,7 +211,7 @@ if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/cacule-$major.patch"
            "${patchsource}/cacule-patches/0002-XANMOD-cacule-Change-default-preemption-latency-to-2.patch"
            "${patchsource}/cacule-patches/0003-XANMOD-init-Kconfig-cacule-Set-SCHED_AUTOGROUP_DEFAU.patch")
-  md5sums+=("ae3cea3a2e863fcad2d55bf3ee6489d8"  #cacule-5.12.patch
+  md5sums+=("09af345d604085af4dd834c653925444"  #cacule-5.12.patch
             "89a9cfb123d08c7b14319277f9c1307f"  #0002-XANMOD-cacule-Change-default-preemption-latency-to-2.patch
             "73b8ebdb30868471332909a9e65f13f9") #0003-XANMOD-init-Kconfig-cacule-Set-SCHED_AUTOGROUP_DEFAU.patch
 elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
@@ -223,8 +223,8 @@ elif [[ $_cpu_sched = "5" ]]; then
 fi
 # rdb patch
 if [[ $_cpu_sched = "2" ]]; then
-  source+=("${patchsource}/cacule-patches/rdb.patch")
-  md5sums+=("1f9f405241a2b2025dea2f9ac3218a40")  #rdb.patch
+  source+=("${patchsource}/cacule-patches/rdb-$major.patch")
+  md5sums+=("1f9f405241a2b2025dea2f9ac3218a40")  #rdb-5.12.patch
 fi
 
 export KBUILD_BUILD_HOST=archlinux
