@@ -78,10 +78,10 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13rc5.next.20210610
+pkgver=5.13rc5.next.20210611
 major=5.13rc
 pkgrel=1
-versiontag=20210610
+versiontag=20210611
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL-2.0)
@@ -97,6 +97,7 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/cpu-patches/0001-cpu-5.12-merge-graysky-s-patchset.patch"
         "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
         "https://raw.githubusercontent.com/kevall474/kernel-patches/main/patch/0001-init-Kconfig-add-O1-flag.patch"
+        "https://raw.githubusercontent.com/kevall474/kernel-patches/main/patch/0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch"
         "$patchsource/clearlinux-patches/0002-clear-patches.patch"
         "$patchsource/ksm-patches/0001-ksm-patches.patch"
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
@@ -119,12 +120,13 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch"
         "$patchsource/misc-patches/zenify.patch")
-md5sums=("18dda6851300b7aae7efecd5656f6465"  #linux-next-next-20210610.tar.gz
+md5sums=("18c0e9fa6fe4582bd399b75fef7c0c6e"  #linux-next-next-20210611.tar.gz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
-         "9b77023d39e270fcdc00a0c1b09862b2"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
-         "499f2450c4f324889696f257710d761d"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "efed065f8c1e760a50fbbfabff08df6a"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
+         "06f1b8b9a8147098cfcc2079ee04fe94"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "c0b6b9d3eee1e1fa0d75a8aa6bd56607"  #0001-init-Kconfig-add-O1-flag.patch
+         "89e26caae0dece8881b353e8f2436d4d"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
          "31a83ad2d5c11e560c7bfdfd59659c84"  #0002-clear-patches.patch
          "4a0118d6e5dfd3abbf35dd24229e8438"  #0001-ksm-patches.patch
          "1536be060202287506c72d97b73baceb"  #0001-v4l2loopback-patches.patch

@@ -137,6 +137,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/cpu-patches/0001-cpu-5.12-merge-graysky-s-patchset.patch"
         "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
         "$patchsource/cpu-patches/0003-init-Kconfig-add-O1-flag.patch"
+        "$patchsource/cpu-patches/0004-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch"
         "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
         "$patchsource/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "$patchsource/futex2-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
@@ -171,9 +172,10 @@ md5sums=("7a3d78b97103f2b64c8c8592c1dfbe8d"  #linux-5.12.10.tar.xz
          "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
          "f0c611e207b3787dc656d44dc8adb28d"  #0001-bfq-patches.patch
          "a0dbbea9529bf2a8a703f9c551d0a97b"  #0001-btrfs-patches.patch
-         "9b77023d39e270fcdc00a0c1b09862b2"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
-         "499f2450c4f324889696f257710d761d"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
-         "5a3ceb9ba8702e06926b1438d7cdda2b"  #0003-init-Kconfig-add-O1-flag.patch
+         "efed065f8c1e760a50fbbfabff08df6a"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
+         "06f1b8b9a8147098cfcc2079ee04fe94"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "442bfbf0e464fd5a0c945ada70e1b557"  #0003-init-Kconfig-add-O1-flag.patch
+         "2ec94820ee79a54c6e0d40ca0d47d112"  #0004-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
          "6211ffdc7b63aa11af4abbfb2c360559"  #0001-clearlinux-patches.patch
          "d06bede79a8068a551d71fd2f48ac999"  #0001-futex-resync-from-gitlab.collabora.com.patch
          "0a11ab08e496dff03326347efb982fa0"  #0001-futex2-resync-from-gitlab.collabora.com.patch
