@@ -126,7 +126,7 @@ source=("config-$major"
         "$patchsource/cpu-patches/0001-cpu-5.12-merge-graysky-s-patchset.patch"
         "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
         "$patchsource/cpu-patches/0003-init-Kconfig-add-O1-flag.patch"
-        "$patchsource/cpu-patches/0004-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch"
+        "$patchsource/cpu-patches/0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch"
         "$patchsource/clearlinux-patches/0002-clear-patches.patch"
         "$patchsource/futex-tkg-patches/0007-v5.13-futex2_interface.patch"
         "$patchsource/ksm-patches/0001-ksm-patches.patch"
@@ -157,7 +157,7 @@ md5sums=("596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
          "efed065f8c1e760a50fbbfabff08df6a"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
          "06f1b8b9a8147098cfcc2079ee04fe94"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "442bfbf0e464fd5a0c945ada70e1b557"  #0003-init-Kconfig-add-O1-flag.patch
-         "2ec94820ee79a54c6e0d40ca0d47d112"  #0004-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
+         "921b6e826da522638698cff14045653f"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
          "31a83ad2d5c11e560c7bfdfd59659c84"  #0002-clear-patches.patch
          "93070c9a3e5433461dda4065215821ed"  #0007-v5.13-futex2_interface.patch
          "4a0118d6e5dfd3abbf35dd24229e8438"  #0001-ksm-patches.patch
