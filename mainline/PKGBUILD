@@ -109,10 +109,10 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13rc5
+pkgver=5.13rc6
 major=5.13rc
 pkgrel=1
-versiontag=5.13-rc5
+versiontag=5.13-rc6
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL-2.0)
@@ -153,12 +153,12 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snap
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch"
         "$patchsource/misc-patches/zenify.patch")
-md5sums=("e82886b33e0f2028fd1bbf670c8b0890"  #linux-5.13-rc5.tar.gz
-         "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
+md5sums=("5369c4c1d26597fbe197b6658ed20b3f"  #linux-5.13-rc6.tar.gz
+         "79cda3f6dc4a2c5f725865c6f73edbb2"  #config-5.13rc
          "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
-         "efed065f8c1e760a50fbbfabff08df6a"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
-         "06f1b8b9a8147098cfcc2079ee04fe94"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
-         "442bfbf0e464fd5a0c945ada70e1b557"  #0003-init-Kconfig-add-O1-flag.patch
+         "04615f733142fd5c5779922b49ad0316"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
+         "560ba7c6515b1c6c964dba93f73d432d"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "bf24f3ed5e44eebea2b6f514d2fa97fa"  #0003-init-Kconfig-add-O1-flag.patch
          "921b6e826da522638698cff14045653f"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
          "31a83ad2d5c11e560c7bfdfd59659c84"  #0002-clear-patches.patch
          "93070c9a3e5433461dda4065215821ed"  #0007-v5.13-futex2_interface.patch
@@ -174,7 +174,7 @@ md5sums=("e82886b33e0f2028fd1bbf670c8b0890"  #linux-5.13-rc5.tar.gz
          "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
          "bc5130f3f385737bbdf7e7a0cd8d361d"  #0003-ZEN-vhba-Update-to-20210418.patch
          "8bd27bbf98714966f28c792be9b8590d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
-         "2d415de8d73d7acb43a2f7058a063ee3"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+         "b5c118aa069d7843b06c7145b7991b61"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
          "d6b3bcd857e74530a9d0347c6dc05c13"  #0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
          "1e7a53eae980951494ee630853d39d98"  #0002-mm-Support-soft-dirty-flag-read-with-reset.patch
          "17de5f1bddeceae825b0a009ef9837d8"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
