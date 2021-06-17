@@ -116,7 +116,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.12.10
+pkgver=5.12.11
 major=5.12
 pkgrel=1
 arch=(x86_64)
@@ -150,6 +150,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
         "$patchsource/pf-patches/0001-pf-patches.patch"
+        "$patchsource/setup-patches/0001-setup-patches.patch"
         "$patchsource/wine-patches/0007-v5.12-winesync.patch"
         "$patchsource/xanmod-patches/0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
@@ -166,15 +167,15 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
-md5sums=("7a3d78b97103f2b64c8c8592c1dfbe8d"  #linux-5.12.10.tar.xz
-         "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.12
+md5sums=("444a48fd42057b842f891f61b8e2b91c"  #linux-5.12.11.tar.xz
+         "a3077695ca9ba1a18e81bd3f2dade2db"  #config-5.12
          "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
          "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
          "f0c611e207b3787dc656d44dc8adb28d"  #0001-bfq-patches.patch
-         "a0dbbea9529bf2a8a703f9c551d0a97b"  #0001-btrfs-patches.patch
-         "efed065f8c1e760a50fbbfabff08df6a"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
-         "06f1b8b9a8147098cfcc2079ee04fe94"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
-         "442bfbf0e464fd5a0c945ada70e1b557"  #0003-init-Kconfig-add-O1-flag.patch
+         "414b71e26d404893f43a0a87d0729e09"  #0001-btrfs-patches.patch
+         "04615f733142fd5c5779922b49ad0316"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
+         "560ba7c6515b1c6c964dba93f73d432d"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "bf24f3ed5e44eebea2b6f514d2fa97fa"  #0003-init-Kconfig-add-O1-flag.patch
          "921b6e826da522638698cff14045653f"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
          "6211ffdc7b63aa11af4abbfb2c360559"  #0001-clearlinux-patches.patch
          "d06bede79a8068a551d71fd2f48ac999"  #0001-futex-resync-from-gitlab.collabora.com.patch
@@ -188,12 +189,13 @@ md5sums=("7a3d78b97103f2b64c8c8592c1dfbe8d"  #linux-5.12.10.tar.xz
          "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
          "0be00d5f33139773a7cd9fd57c1a2666"  #0001-ntfs3-patches.patch
          "004184322bf51da2c158d3900e55d3a2"  #0001-pf-patches.patch
-         "9573b92353399343db8a691c9b208300"  #0007-v5.12-winesync.patch
+         "32076398ffe7d6dae0ac66e92c48c88a"  #0001-setup-patches.patch
+         "87c0f4d3828f8868dc6cecf86a6e22e6"  #0007-v5.12-winesync.patch
          "ef1c78ab0e9b983868ffa2dac838ec46"  #0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch
          "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
          "bc5130f3f385737bbdf7e7a0cd8d361d"  #0003-ZEN-vhba-Update-to-20210418.patch
          "8bd27bbf98714966f28c792be9b8590d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
-         "2d415de8d73d7acb43a2f7058a063ee3"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+         "b5c118aa069d7843b06c7145b7991b61"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
          "720339a269c42c41daaf805c7265e8b0"  #0001-zstd-patches.patch
          "656a242afa08394510f99bfbfa2a4209"  #0001-zstd-dev-patches.patch
          "d6b3bcd857e74530a9d0347c6dc05c13"  #0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
