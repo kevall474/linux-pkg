@@ -116,7 +116,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.12.11
+pkgver=5.12.12
 major=5.12
 pkgrel=1
 arch=(x86_64)
@@ -167,10 +167,10 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
-md5sums=("444a48fd42057b842f891f61b8e2b91c"  #linux-5.12.11.tar.xz
+md5sums=("13e4c7f6d84a817afd4890337800df1a"  #linux-5.12.12.tar.xz
          "a3077695ca9ba1a18e81bd3f2dade2db"  #config-5.12
          "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
-         "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
+         "6fea54670c43116ed18d8ba97ff3d6f1"  #0001-block-patches.patch
          "f0c611e207b3787dc656d44dc8adb28d"  #0001-bfq-patches.patch
          "414b71e26d404893f43a0a87d0729e09"  #0001-btrfs-patches.patch
          "04615f733142fd5c5779922b49ad0316"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
@@ -179,7 +179,7 @@ md5sums=("444a48fd42057b842f891f61b8e2b91c"  #linux-5.12.11.tar.xz
          "921b6e826da522638698cff14045653f"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
          "6211ffdc7b63aa11af4abbfb2c360559"  #0001-clearlinux-patches.patch
          "d06bede79a8068a551d71fd2f48ac999"  #0001-futex-resync-from-gitlab.collabora.com.patch
-         "0a11ab08e496dff03326347efb982fa0"  #0001-futex2-resync-from-gitlab.collabora.com.patch
+         "e9c9c03683369eebc7d119052e2052ca"  #0001-futex2-resync-from-gitlab.collabora.com.patch
          "f671bb073df5312915ca3672ea9ecbff"  #0001-initramfs-patches.patch
          "4a0118d6e5dfd3abbf35dd24229e8438"  #0001-ksm-patches.patch
          "1536be060202287506c72d97b73baceb"  #0001-v4l2loopback-patches.patch

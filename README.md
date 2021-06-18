@@ -6,7 +6,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 ### Stable
 
-- 5.12.11
+- 5.12.12
 
 ### Mainline
 
