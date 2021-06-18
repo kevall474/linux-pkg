@@ -78,10 +78,10 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13rc5.next.20210611
+pkgver=5.13rc6.next.20210618
 major=5.13rc
 pkgrel=1
-versiontag=20210611
+versiontag=20210618
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL-2.0)
@@ -103,7 +103,6 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
         "$patchsource/lqx-patches/0001-Revert-net-tso-add-UDP-segmentation-support.patch"
         "$patchsource/lqx-patches/0002-zen-Allow-MSR-writes-by-default.patch"
-        "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
         "$patchsource/pf-patches/0001-pf-patches.patch"
         "$patchsource/wine-patches/0007-v5.13-winesync.patch"
@@ -120,11 +119,11 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/sna
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch"
         "$patchsource/misc-patches/zenify.patch")
-md5sums=("18c0e9fa6fe4582bd399b75fef7c0c6e"  #linux-next-next-20210611.tar.gz
+md5sums=("fa52cfdea5034930e457c9879a646acc"  #linux-next-next-20210618.tar.gz
          "596971856cf0b1ff0a78f1dec5f0b326"  #config-5.13rc
-         "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
-         "efed065f8c1e760a50fbbfabff08df6a"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
-         "06f1b8b9a8147098cfcc2079ee04fe94"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "6fea54670c43116ed18d8ba97ff3d6f1"  #0001-block-patches.patch
+         "04615f733142fd5c5779922b49ad0316"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
+         "560ba7c6515b1c6c964dba93f73d432d"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "c0b6b9d3eee1e1fa0d75a8aa6bd56607"  #0001-init-Kconfig-add-O1-flag.patch
          "89e26caae0dece8881b353e8f2436d4d"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
          "31a83ad2d5c11e560c7bfdfd59659c84"  #0002-clear-patches.patch
@@ -132,7 +131,6 @@ md5sums=("18c0e9fa6fe4582bd399b75fef7c0c6e"  #linux-next-next-20210611.tar.gz
          "1536be060202287506c72d97b73baceb"  #0001-v4l2loopback-patches.patch
          "fb58a797f4cf483c4a907bb9af453150"  #0001-Revert-net-tso-add-UDP-segmentation-support.patch
          "76932b2bab1de71b01c58a79cf9c597a"  #0002-zen-Allow-MSR-writes-by-default.patch
-         "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
          "0be00d5f33139773a7cd9fd57c1a2666"  #0001-ntfs3-patches.patch
          "004184322bf51da2c158d3900e55d3a2"  #0001-pf-patches.patch
          "9573b92353399343db8a691c9b208300"  #0007-v5.13-winesync.patch
@@ -140,7 +138,7 @@ md5sums=("18c0e9fa6fe4582bd399b75fef7c0c6e"  #linux-next-next-20210611.tar.gz
          "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
          "bc5130f3f385737bbdf7e7a0cd8d361d"  #0003-ZEN-vhba-Update-to-20210418.patch
          "8bd27bbf98714966f28c792be9b8590d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
-         "2d415de8d73d7acb43a2f7058a063ee3"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+         "b5c118aa069d7843b06c7145b7991b61"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
          "1e7a53eae980951494ee630853d39d98"  #0002-mm-Support-soft-dirty-flag-read-with-reset.patch
          "17de5f1bddeceae825b0a009ef9837d8"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
          "22baa0b09b2604e1331f4d02e73bfd16"  #0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch
