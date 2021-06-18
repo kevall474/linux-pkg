@@ -155,7 +155,7 @@ source=("https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snap
         "$patchsource/misc-patches/zenify.patch")
 md5sums=("5369c4c1d26597fbe197b6658ed20b3f"  #linux-5.13-rc6.tar.gz
          "79cda3f6dc4a2c5f725865c6f73edbb2"  #config-5.13rc
-         "49b44a4d9f3b418cda7a5898c9590439"  #0001-block-patches.patch
+         "6fea54670c43116ed18d8ba97ff3d6f1"  #0001-block-patches.patch
          "04615f733142fd5c5779922b49ad0316"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
          "560ba7c6515b1c6c964dba93f73d432d"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "bf24f3ed5e44eebea2b6f514d2fa97fa"  #0003-init-Kconfig-add-O1-flag.patch
