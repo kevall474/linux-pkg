@@ -1484,137 +1484,138 @@ configure(){
     msg2 "Disable CFS"
     scripts/config --disable CONFIG_FAIR_GROUP_SCHED
     scripts/config --disable CONFIG_CFS_BANDWIDTH
-  elif [[ $_cpu_sched = "5" ]]; then
-    msg2 "Enable MuQSS"
-    scripts/config --enable CONFIG_SCHED_MC
-    scripts/config --enable CONFIG_SCHED_SMT
-    scripts/config --enable CONFIG_SMP
-    scripts/config --enable CONFIG_SCHED_MC_PRIO
-    scripts/config --enable CONFIG_SCHED_MUQSS
+  #elif [[ $_cpu_sched = "5" ]]; then
+  #  msg2 "Enable MuQSS"
+  #  scripts/config --enable CONFIG_SCHED_MC
+  #  scripts/config --enable CONFIG_SCHED_SMT
+  #  scripts/config --enable CONFIG_SMP
+  #  scripts/config --enable CONFIG_SCHED_MC_PRIO
+  #  scripts/config --enable CONFIG_SCHED_MUQSS
 
-    plain ""
-    plain "#########################################"
-    plain "MuQSS configuration"
-    plain ""
-    plain "Set CONFIG_RQ"
-    plain ""
-    plain "RQ_NONE : No sharing: This is the default behaviour where the CPU"
-    plain "scheduler has one runqueue per CPU, whether it is a physical or"
-    plain "logical CPU (hyperthread)."
-    plain ""
-    plain "RQ_SMT : SMT (hyperthread) siblings : With this option enabled,"
-    plain "the CPU scheduler will have one runqueue shared by SMT (hyperthread)"
-    plain "siblings. As these logical cores share one physical core, sharing"
-    plain "the runqueue resource can lead to decreased overhead, lower latency"
-    plain "and higher throughput."
-    plain ""
-    plain "RQ_MC : Multicore siblings : With this option enabled, the CPU"
-    plain "scheduler will have one runqueue shared by multicore siblings"
-    plain "in addition to any SMT siblings. As these physical cores share"
-    plain "caches, sharing the runqueue resource will lead to lower latency,"
-    plain "but its effects on overhead and throughput are less predictable. As"
-    plain "a general rule, 6 or fewer cores will likely benefit from this,"
-    plain "while larger CPUs will only derive a latency benefit. If your"
-    plain "workloads are primarily single threaded, this will possibly worsen"
-    plain "throughput. If you are only concerned about latency then enable this"
-    plain "regardless of how many cores you have."
-    plain ""
-    plain "RQ_MC_LLC : Multicore siblings (LLC) : With this option enabled, the"
-    plain "CPU scheduler will behave similarly as with Multicore siblings."
-    plain "This option takes LLC cache into account when scheduling tasks."
-    plain "Option may benefit CPUs with multiple LLC caches, such as Ryzen and"
-    plain "Xeon CPUs."
-    plain ""
-    plain "RQ_SMP : Symmetric Multi-Processing : With this option enabled, the"
-    plain "CPU scheduler will have one runqueue shared by all physical CPUs"
-    plain "unless they are on separate NUMA nodes. As physical CPUs usually do"
-    plain "not share resources, sharing the runqueue will normally worsen"
-    plain "throughput but improve latency. If you only care about latency"
-    plain "enable this"
-    plain ""
-    plain "RQ_ALL : With this option enabled, the CPU scheduler will have one"
-    plain "runqueue regardless of the architecture configuration, including"
-    plain "across NUMA nodes. This can substantially decrease throughput in"
-    plain "NUMA configurations, but light NUMA designs will not be dramatically"
-    plain "affected. This option should only be chosen if latency is the"
-    plain "prime concern."
-    plain ""
-    read -rp "`echo $' > 1.RQ_NONE\n > 2.RQ_SMT\n > 3.RQ_MC\n > 4.RQ_MC_LLC\n > 5.RQ_SMP\n > 6.RQ_ALL\n > Default (RQ_MC)\nchoice[1-6]: '`" _config_rq
-    if [[ $_config_rq = "1" ]]; then
-      msg2 "Set to RQ_NONE"
-      scripts/config --enable CONFIG_RQ_NONE
-      scripts/config --set-val CONFIG_SHARERQ 0
-      msg2 "Disable CFS"
-      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable CONFIG_CFS_BANDWIDTH
-    elif [[ $_config_rq = "2" ]]; then
-      msg2 "Set to RQ_SMT"
-      scripts/config --enable CONFIG_RQ_SMT
-      scripts/config --set-val CONFIG_SHARERQ 1
-      msg2 "Disable CFS"
-      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable CONFIG_CFS_BANDWIDTH
+  #  plain ""
+  #  plain "#########################################"
+  #  plain "MuQSS configuration"
+  #  plain ""
+  #  plain "Set CONFIG_RQ"
+  #  plain ""
+  #  plain "RQ_NONE : No sharing: This is the default behaviour where the CPU"
+  #  plain "scheduler has one runqueue per CPU, whether it is a physical or"
+  #  plain "logical CPU (hyperthread)."
+  #  plain ""
+  #  plain "RQ_SMT : SMT (hyperthread) siblings : With this option enabled,"
+  #  plain "the CPU scheduler will have one runqueue shared by SMT (hyperthread)"
+  #  plain "siblings. As these logical cores share one physical core, sharing"
+  #  plain "the runqueue resource can lead to decreased overhead, lower latency"
+  #  plain "and higher throughput."
+  #  plain ""
+  #  plain "RQ_MC : Multicore siblings : With this option enabled, the CPU"
+  #  plain "scheduler will have one runqueue shared by multicore siblings"
+  #  plain "in addition to any SMT siblings. As these physical cores share"
+  #  plain "caches, sharing the runqueue resource will lead to lower latency,"
+  #  plain "but its effects on overhead and throughput are less predictable. As"
+  #  plain "a general rule, 6 or fewer cores will likely benefit from this,"
+  #  plain "while larger CPUs will only derive a latency benefit. If your"
+  #  plain "workloads are primarily single threaded, this will possibly worsen"
+  #  plain "throughput. If you are only concerned about latency then enable this"
+  #  plain "regardless of how many cores you have."
+  #  plain ""
+  #  plain "RQ_MC_LLC : Multicore siblings (LLC) : With this option enabled, the"
+  #  plain "CPU scheduler will behave similarly as with Multicore siblings."
+  #  plain "This option takes LLC cache into account when scheduling tasks."
+  #  plain "Option may benefit CPUs with multiple LLC caches, such as Ryzen and"
+  #  plain "Xeon CPUs."
+  #  plain ""
+  #  plain "RQ_SMP : Symmetric Multi-Processing : With this option enabled, the"
+  #  plain "CPU scheduler will have one runqueue shared by all physical CPUs"
+  #  plain "unless they are on separate NUMA nodes. As physical CPUs usually do"
+  #  plain "not share resources, sharing the runqueue will normally worsen"
+  #  plain "throughput but improve latency. If you only care about latency"
+  #  plain "enable this"
+  #  plain ""
+  #  plain "RQ_ALL : With this option enabled, the CPU scheduler will have one"
+  #  plain "runqueue regardless of the architecture configuration, including"
+  #  plain "across NUMA nodes. This can substantially decrease throughput in"
+  #  plain "NUMA configurations, but light NUMA designs will not be dramatically"
+  #  plain "affected. This option should only be chosen if latency is the"
+  #  plain "prime concern."
+  #  plain ""
+  #  read -rp "`echo $' > 1.RQ_NONE\n > 2.RQ_SMT\n > 3.RQ_MC\n > 4.RQ_MC_LLC\n > 5.RQ_SMP\n > 6.RQ_ALL\n > Default (RQ_MC)\nchoice[1-6]: '`" _config_rq
+  #  if [[ $_config_rq = "1" ]]; then
+  #    msg2 "Set to RQ_NONE"
+  #    scripts/config --enable CONFIG_RQ_NONE
+  #    scripts/config --set-val CONFIG_SHARERQ 0
+  #    msg2 "Disable CFS"
+  #    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+  #    scripts/config --disable CONFIG_CFS_BANDWIDTH
+  #  elif [[ $_config_rq = "2" ]]; then
+  #    msg2 "Set to RQ_SMT"
+  #    scripts/config --enable CONFIG_RQ_SMT
+  #    scripts/config --set-val CONFIG_SHARERQ 1
+  #    msg2 "Disable CFS"
+  #    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+  #    scripts/config --disable CONFIG_CFS_BANDWIDTH
 
-      sleep 2
+  #    sleep 2
 
-      plain ""
-      plain "#########################################"
-      plain "Enable/disable CONFIG_SMT_NICE"
-      plain ""
-      plain "SMT nice support makes each logical CPU aware of what is running on"
-      plain "its hyperthread siblings, maintaining appropriate distribution of"
-      plain "CPU according to nice levels and scheduling policies at the expense"
-      plain "of slightly increased overhead."
-      plain "If unsure Enable"
-      plain ""
-      read -rp "`echo $' > 1.Disable\n > 2.Enable\n > Default (Enable)\nchoice[1-2]: '`" _smt_nice
-      if [[ $_smt_nice = "1" ]]; then
-        msg2 "Disable CONFIG_SMT_NICE"
-        scripts/config --disable CONFIG_SMT_NICE
-      elif [[ $_smt_nice = "2" ]]; then
-        msg2 "Enable CONFIG_SMT_NICE"
-        scripts/config --enable CONFIG_SMT_NICE
-      else
-        msg2 "Enable CONFIG_SMT_NICE"
-        scripts/config --enable CONFIG_SMT_NICE
-      fi
+  #    plain ""
+  #    plain "#########################################"
+  #    plain "Enable/disable CONFIG_SMT_NICE"
+  #    plain ""
+  #    plain "SMT nice support makes each logical CPU aware of what is running on"
+  #    plain "its hyperthread siblings, maintaining appropriate distribution of"
+  #    plain "CPU according to nice levels and scheduling policies at the expense"
+  #    plain "of slightly increased overhead."
+  #    plain "If unsure Enable"
+  #    plain ""
+  #    read -rp "`echo $' > 1.Disable\n > 2.Enable\n > Default (Enable)\nchoice[1-2]: '`" _smt_nice
+  #    if [[ $_smt_nice = "1" ]]; then
 
-    elif [[ $_config_rq = "3" ]]; then
-      msg2 "Set to RQ_MC"
-      scripts/config --enable CONFIG_RQ_MC
-      scripts/config --set-val CONFIG_SHARERQ 2
-      msg2 "Disable CFS"
-      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable CONFIG_CFS_BANDWIDTH
-    elif [[ $_config_rq = "4" ]]; then
-      msg2 "Set to RQ_MC_LLC"
-      scripts/config --enable CONFIG_RQ_MC_LLC
-      scripts/config --set-val CONFIG_SHARERQ 3
-      msg2 "Disable CFS"
-      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable CONFIG_CFS_BANDWIDTH
-    elif [[ $_config_rq = "5" ]]; then
-      msg2 "Set to RQ_SMP"
-      scripts/config --enable CONFIG_RQ_SMP
-      scripts/config --set-val CONFIG_SHARERQ 4
-      msg2 "Disable CFS"
-      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable CONFIG_CFS_BANDWIDTH
-    elif [[ $_config_rq = "6" ]]; then
-      msg2 "Set to RQ_ALL"
-      scripts/config --enable CONFIG_RQ_ALL
-      scripts/config --set-val CONFIG_SHARERQ 5
-      msg2 "Disable CFS"
-      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable CONFIG_CFS_BANDWIDTH
-    else
-      msg2 "Set to RQ_MC"
-      scripts/config --enable CONFIG_RQ_MC
-      scripts/config --set-val CONFIG_SHARERQ 2
-      msg2 "Disable CFS"
-      scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-      scripts/config --disable CONFIG_CFS_BANDWIDTH
-    fi
+  #      msg2 "Disable CONFIG_SMT_NICE"
+  #      scripts/config --disable CONFIG_SMT_NICE
+  #    elif [[ $_smt_nice = "2" ]]; then
+  #      msg2 "Enable CONFIG_SMT_NICE"
+  #      scripts/config --enable CONFIG_SMT_NICE
+  #    else
+  #      msg2 "Enable CONFIG_SMT_NICE"
+  #      scripts/config --enable CONFIG_SMT_NICE
+  #    fi
+
+  #  elif [[ $_config_rq = "3" ]]; then
+  #    msg2 "Set to RQ_MC"
+  #    scripts/config --enable CONFIG_RQ_MC
+  #    scripts/config --set-val CONFIG_SHARERQ 2
+  #    msg2 "Disable CFS"
+  #    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+  #    scripts/config --disable CONFIG_CFS_BANDWIDTH
+  #  elif [[ $_config_rq = "4" ]]; then
+  #    msg2 "Set to RQ_MC_LLC"
+  #    scripts/config --enable CONFIG_RQ_MC_LLC
+  #    scripts/config --set-val CONFIG_SHARERQ 3
+  #    msg2 "Disable CFS"
+  #    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+  #    scripts/config --disable CONFIG_CFS_BANDWIDTH
+  #  elif [[ $_config_rq = "5" ]]; then
+  #    msg2 "Set to RQ_SMP"
+  #    scripts/config --enable CONFIG_RQ_SMP
+  #    scripts/config --set-val CONFIG_SHARERQ 4
+  #    msg2 "Disable CFS"
+  #    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+  #    scripts/config --disable CONFIG_CFS_BANDWIDTH
+  #  elif [[ $_config_rq = "6" ]]; then
+  #    msg2 "Set to RQ_ALL"
+  #    scripts/config --enable CONFIG_RQ_ALL
+  #    scripts/config --set-val CONFIG_SHARERQ 5
+  #    msg2 "Disable CFS"
+  #    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+  #    scripts/config --disable CONFIG_CFS_BANDWIDTH
+  #  else
+  #    msg2 "Set to RQ_MC"
+  #    scripts/config --enable CONFIG_RQ_MC
+  #    scripts/config --set-val CONFIG_SHARERQ 2
+  #    msg2 "Disable CFS"
+  #    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+  #    scripts/config --disable CONFIG_CFS_BANDWIDTH
+  #  fi
   else
     msg2 "Enable CFS"
     scripts/config --enable CONFIG_FAIR_GROUP_SCHED
@@ -2412,19 +2413,19 @@ rapid_config(){
     msg2 "Disable CFS"
     scripts/config --disable CONFIG_FAIR_GROUP_SCHED
     scripts/config --disable CONFIG_CFS_BANDWIDTH
-  elif [[ $_cpu_sched = "5" ]]; then
-    msg2 "Enable MuQSS"
-    scripts/config --enable CONFIG_SCHED_MC
-    scripts/config --enable CONFIG_SCHED_SMT
-    scripts/config --enable CONFIG_SMP
-    scripts/config --enable CONFIG_SCHED_MC_PRIO
-    scripts/config --enable CONFIG_SCHED_MUQSS
-    msg2 "Set to RQ_MC"
-    scripts/config --enable CONFIG_RQ_MC
-    scripts/config --set-val CONFIG_SHARERQ 2
-    msg2 "Disable CFS"
-    scripts/config --disable CONFIG_FAIR_GROUP_SCHED
-    scripts/config --disable CONFIG_CFS_BANDWIDTH
+  #elif [[ $_cpu_sched = "5" ]]; then
+  #  msg2 "Enable MuQSS"
+  #  scripts/config --enable CONFIG_SCHED_MC
+  #  scripts/config --enable CONFIG_SCHED_SMT
+  #  scripts/config --enable CONFIG_SMP
+  #  scripts/config --enable CONFIG_SCHED_MC_PRIO
+  #  scripts/config --enable CONFIG_SCHED_MUQSS
+  #  msg2 "Set to RQ_MC"
+  #  scripts/config --enable CONFIG_RQ_MC
+  #  scripts/config --set-val CONFIG_SHARERQ 2
+  #  msg2 "Disable CFS"
+  #  scripts/config --disable CONFIG_FAIR_GROUP_SCHED
+  #  scripts/config --disable CONFIG_CFS_BANDWIDTH
   else
     msg2 "Enable CFS"
     scripts/config --enable CONFIG_FAIR_GROUP_SCHED

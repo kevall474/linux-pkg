@@ -22,7 +22,6 @@
 #Set '2' for CacULE-RDB CPU Scheduler
 #Set '3' for BMQ CPU Scheduler
 #Set '4' for PDS CPU Scheduler
-#Set '5' for MuQSS CPU Scheduler
 #Leave empty for no CPU Scheduler
 #Default is empty. It will build with no cpu scheduler. To build with cpu shceduler just use : env _cpu_sched=(1,2,3,4 or 5) makepkg -s
 if [ -z ${_cpu_sched+x} ]; then
@@ -96,12 +95,6 @@ elif [[ $_cpu_sched = "4" ]]; then
   elif [[ "$_compiler" = "2" ]]; then
     pkgbase=linux-kernel-pds-clang
   fi
-elif [[ $_cpu_sched = "5" ]]; then
-  if [[ "$_compiler" = "1" ]]; then
-    pkgbase=linux-kernel-muqss-gcc
-  elif [[ "$_compiler" = "2" ]]; then
-    pkgbase=linux-kernel-muqss-clang
-  fi
 else
   if [[ "$_compiler" = "1" ]]; then
     pkgbase=linux-kernel-gcc
@@ -116,8 +109,8 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.12.12
-major=5.12
+pkgver=5.13
+major=5.13
 pkgrel=1
 arch=(x86_64)
 url="https://www.kernel.org/"
@@ -130,29 +123,27 @@ makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules
 patchsource=https://raw.githubusercontent.com/kevall474/kernel-patches/main/$major
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "config-$major"
-        "$patchsource/bbr2-patches/0001-bbr2-5.12-introduce-BBRv2.patch"
+        "$patchsource/bbr2-patches/0001-bbr2-5.13-introduce-BBRv2.patch"
+        "$patchsource/bcachefs-patches/0001-bcachefs-5.13-introduce-bcachefs-patchset.patch"
         "$patchsource/block-patches/0001-block-patches.patch"
         "$patchsource/bfq-patches/0001-bfq-patches.patch"
         "$patchsource/btrfs-patches/0001-btrfs-patches.patch"
-        "$patchsource/cpu-patches/0001-cpu-5.12-merge-graysky-s-patchset.patch"
+        "$patchsource/cpu-patches/0001-cpu-5.13-merge-graysky-s-patchset.patch"
         "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
         "$patchsource/cpu-patches/0003-init-Kconfig-add-O1-flag.patch"
         "$patchsource/cpu-patches/0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch"
         "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
         "$patchsource/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "$patchsource/futex2-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
-        "$patchsource/initramfs-patches/0001-initramfs-patches.patch"
         "$patchsource/ksm-patches/0001-ksm-patches.patch"
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
-        "$patchsource/lqx-patches/0001-Revert-net-tso-add-UDP-segmentation-support.patch"
-        "$patchsource/lqx-patches/0002-zen-Allow-MSR-writes-by-default.patch"
-        "$patchsource/lqx-patches/0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch"
-        "$patchsource/mm-patches/0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch"
+        "$patchsource/lqx-patches/0001-zen-Allow-MSR-writes-by-default.patch"
+        "$patchsource/mm-patches/0001-mm-5.13-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
         "$patchsource/pf-patches/0001-pf-patches.patch"
-        "$patchsource/setup-patches/0001-setup-patches.patch"
-        "$patchsource/wine-patches/0007-v5.12-winesync.patch"
-        "$patchsource/xanmod-patches/0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch"
+        "$patchsource/security-patches/0001-security-patches.patch"
+        "$patchsource/wine-patches/0007-v5.13-winesync.patch"
+        "$patchsource/xanmod-patches/0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
         "$patchsource/zen-patches/0003-ZEN-vhba-Update-to-20210418.patch"
         "$patchsource/zen-patches/0002-ZEN-intel-pstate-Implement-enable-parameter.patch"
@@ -167,68 +158,59 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
-md5sums=("13e4c7f6d84a817afd4890337800df1a"  #linux-5.12.12.tar.xz
-         "a3077695ca9ba1a18e81bd3f2dade2db"  #config-5.12
-         "f0432ad99030e984d743b504994eb548"  #0001-bbr2-5.12-introduce-BBRv2.patch
-         "6fea54670c43116ed18d8ba97ff3d6f1"  #0001-block-patches.patch
-         "f0c611e207b3787dc656d44dc8adb28d"  #0001-bfq-patches.patch
-         "414b71e26d404893f43a0a87d0729e09"  #0001-btrfs-patches.patch
-         "04615f733142fd5c5779922b49ad0316"  #0001-cpu-5.12-merge-graysky-s-patchset.patch
-         "560ba7c6515b1c6c964dba93f73d432d"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
-         "bf24f3ed5e44eebea2b6f514d2fa97fa"  #0003-init-Kconfig-add-O1-flag.patch
+md5sums=("76c60fb304510a7bbd9c838790bc5fe4"  #linux-5.13.tar.xz
+         "fdec28b10a834b4f10a154aebf5b9b7c"  #config-5.13
+         "12cdc30bc3e2a17825b23b63bd6a5e7a"  #0001-bbr2-5.13-introduce-BBRv2.patch
+         "f9dd96a59d6a84e451736e697a897227"  #0001-bcachefs-5.13-introduce-bcachefs-patchset.patch
+         "396c84c4a6557db27f9c3bbfa656ac3e"  #0001-block-patches.patch
+         "e16eb528e701193bc8cb1facc6b27231"  #0001-bfq-patches.patch
+         "63078800040b2a9a9f19c59c4ebf5b23"  #0001-btrfs-patches.patch
+         "b1d52157c29773e899658676b5e3a3d0"  #0001-cpu-5.13-merge-graysky-s-patchset.patch
+         "97e4bafc4d830edf8dccad7bc93de748"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
+         "9ed92b6421a4829c3be67af8e4b65a04"  #0003-init-Kconfig-add-O1-flag.patch
          "921b6e826da522638698cff14045653f"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
-         "6211ffdc7b63aa11af4abbfb2c360559"  #0001-clearlinux-patches.patch
-         "d06bede79a8068a551d71fd2f48ac999"  #0001-futex-resync-from-gitlab.collabora.com.patch
-         "e9c9c03683369eebc7d119052e2052ca"  #0001-futex2-resync-from-gitlab.collabora.com.patch
-         "f671bb073df5312915ca3672ea9ecbff"  #0001-initramfs-patches.patch
-         "4a0118d6e5dfd3abbf35dd24229e8438"  #0001-ksm-patches.patch
-         "1536be060202287506c72d97b73baceb"  #0001-v4l2loopback-patches.patch
-         "fb58a797f4cf483c4a907bb9af453150"  #0001-Revert-net-tso-add-UDP-segmentation-support.patch
-         "76932b2bab1de71b01c58a79cf9c597a"  #0002-zen-Allow-MSR-writes-by-default.patch
-         "e7397ae0a6e4b1d8acfcfdd4dde5b8b7"  #0002-Revert-bus-mhi-core-Process-execution-environment-ch.patch
-         "f28b55fff5b5c83a005ca1677a8da74c"  #0001-mm-5.12-protect-file-mappings-under-memory-pressure.patch
-         "0be00d5f33139773a7cd9fd57c1a2666"  #0001-ntfs3-patches.patch
-         "004184322bf51da2c158d3900e55d3a2"  #0001-pf-patches.patch
-         "32076398ffe7d6dae0ac66e92c48c88a"  #0001-setup-patches.patch
-         "87c0f4d3828f8868dc6cecf86a6e22e6"  #0007-v5.12-winesync.patch
-         "ef1c78ab0e9b983868ffa2dac838ec46"  #0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch
-         "2abbaa53bb0f5986d2a4acbec9d0cf61"  #0001-ZEN-Add-VHBA-driver.patch
-         "bc5130f3f385737bbdf7e7a0cd8d361d"  #0003-ZEN-vhba-Update-to-20210418.patch
-         "8bd27bbf98714966f28c792be9b8590d"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
-         "b5c118aa069d7843b06c7145b7991b61"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-         "720339a269c42c41daaf805c7265e8b0"  #0001-zstd-patches.patch
-         "656a242afa08394510f99bfbfa2a4209"  #0001-zstd-dev-patches.patch
+         "c360b8c17d778f98a54fa7cddf348566"  #0001-clearlinux-patches.patch
+         "85f4be6562ee033b83814353a12b61bd"  #0001-futex-resync-from-gitlab.collabora.com.patch
+         "18be1cd00ccf2a8b1c9913e2f82a555a"  #0001-futex2-resync-from-gitlab.collabora.com.patch
+         "ce9beff503ee9e6ce6fd983c1bbbdd9e"  #0001-ksm-patches.patch
+         "ef7748efcae55f7db8961227cbae3677"  #0001-v4l2loopback-patches.patch
+         "09a9e83b7b828fae46fd1a4f4cc23c28"  #0001-zen-Allow-MSR-writes-by-default.patch
+         "d27d970188b39b775830a86472cda673"  #0001-mm-5.13-protect-file-mappings-under-memory-pressure.patch
+         "86825a0c5716a1d9c6a39f9d3886b1bf"  #0001-ntfs3-patches.patch
+         "7255aedc800c417592ce7160585770b9"  #0001-pf-patches.patch
+         "9977ba0e159416108217a45438ebebb4"  #0001-security-patches.patch
+         "9573b92353399343db8a691c9b208300"  #0007-v5.13-winesync.patch
+         "136c4c718ac2dffd2e3ed55d64431a18"  #0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch
+         "6130dd0033e44e9ee3cacbbfe578ff06"  #0001-ZEN-Add-VHBA-driver.patch
+         "8a9f82e7cbac3eb60ff23ab7221625ad"  #0003-ZEN-vhba-Update-to-20210418.patch
+         "55ae1e0dd0d7024a3e825a4468d87e50"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
+         "9bb46b8ce45259c238c5233b8394d70b"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+         "62f77fb6793177c53ed7cf05c6c8d8c1"  #0001-zstd-patches.patch
+         "24e975eef21cfdabfab86d80d19a1f83"  #0001-zstd-dev-patches.patch
          "d6b3bcd857e74530a9d0347c6dc05c13"  #0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
          "1e7a53eae980951494ee630853d39d98"  #0002-mm-Support-soft-dirty-flag-read-with-reset.patch
-         "17de5f1bddeceae825b0a009ef9837d8"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
-         "22baa0b09b2604e1331f4d02e73bfd16"  #0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch
-         "01174db38e680ab4c3816555f27dee41"  #0004-mm-set-8-megabytes-for-address_space-level-file-read.patch
-         "388d99168ebf40c7b377715f07e41b25"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
+         "b179a695ab935d7a7c159f8f8bcd3f01"  #0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch
+         "b3388af517abd48879b7890dae935286"  #0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch
+         "26be410fdc6d7c4f4e122a74fda6f96b"  #0004-mm-set-8-megabytes-for-address_space-level-file-read.patch
+         "8d51ee9dd00a1b0c75dc076b4710d5ca"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
          "168a924c7c83ecdc872a9a1c6d1c8bdb"  #0006-add-acs-overrides_iommu.patch
          "27e6001bacfcfca1c161bf6ef946a79b") #vm.max_map_count.patch
 #zenify workarround with CacULE
 if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
- source+=("$patchsource/misc-patches/zenify.patch")
- md5sums+=("8e71f0c43157654c4105224d89cc6709")  #zenify.patch
+source+=("$patchsource/misc-patches/zenify.patch")
+md5sums+=("8e71f0c43157654c4105224d89cc6709")  #zenify.patch
 fi
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
-  source+=("${patchsource}/cacule-patches/cacule-$major.patch"
-           "${patchsource}/cacule-patches/0002-XANMOD-cacule-Change-default-preemption-latency-to-2.patch"
-           "${patchsource}/cacule-patches/0003-XANMOD-init-Kconfig-cacule-Set-SCHED_AUTOGROUP_DEFAU.patch")
-  md5sums+=("09af345d604085af4dd834c653925444"  #cacule-5.12.patch
-            "89a9cfb123d08c7b14319277f9c1307f"  #0002-XANMOD-cacule-Change-default-preemption-latency-to-2.patch
-            "73b8ebdb30868471332909a9e65f13f9") #0003-XANMOD-init-Kconfig-cacule-Set-SCHED_AUTOGROUP_DEFAU.patch
+  source+=("${patchsource}/cacule-patches/cacule-$major.patch")
+  md5sums+=("8fab6f0acf86d138a283c4dd044198ed")  #cacule-5.13.patch
 elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
-  source+=("${patchsource}/prjc-patches/prjc_v$major-r1.patch")
-  md5sums+=("c1f3a7c64781eb01d7c79e5d33c3155a")  #prjc_v5.12-r1.patch
-elif [[ $_cpu_sched = "5" ]]; then
-  source+=("${patchsource}/muqss-patches/patch-$major-ck1")
-  md5sums+=("8390ad22d4fff62945741b45e4385d02")  #patch-5.12-ck1
+  source+=("${patchsource}/prjc-patches/prjc_v$major-r0.patch")
+  md5sums+=("51f8c1a9b762f6c1c604de1303183e72")  #prjc_v5.13-r0.patch
 fi
 # rdb patch
 if [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/rdb-$major.patch")
-  md5sums+=("1f9f405241a2b2025dea2f9ac3218a40")  #rdb-5.12.patch
+  md5sums+=("efb4f07f10058ec12933ba3ea12aa983")  #rdb-5.13.patch
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -353,13 +335,13 @@ _package(){
     msg2 "Workaround missing winesync header"
     install -Dm644 "${srcdir}/linux-$pkgver"/include/uapi/linux/winesync.h "${pkgdir}/usr/include/linux/winesync.h"
   fi
-  
+
   # load winesync module at boot
   if [ -e "${srcdir}/winesync.conf" ]; then
     msg2 "Set the winesync module to be loaded at boot through /etc/modules-load.d"
     install -Dm644 "${srcdir}"/winesync.conf "${pkgdir}/etc/modules-load.d/winesync.conf"
   fi
-  
+
   # install udev rule for winesync
   if [ -e "${srcdir}/winesync.rules" ]; then
     msg2 "Installing udev rule for winesync"
