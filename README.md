@@ -6,7 +6,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 ### Stable
 
-- 5.12.12
+- 5.13
 
 ### Mainline
 
@@ -22,7 +22,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
     git clone https://github.com/kevall474/Linux.git
     cd Linux/stable
-    env _cpu_sched=(1,2,3,4 or 5) _compiler=(1 or 2) makepkg -s
+    env _cpu_sched=(1,2,3 or 4) _compiler=(1 or 2) makepkg -s
 
 ### Build Mainline kernel
 
@@ -48,7 +48,6 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
         2 : CacULE-RDB by Hamad Al Marri
         3 : BMQ by Alfred Chen
         4 : PDS by Alfred Chen
-        5 : MuQSS by Con Kolivas
 
 Leave this variable empty if you don't want to add a CPU Scheduler.
 
