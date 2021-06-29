@@ -1452,6 +1452,32 @@ configure(){
   sleep 2s
 
   plain ""
+  plain "#########################################"
+  plain "Enable SECURITY_FORK_BRUT, Fork brute force attack detection"
+  plain "and mitigation"
+  plain ""
+  plain "This is an LSM that stops any fork brute force attack against"
+  plain "vulnerable userspace processes. The detection method is based on"
+  plain "the application crash period and as a mitigation procedure all the"
+  plain "offending tasks are killed. Also, the executable file involved in the"
+  plain "attack will be marked as not allowed and new execve system calls"
+  plain "using this file will fail. Like capabilities, this security module"
+  plain "stacks with other LSMs."
+  read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _security
+  if [[ "$_security" = "1" ]]; then
+    msg2 "Enable SECURITY_FORK_BRUT"
+    scripts/config --enable CONFIG_SECURITY_FORK_BRUT
+  elif [[ "$_security" = "1" ]]; then
+    msg2 "Enable SECURITY_FORK_BRUT"
+    scripts/config --disable CONFIG_SECURITY_FORK_BRUT
+  else
+    msg2 "Enable SECURITY_FORK_BRUT"
+    scripts/config --enable CONFIG_SECURITY_FORK_BRUT
+  fi
+
+  sleep 2s
+
+  plain ""
   if [[ $_cpu_sched = "1" ]]; then
     msg2 "Enable CacULE CPU scheduler"
     scripts/config --enable CONFIG_CACULE_SCHED
@@ -2378,6 +2404,11 @@ rapid_config(){
 
   msg2 "Enable winesync support"
   scripts/config --module CONFIG_WINESYNC
+
+  sleep 2s
+
+  msg2 "Enable SECURITY_FORK_BRUT"
+  scripts/config --enable CONFIG_SECURITY_FORK_BRUT
 
   sleep 2s
 
