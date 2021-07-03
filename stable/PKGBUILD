@@ -134,7 +134,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/cpu-patches/0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch"
         "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
         "$patchsource/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
-        "$patchsource/futex2-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "$patchsource/futex-tkg-patches/0007-v5.13-futex2_interface.patch"
         "$patchsource/ksm-patches/0001-ksm-patches.patch"
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
         "$patchsource/lqx-patches/0001-zen-Allow-MSR-writes-by-default.patch"
@@ -171,7 +171,7 @@ md5sums=("76c60fb304510a7bbd9c838790bc5fe4"  #linux-5.13.tar.xz
          "921b6e826da522638698cff14045653f"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
          "c360b8c17d778f98a54fa7cddf348566"  #0001-clearlinux-patches.patch
          "85f4be6562ee033b83814353a12b61bd"  #0001-futex-resync-from-gitlab.collabora.com.patch
-         "18be1cd00ccf2a8b1c9913e2f82a555a"  #0001-futex2-resync-from-gitlab.collabora.com.patch
+         "SKIP"  #0001-futex2-resync-from-gitlab.collabora.com.patch
          "ce9beff503ee9e6ce6fd983c1bbbdd9e"  #0001-ksm-patches.patch
          "ef7748efcae55f7db8961227cbae3677"  #0001-v4l2loopback-patches.patch
          "09a9e83b7b828fae46fd1a4f4cc23c28"  #0001-zen-Allow-MSR-writes-by-default.patch
@@ -245,14 +245,14 @@ prepare(){
   # Customize the kernel
   source "${startdir}"/prepare
 
-  configure
+#configure
 
-  cpu_arch
+#cpu_arch
 
   # Automation building with rapid_config
   # Uncomment rapid_config and comment out configure and cpu_arch
   # rapid_config is meant to work with build.sh for automation building
-  #rapid_config
+  rapid_config
 
   # strip_down script
   #strip_down
