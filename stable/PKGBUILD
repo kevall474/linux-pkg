@@ -177,7 +177,7 @@ md5sums=("76c60fb304510a7bbd9c838790bc5fe4"  #linux-5.13.tar.xz
          "09a9e83b7b828fae46fd1a4f4cc23c28"  #0001-zen-Allow-MSR-writes-by-default.patch
          "d27d970188b39b775830a86472cda673"  #0001-mm-5.13-protect-file-mappings-under-memory-pressure.patch
          "86825a0c5716a1d9c6a39f9d3886b1bf"  #0001-ntfs3-patches.patch
-         "7255aedc800c417592ce7160585770b9"  #0001-pf-patches.patch
+         "ed551763bd8112d087bcd21782d68325"  #0001-pf-patches.patch
          "9977ba0e159416108217a45438ebebb4"  #0001-security-patches.patch
          "9573b92353399343db8a691c9b208300"  #0007-v5.13-winesync.patch
          "136c4c718ac2dffd2e3ed55d64431a18"  #0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch
@@ -185,7 +185,7 @@ md5sums=("76c60fb304510a7bbd9c838790bc5fe4"  #linux-5.13.tar.xz
          "8a9f82e7cbac3eb60ff23ab7221625ad"  #0003-ZEN-vhba-Update-to-20210418.patch
          "55ae1e0dd0d7024a3e825a4468d87e50"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
          "9bb46b8ce45259c238c5233b8394d70b"  #0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-         "62f77fb6793177c53ed7cf05c6c8d8c1"  #0001-zstd-patches.patch
+         "b79559e409253824cf6c569dfe9a7d7f"  #0001-zstd-patches.patch
          "24e975eef21cfdabfab86d80d19a1f83"  #0001-zstd-dev-patches.patch
          "d6b3bcd857e74530a9d0347c6dc05c13"  #0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
          "1e7a53eae980951494ee630853d39d98"  #0002-mm-Support-soft-dirty-flag-read-with-reset.patch
