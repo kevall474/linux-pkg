@@ -260,15 +260,15 @@ prepare(){
   # fix for GCC 12.0.0 (git version)
   # plugins don't work
   # disable plugins
-  if [[ "$GCC_VERSION" = "12.0.0" ]]; then
-    sleep 2s
-    plain ""
-    msg2 "Disable CONFIG_HAVE_GCC_PLUGINS/CONFIG_GCC_PLUGINS (Quick fix for gcc 12.0.0 git version)"
-    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
-    scripts/config --disable CONFIG_GCC_PLUGINS
-    plain ""
-    sleep 2s
-  fi
+  #if [[ "$GCC_VERSION" = "12.0.0" ]]; then
+  #   sleep 2s
+  #   plain ""
+  #   msg2 "Disable CONFIG_HAVE_GCC_PLUGINS/CONFIG_GCC_PLUGINS (Quick fix for gcc 12.0.0 git version)"
+  #   scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
+  #   scripts/config --disable CONFIG_GCC_PLUGINS
+  #   plain ""
+  #   sleep 2s
+  #fi
 
   # Setting localversion
   msg2 "Setting localversion..."
@@ -314,9 +314,12 @@ _package(){
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 arch/${ARCH}/boot/bzImage "$modulesdir/vmlinuz"
+  #install -Dm644 arch/${ARCH}/boot/bzImage "$modulesdir/vmlinuz"
+  msg2 "install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz""
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
+  msg2 "echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase""
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
