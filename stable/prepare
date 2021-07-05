@@ -2215,6 +2215,11 @@ rapid_config(){
   scripts/config --enable CONFIG_PREEMPTION
 
   sleep 2s
+  
+  msg2 "Enable CONFIG_IRQ_FORCE_THREADING"
+  scripts/config --enable CONFIG_IRQ_FORCE_THREADING
+  
+  sleep 2s
 
   msg2 "Set to full tickless"
   scripts/config --disable CONFIG_HZ_PERIODIC
