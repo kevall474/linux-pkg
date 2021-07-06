@@ -147,19 +147,6 @@ and reasoning for it.
 
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-# Troubleshooting
-
-### The system isn't booting with the compiled kernel used a custom llvm/clang (git version)
-
-- If you're compiling with llvm-git be sure to recompile the mesa-git lib32-mesa-git packages against it.
-- Systems with intel/nvidia graphics just need to compile them with env _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLANG
-- Systems with AMD graphics need to compile with env _llvm=y _compiler=(1 or 2) makepkg -s | _compiler=1 ==> GCC  _compiler=2 ==> CLANG | _llvm=y is optional. It's to enable LLVM by default since ACO is the default shader compiler.
-- After compiling install both packages with sudo pacman -U mesa-git lib32-mesa-git
-
-You will find the following packages here:
-- https://github.com/kevall474/llvm-git
-- https://github.com/kevall474/mesa-git
-
 # Contact info
 
 kevall474@tuta.io if you have any problems or bugs report.
