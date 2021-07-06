@@ -1,6 +1,6 @@
 # Linux
 
-https://www.kernel.org/theme/images/logos/tux.png
+![image](https://user-images.githubusercontent.com/68618182/124551236-d8491800-ddff-11eb-9143-857197c7a782.png)
 
 Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, Hamad Al Marri, Con Kolivas and Alfred Chen.
 
