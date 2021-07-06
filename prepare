@@ -1821,14 +1821,14 @@ cpu_arch(){
   > 54) MTIGERLAKE : Select this for third-generation 10 nm process processors in the Tiger Lake family. - GCC 10.1 required - CLANG 10.0.0 required\n \
   > 55) MSAPPHIRERAPIDS : Select this for third-generation 10 nm process processors in the Sapphire Rapids family. - GCC 11 required - CLANG 12.0.0 required\n \
   > 56) MROCKETLAKE : Select this for eleventh-generation processors in the Rocket Lake family. - GCC 11 required - CLANG 12.0.0 required\n \
-  > 56) MALDERLAKE : Select this for twelfth-generation processors in the Alder Lake family.- GCC 11 required - CLANG 12.0.0 required\n \
-  > 57) GENERIC_CPU : Generic x86-64 CPU. Run equally well on all x86-64 CPUs.\n \
-  > 58) GENERIC_CPU2 : Run equally well on all x86-64 CPUs with min support of x86-64-v2. - GCC 11 required - CLANG 12.0.0 required\n \
-  > 59) GENERIC_CPU3 : Generic x86-64-v3 CPU with v3 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v3. - GCC 11 required - CLANG 12.0.0 required\n \
-  > 60) GENERIC_CPU4 : Generic x86-64 CPU with v4 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v4. - GCC 11 required - CLANG 12.0.0 required\n \
-  > 61) MNATIVE_INTEL : Intel-Native optimizations autodetected by GCC.\n \
-  > 62) MNATIVE_AMD : AMD-Native optimizations autodetected by GCC.\n \
-  > Default (57 : Gneric CPU)\nchoice[0-56]: '`" _microarchitecture
+  > 57) MALDERLAKE : Select this for twelfth-generation processors in the Alder Lake family.- GCC 11 required - CLANG 12.0.0 required\n \
+  > 58) GENERIC_CPU : Generic x86-64 CPU. Run equally well on all x86-64 CPUs.\n \
+  > 59) GENERIC_CPU2 : Run equally well on all x86-64 CPUs with min support of x86-64-v2. - GCC 11 required - CLANG 12.0.0 required\n \
+  > 60) GENERIC_CPU3 : Generic x86-64-v3 CPU with v3 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v3. - GCC 11 required - CLANG 12.0.0 required\n \
+  > 61) GENERIC_CPU4 : Generic x86-64 CPU with v4 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v4. - GCC 11 required - CLANG 12.0.0 required\n \
+  > 62) MNATIVE_INTEL : Intel-Native optimizations autodetected by GCC.\n \
+  > 63) MNATIVE_AMD : AMD-Native optimizations autodetected by GCC.\n \
+  > Default (58 : Gneric CPU)\nchoice[0-56]: '`" _microarchitecture
 
   if [[ "$_microarchitecture" = "1" ]]; then
     msg2 "Set CONFIG_M486"
@@ -1975,13 +1975,13 @@ cpu_arch(){
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MPSC
   elif [[ "$_microarchitecture" = "37" ]]; then
-    msg2 "Set CONFIG_MATOM"
-    scripts/config --disable CONFIG_GENERIC_CPU
-    scripts/config --enable CONFIG_MATOM
-  elif [[ "$_microarchitecture" = "38" ]]; then
     msg2 "Set CONFIG_MCORE2"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MCORE2
+  elif [[ "$_microarchitecture" = "38" ]]; then
+    msg2 "Set CONFIG_MATOM"
+    scripts/config --disable CONFIG_GENERIC_CPU
+    scripts/config --enable CONFIG_MATOM
   elif [[ "$_microarchitecture" = "39" ]]; then
     msg2 "Set CONFIG_MNEHALEM"
     scripts/config --disable CONFIG_GENERIC_CPU
@@ -2051,29 +2051,33 @@ cpu_arch(){
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MSAPPHIRERAPIDS
   elif [[ "$_microarchitecture" = "56" ]]; then
+    msg2 "Set CONFIG_MROCKETLAKE"
+    scripts/config --disable CONFIG_GENERIC_CPU
+    scripts/config --enable CONFIG_MROCKETLAKE
+  elif [[ "$_microarchitecture" = "57" ]]; then
     msg2 "Set CONFIG_MALDERLAKE"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MALDERLAKE
-  elif [[ "$_microarchitecture" = "57" ]]; then
+  elif [[ "$_microarchitecture" = "58" ]]; then
     msg2 "Set CONFIG_GENERIC_CPU"
     scripts/config --enable CONFIG_GENERIC_CPU
-  elif [[ "$_microarchitecture" = "58" ]]; then
+  elif [[ "$_microarchitecture" = "59" ]]; then
     msg2 "Set CONFIG_GENERIC_CPU2"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_GENERIC_CPU2
-  elif [[ "$_microarchitecture" = "59" ]]; then
+  elif [[ "$_microarchitecture" = "60" ]]; then
     msg2 "Set CONFIG_GENERIC_CPU3"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_GENERIC_CPU3
-  elif [[ "$_microarchitecture" = "60" ]]; then
+  elif [[ "$_microarchitecture" = "61" ]]; then
     msg2 "Set CONFIG_GENERIC_CPU4"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_GENERIC_CPU4
-  elif [[ "$_microarchitecture" = "61" ]]; then
+  elif [[ "$_microarchitecture" = "62" ]]; then
     msg2 "Set CONFIG_MNATIVE_INTEL"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MNATIVE_INTEL
-  elif [[ "$_microarchitecture" = "62" ]]; then
+  elif [[ "$_microarchitecture" = "63" ]]; then
     msg2 "Set CONFIG_MNATIVE_AMD"
     scripts/config --disable CONFIG_GENERIC_CPU
     scripts/config --enable CONFIG_MNATIVE_AMD
