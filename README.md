@@ -4,41 +4,15 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 # Version
 
-### Stable
-
 - 5.13
 
-### Mainline
-
-- 5.13-rc6
-
-### Next
-
-- 5.13-rc6-next-20210618
-
 # Build
-
-### Build Stable kernel
 
     git clone https://github.com/kevall474/Linux.git
     cd Linux/stable
     env _cpu_sched=(1,2,3 or 4) _compiler=(1 or 2) makepkg -s
 
-### Build Mainline kernel
-
-    git clone https://github.com/kevall474/Linux
-    cd Linux/mainline
-    env _cpu_sched=(1,2,3 or 4) _compiler=(1 or 2) makepkg -s
-
-### Build Next kernel
-
-    git clone https://github.com/kevall474/Linux
-    cd Linux/next
-    env _compiler=(1 or 2) makepkg -s
-
 # Build variables
-
-## Stable kernel
 
 ### _cpu_sched
 
@@ -54,37 +28,6 @@ Leave this variable empty if you don't want to add a CPU Scheduler.
 ### _compiler
 
 - Will set compiler to build the kernel :
-
-        1 : GCC
-        2 : CLANG+LLVM
-
-If not set it will build with GCC by default.
-
-## Mainline kernel
-
-### _scpu_sched
-
-- Will add a CPU Scheduler :
-
-        1 : CacULE by Hamad Al Marri
-        2 : CacULE-RDB by Hamad Al Marri
-        3 : BMQ by Alfred Chen
-        4 : PDS by Alfred Chen
-
-### _compiler
-
-- Will set the compiler to build the kernel :
-
-        1 : GCC
-        2 : CLANG+LLVM
-
-If not set it will build with GCC by default.
-
-## Next kernel
-
-### _compiler
-
-- Will set the compiler to build the kernel :
 
         1 : GCC
         2 : CLANG+LLVM
