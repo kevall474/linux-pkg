@@ -1789,7 +1789,7 @@ cpu_arch(){
   > 22) MEXCAVATOR : Select this for AMD Family 15h Excavator processors.\n \
   > 23) MZEN : Select this for AMD Family 17h Zen processors.\n \
   > 24) MZEN2 : Select this for AMD Family 17h Zen 2 processors.\n \
-  > 25) MZEN3 : Select this for AMD Family 19h Zen 3 processors. - GCC 10.3 required\n \
+  > 25) MZEN3 : Select this for AMD Family 19h Zen 3 processors. - GCC 10.3 required - CLANG 12.0.0 required\n \
   > 26) MCRUSOE : Select this for a Transmeta Crusoe processor.\n \
   > 27) MEFFICEON : Select this for a Transmeta Efficeon processor.\n \
   > 28) MWINCHIPC6 : Select this for an IDT Winchip C6 chip.\n \
@@ -1801,8 +1801,8 @@ cpu_arch(){
   > 34) MVIAC3_2 : Select this for a VIA C3 "Nehemiah".\n \
   > 35) MVIAC7 : Select this for a VIA C7.\n \
   > 36) MPSC : Optimize for Intel Pentium 4, Pentium D and older Nocona/Dempsey Xeon CPUs with Intel 64bit which is compatible with x86-64.\n \
-  > 37) MATOM : Select this for the Intel Atom platform.\n \
-  > 38) MCORE2 : Select this for Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and 53xx) CPUs.\n \
+  > 37) MCORE2 : Select this for Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and 53xx) CPUs.\n \
+  > 38) MATOM : Select this for the Intel Atom platform.\n \
   > 39) MNEHALEM : Select this for 1st Gen Core processors in the Nehalem family.\n \
   > 40) MWESTMERE : Select this for the Intel Westmere formerly Nehalem-C family.\n \
   > 41) MSILVERMONT Select this for the Intel Silvermont platform.\n \
@@ -1817,14 +1817,15 @@ cpu_arch(){
   > 50) MCANNONLAKE : Select this for 8th Gen Core processors.\n \
   > 51) MICELAKE : Select this for 10th Gen Core processors in the Ice Lake family.\n \
   > 52) MCASCADELAKE : Select this for Xeon processors in the Cascade Lake family.\n \
-  > 53) MCOOPERLAKE : Select this for Xeon processors in the Cooper Lake family. - GCC 10.1 required\n \
-  > 54) MTIGERLAKE : Select this for third-generation 10 nm process processors in the Tiger Lake family. - GCC 10.1 required\n \
-  > 55) MSAPPHIRERAPIDS : Select this for third-generation 10 nm process processors in the Sapphire Rapids family. - GCC 11 required\n \
-  > 56) MALDERLAKE : Select this for twelfth-generation processors in the Alder Lake family.- GCC 11 required\n \
+  > 53) MCOOPERLAKE : Select this for Xeon processors in the Cooper Lake family. - GCC 10.1 required - CLANG 10.0.0 required\n \
+  > 54) MTIGERLAKE : Select this for third-generation 10 nm process processors in the Tiger Lake family. - GCC 10.1 required - CLANG 10.0.0 required\n \
+  > 55) MSAPPHIRERAPIDS : Select this for third-generation 10 nm process processors in the Sapphire Rapids family. - GCC 11 required - CLANG 12.0.0 required\n \
+  > 56) MROCKETLAKE : Select this for eleventh-generation processors in the Rocket Lake family. - GCC 11 required - CLANG 12.0.0 required\n \
+  > 56) MALDERLAKE : Select this for twelfth-generation processors in the Alder Lake family.- GCC 11 required - CLANG 12.0.0 required\n \
   > 57) GENERIC_CPU : Generic x86-64 CPU. Run equally well on all x86-64 CPUs.\n \
-  > 58) GENERIC_CPU2 : Run equally well on all x86-64 CPUs with min support of x86-64-v2. - GCC 11 required\n \
-  > 59) GENERIC_CPU3 : Generic x86-64-v3 CPU with v3 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v3. - GCC 11 required\n \
-  > 60) GENERIC_CPU4 : Generic x86-64 CPU with v4 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v4. - GCC 11 required\n \
+  > 58) GENERIC_CPU2 : Run equally well on all x86-64 CPUs with min support of x86-64-v2. - GCC 11 required - CLANG 12.0.0 required\n \
+  > 59) GENERIC_CPU3 : Generic x86-64-v3 CPU with v3 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v3. - GCC 11 required - CLANG 12.0.0 required\n \
+  > 60) GENERIC_CPU4 : Generic x86-64 CPU with v4 instructions. Run equally well on all x86-64 CPUs with min support of x86-64-v4. - GCC 11 required - CLANG 12.0.0 required\n \
   > 61) MNATIVE_INTEL : Intel-Native optimizations autodetected by GCC.\n \
   > 62) MNATIVE_AMD : AMD-Native optimizations autodetected by GCC.\n \
   > Default (57 : Gneric CPU)\nchoice[0-56]: '`" _microarchitecture
@@ -2215,10 +2216,10 @@ rapid_config(){
   scripts/config --enable CONFIG_PREEMPTION
 
   sleep 2s
-  
+
   msg2 "Enable CONFIG_IRQ_FORCE_THREADING"
   scripts/config --enable CONFIG_IRQ_FORCE_THREADING
-  
+
   sleep 2s
 
   msg2 "Set to full tickless"
