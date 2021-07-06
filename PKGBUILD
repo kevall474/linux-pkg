@@ -261,13 +261,13 @@ prepare(){
   # plugins don't work
   # disable plugins
   #if [[ "$GCC_VERSION" = "12.0.0" ]]; then
-  #   sleep 2s
-  #   plain ""
-  #   msg2 "Disable CONFIG_HAVE_GCC_PLUGINS/CONFIG_GCC_PLUGINS (Quick fix for gcc 12.0.0 git version)"
-  #   scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
-  #   scripts/config --disable CONFIG_GCC_PLUGINS
-  #   plain ""
-  #   sleep 2s
+  #sleep 2s
+  #plain ""
+  #msg2 "Disable CONFIG_HAVE_GCC_PLUGINS/CONFIG_GCC_PLUGINS (Quick fix for gcc 12.0.0 git version)"
+  #scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
+  #scripts/config --disable CONFIG_GCC_PLUGINS
+  #plain ""
+  #sleep 2s
   #fi
 
   # Setting localversion
