@@ -109,7 +109,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13
+pkgver=5.13.1
 major=5.13
 pkgrel=1
 arch=(x86_64)
@@ -123,7 +123,7 @@ makedepends=("bison" "flex" "valgrind" "git" "cmake" "make" "extra-cmake-modules
 patchsource=https://raw.githubusercontent.com/kevall474/kernel-patches/main/$major
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "config-$major"
-        "$patchsource/bbr2-patches/0001-bbr2-5.13-introduce-BBRv2.patch"
+        "$patchsource/bbr2-patches/0001-bbr2-patches.patch"
         "$patchsource/bcachefs-patches/0001-bcachefs-5.13-introduce-bcachefs-patchset.patch"
         "$patchsource/block-patches/0001-block-patches.patch"
         "$patchsource/bfq-patches/0001-bfq-patches.patch"
@@ -158,9 +158,9 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
-md5sums=("76c60fb304510a7bbd9c838790bc5fe4"  #linux-5.13.tar.xz
+md5sums=("6499bdaa4ee1ef873ffd6533492140e7"  #linux-5.13.1.tar.xz
          "c63055f27e0773e0532e176a575e5aaf"  #config-5.13
-         "12cdc30bc3e2a17825b23b63bd6a5e7a"  #0001-bbr2-5.13-introduce-BBRv2.patch
+         "1bd37d8e71b2a7aae8ebd2853a08f445"  #0001-bbr2-patches.patch
          "f9dd96a59d6a84e451736e697a897227"  #0001-bcachefs-5.13-introduce-bcachefs-patchset.patch
          "396c84c4a6557db27f9c3bbfa656ac3e"  #0001-block-patches.patch
          "e16eb528e701193bc8cb1facc6b27231"  #0001-bfq-patches.patch
@@ -177,7 +177,7 @@ md5sums=("76c60fb304510a7bbd9c838790bc5fe4"  #linux-5.13.tar.xz
          "09a9e83b7b828fae46fd1a4f4cc23c28"  #0001-zen-Allow-MSR-writes-by-default.patch
          "d27d970188b39b775830a86472cda673"  #0001-mm-5.13-protect-file-mappings-under-memory-pressure.patch
          "86825a0c5716a1d9c6a39f9d3886b1bf"  #0001-ntfs3-patches.patch
-         "ed551763bd8112d087bcd21782d68325"  #0001-pf-patches.patch
+         "ed46a39e062f07693f52981fbd7350b7"  #0001-pf-patches.patch
          "9977ba0e159416108217a45438ebebb4"  #0001-security-patches.patch
          "9573b92353399343db8a691c9b208300"  #0007-v5.13-winesync.patch
          "136c4c718ac2dffd2e3ed55d64431a18"  #0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch
@@ -197,15 +197,15 @@ md5sums=("76c60fb304510a7bbd9c838790bc5fe4"  #linux-5.13.tar.xz
          "27e6001bacfcfca1c161bf6ef946a79b") #vm.max_map_count.patch
 #zenify workarround with CacULE
 if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
-source+=("$patchsource/misc-patches/zenify.patch")
-md5sums+=("8e71f0c43157654c4105224d89cc6709")  #zenify.patch
+  source+=("$patchsource/misc-patches/zenify.patch")
+  md5sums+=("8e71f0c43157654c4105224d89cc6709")  #zenify.patch
 fi
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/cacule-$major.patch")
   md5sums+=("8fab6f0acf86d138a283c4dd044198ed")  #cacule-5.13.patch
 elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
-  source+=("${patchsource}/prjc-patches/prjc_v$major-r0.patch")
-  md5sums+=("51f8c1a9b762f6c1c604de1303183e72")  #prjc_v5.13-r0.patch
+  source+=("${patchsource}/prjc-patches/prjc_v$major-r1.patch")
+  md5sums+=("887404c001eee64ee281a1607f895d63")  #prjc_v5.13-r1.patch
 fi
 # rdb patch
 if [[ $_cpu_sched = "2" ]]; then
@@ -334,22 +334,22 @@ _package(){
   rm -rf "$modulesdir"/{source,build}
 
   # workaround for missing header with winesync
-  if [ -e "${srcdir}/linux-$pkgver/include/uapi/linux/winesync.h" ]; then
-    msg2 "Workaround missing winesync header"
-    install -Dm644 "${srcdir}/linux-$pkgver"/include/uapi/linux/winesync.h "${pkgdir}/usr/include/linux/winesync.h"
-  fi
+  #if [ -e "${srcdir}/linux-$pkgver/include/uapi/linux/winesync.h" ]; then
+  #  msg2 "Workaround missing winesync header"
+  #  install -Dm644 "${srcdir}/linux-$pkgver"/include/uapi/linux/winesync.h "${pkgdir}/usr/include/linux/winesync.h"
+  #fi
 
   # load winesync module at boot
-  if [ -e "${srcdir}/winesync.conf" ]; then
-    msg2 "Set the winesync module to be loaded at boot through /etc/modules-load.d"
-    install -Dm644 "${srcdir}"/winesync.conf "${pkgdir}/etc/modules-load.d/winesync.conf"
-  fi
+  #if [ -e "${srcdir}/winesync.conf" ]; then
+  #  msg2 "Set the winesync module to be loaded at boot through /etc/modules-load.d"
+  #  install -Dm644 "${srcdir}"/winesync.conf "${pkgdir}/etc/modules-load.d/winesync.conf"
+  #fi
 
   # install udev rule for winesync
-  if [ -e "${srcdir}/winesync.rules" ]; then
-    msg2 "Installing udev rule for winesync"
-    install -Dm644 "${srcdir}"/winesync.rules "${pkgdir}/etc/udev/rules.d/winesync.rules"
-  fi
+  #if [ -e "${srcdir}/winesync.rules" ]; then
+  #  msg2 "Installing udev rule for winesync"
+  #  install -Dm644 "${srcdir}"/winesync.rules "${pkgdir}/etc/udev/rules.d/winesync.rules"
+  #fi
 }
 
 _package-headers(){
@@ -380,13 +380,16 @@ _package-headers(){
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   msg2 "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
