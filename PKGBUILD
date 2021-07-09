@@ -128,11 +128,12 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/block-patches/0001-block-patches.patch"
         "$patchsource/bfq-patches/0001-bfq-patches.patch"
         "$patchsource/btrfs-patches/0001-btrfs-patches.patch"
+        "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
         "$patchsource/cpu-patches/0001-cpu-5.13-merge-graysky-s-patchset.patch"
         "$patchsource/cpu-patches/0002-init-Kconfig-enable-O3-for-all-arches.patch"
         "$patchsource/cpu-patches/0003-init-Kconfig-add-O1-flag.patch"
         "$patchsource/cpu-patches/0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch"
-        "$patchsource/clearlinux-patches/0001-clearlinux-patches.patch"
+        "https://raw.githubusercontent.com/kevall474/kernel-patches/main/5.12/compaction-patches/0001-compaction-patches.patch"
         "$patchsource/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
         "$patchsource/futex-tkg-patches/0007-v5.13-futex2_interface.patch"
         "$patchsource/ksm-patches/0001-ksm-patches.patch"
@@ -143,7 +144,12 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/pf-patches/0001-pf-patches.patch"
         "$patchsource/security-patches/0001-security-patches.patch"
         "$patchsource/wine-patches/0007-v5.13-winesync.patch"
-        "$patchsource/xanmod-patches/0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch"
+        "$patchsource/xanmod-patches/0005-XANMOD-kconfig-set-PREEMPT-and-RCU_BOOST-without-del.patch"
+        "$patchsource/xanmod-patches/0006-XANMOD-dcache-cache_pressure-50-decreases-the-rate-a.patch"
+        "$patchsource/xanmod-patches/0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch"
+        "$patchsource/xanmod-patches/0008-XANMOD-mm-vmscan-vm_swappiness-30-decreases-the-amou.patch"
+        "$patchsource/xanmod-patches/0009-XANMOD-cpufreq-tunes-ondemand-and-conservative-gover.patch"
+        "$patchsource/xanmod-patches/0011-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch"
         "$patchsource/zen-patches/0001-ZEN-Add-VHBA-driver.patch"
         "$patchsource/zen-patches/0003-ZEN-vhba-Update-to-20210418.patch"
         "$patchsource/zen-patches/0002-ZEN-intel-pstate-Implement-enable-parameter.patch"
@@ -165,11 +171,12 @@ md5sums=("6499bdaa4ee1ef873ffd6533492140e7"  #linux-5.13.1.tar.xz
          "396c84c4a6557db27f9c3bbfa656ac3e"  #0001-block-patches.patch
          "e16eb528e701193bc8cb1facc6b27231"  #0001-bfq-patches.patch
          "63078800040b2a9a9f19c59c4ebf5b23"  #0001-btrfs-patches.patch
+         "c360b8c17d778f98a54fa7cddf348566"  #0001-clearlinux-patches.patch
          "b1d52157c29773e899658676b5e3a3d0"  #0001-cpu-5.13-merge-graysky-s-patchset.patch
          "97e4bafc4d830edf8dccad7bc93de748"  #0002-init-Kconfig-enable-O3-for-all-arches.patch
          "9ed92b6421a4829c3be67af8e4b65a04"  #0003-init-Kconfig-add-O1-flag.patch
-         "921b6e826da522638698cff14045653f"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
-         "c360b8c17d778f98a54fa7cddf348566"  #0001-clearlinux-patches.patch
+         "2fcfcb4812de779f21915d918f1fcee6"  #0001-Makefile-Turn-off-loop-vectorization-for-GCC-O3-opti.patch
+         "98564f54c3f9a6da56c6156d26b3ea39"  #0001-compaction-patches.patch
          "85f4be6562ee033b83814353a12b61bd"  #0001-futex-resync-from-gitlab.collabora.com.patch
          "2c0375b3cc9690a0f0f3d3e49df54d10"  #0007-v5.13-futex2_interface.patch
          "ce9beff503ee9e6ce6fd983c1bbbdd9e"  #0001-ksm-patches.patch
@@ -180,7 +187,12 @@ md5sums=("6499bdaa4ee1ef873ffd6533492140e7"  #linux-5.13.1.tar.xz
          "ed46a39e062f07693f52981fbd7350b7"  #0001-pf-patches.patch
          "9977ba0e159416108217a45438ebebb4"  #0001-security-patches.patch
          "9573b92353399343db8a691c9b208300"  #0007-v5.13-winesync.patch
-         "136c4c718ac2dffd2e3ed55d64431a18"  #0001-sched-autogroup-Add-kernel-parameter-and-config-opti.patch
+         "d8175b0627547ea30279974a2e33bdaa"  #0005-XANMOD-kconfig-set-PREEMPT-and-RCU_BOOST-without-del.patch
+         "93c22703a564720ec2eeb0f73886668b"  #0006-XANMOD-dcache-cache_pressure-50-decreases-the-rate-a.patch
+         "30085a2ceb79ed6c8e97c25311d62456"  #0007-XANMOD-sched-autogroup-Add-kernel-parameter-and-conf.patch
+         "45e37e9feb1010271d6c537a3c2f3bf5"  #0008-XANMOD-mm-vmscan-vm_swappiness-30-decreases-the-amou.patch
+         "3888cc476245e851b5b597445f2f4b4e"  #0009-XANMOD-cpufreq-tunes-ondemand-and-conservative-gover.patch
+         "89af44f9f637af84564bc6a3a3f39894"  #0011-XANMOD-lib-kconfig.debug-disable-default-CONFIG_SYMB.patch
          "6130dd0033e44e9ee3cacbbfe578ff06"  #0001-ZEN-Add-VHBA-driver.patch
          "8a9f82e7cbac3eb60ff23ab7221625ad"  #0003-ZEN-vhba-Update-to-20210418.patch
          "55ae1e0dd0d7024a3e825a4468d87e50"  #0002-ZEN-intel-pstate-Implement-enable-parameter.patch
@@ -195,14 +207,21 @@ md5sums=("6499bdaa4ee1ef873ffd6533492140e7"  #linux-5.13.1.tar.xz
          "8d51ee9dd00a1b0c75dc076b4710d5ca"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
          "168a924c7c83ecdc872a9a1c6d1c8bdb"  #0006-add-acs-overrides_iommu.patch
          "27e6001bacfcfca1c161bf6ef946a79b") #vm.max_map_count.patch
-#zenify workarround with CacULE
+# zenify workarround with CacULE
 if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
   source+=("$patchsource/misc-patches/zenify.patch")
-  md5sums+=("8e71f0c43157654c4105224d89cc6709")  #zenify.patch
+  md5sums+=("dbeccd72f6b3d8245a216b572780e170")  #zenify.patch
+fi
+# 0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch with CaCULE
+if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
+  source+=("$patchsource/xanmod-patches/0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch")
+  md5sums+=("75e2d936e50f00bf3860385846cceb9a")  #0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch
 fi
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
-  source+=("${patchsource}/cacule-patches/cacule-$major.patch")
-  md5sums+=("8fab6f0acf86d138a283c4dd044198ed")  #cacule-5.13.patch
+  source+=("${patchsource}/cacule-patches/cacule-$major.patch"
+           "$patchsource/xanmod-patches/0002-XANMOD-cacule-remove-delta-since-it-is-not-used.patch")
+  md5sums+=("8fab6f0acf86d138a283c4dd044198ed"  #cacule-5.13.patch
+            "2dd03c0bfc68441eff4f71713738ea57") #0002-XANMOD-cacule-remove-delta-since-it-is-not-used.patch
 elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
   source+=("${patchsource}/prjc-patches/prjc_v$major-r1.patch")
   md5sums+=("887404c001eee64ee281a1607f895d63")  #prjc_v5.13-r1.patch
@@ -238,8 +257,8 @@ prepare(){
   fi
 
   # Copy the config file first
-  # Copy "${srcdir}"/config-$major to linux-${pkgver}/.config
-  msg2 "Copy "${srcdir}"/config-$major to linux-$pkgver/.config"
+  # Copy "${srcdir}"/config-$major to "${srcdir}"/linux-${pkgver}/.config
+  msg2 "Copy "${srcdir}"/config-$major to "${srcdir}"/linux-$pkgver/.config"
   cp "${srcdir}"/config-$major .config
 
   # Customize the kernel
@@ -288,7 +307,7 @@ prepare(){
 
 build(){
 
-  cd linux-$pkgver
+  cd "${srcdir}"/linux-$pkgver
 
   # make -j$(nproc) all
   msg2 "make -j$(nproc) all..."
@@ -306,7 +325,7 @@ _package(){
               "crda: to set the correct wireless channels of your country")
   provides=("VIRTUALBOX-GUEST-MODULES" "WIREGUARD-MODULE")
 
-  cd linux-$pkgver
+  cd "${srcdir}"/linux-$pkgver
 
   local kernver="$(<version)"
   local modulesdir="${pkgdir}"/usr/lib/modules/${kernver}
@@ -356,7 +375,7 @@ _package-headers(){
   pkgdesc="Headers and scripts for building modules for the $pkgbase package"
   depends=("${pkgbase}" "pahole")
 
-  cd linux-$pkgver
+  cd "${srcdir}"/linux-$pkgver
 
   local builddir="$pkgdir"/usr/lib/modules/"$(<version)"/build
 
