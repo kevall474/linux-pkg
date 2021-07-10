@@ -97,7 +97,7 @@ configure(){
     scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
     scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD
     scripts/config --enable CONFIG_MODULE_COMPRESS_NONE
-  if [[ $_compression = "2" ]]; then
+  elif [[ $_compression = "2" ]]; then
     msg2 "Set module compression to GZIP"
     scripts/config --disable CONFIG_MODULE_COMPRESS_NONE
     scripts/config --disable CONFIG_MODULE_COMPRESS_XZ

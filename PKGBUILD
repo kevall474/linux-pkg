@@ -51,11 +51,13 @@ if [ -z ${_compiler+x} ]; then
 fi
 
 if [[ "$_compiler" = "1" ]]; then
+  _compiler=1
   CC=gcc
   CXX=g++
   HOSTCC=gcc
   HOSTCXX=g++
 elif [[ "$_compiler" = "2" ]]; then
+  _compiler=2
   CC=clang
   CXX=clang++
   HOSTCC=clang
@@ -261,6 +263,33 @@ prepare(){
   msg2 "Copy "${srcdir}"/config-$major to "${srcdir}"/linux-$pkgver/.config"
   cp "${srcdir}"/config-$major .config
 
+  # Disable LTO
+  if [[ "$_compiler" = "1" ]] || [[ "$_compiler" = "2" ]]; then
+    plain ""
+    msg2 "Disable LTO"
+    scripts/config --disable CONFIG_LTO
+    scripts/config --disable CONFIG_LTO_CLANG
+    scripts/config --disable CONFIG_ARCH_SUPPORTS_LTO_CLANG
+    scripts/config --disable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN
+    scripts/config --disable CONFIG_HAS_LTO_CLANG
+    scripts/config --disable CONFIG_LTO_NONE
+    scripts/config --disable CONFIG_LTO_CLANG_FULL
+    scripts/config --disable CONFIG_LTO_CLANG_THIN
+    sleep 2s
+  fi
+
+  # fix for GCC 12.0.0 (git version)
+  # plugins don't work
+  # disable plugins
+  #if [[ "$GCC_VERSION" = "12.0.0" ]] && [[ "$_compiler" = "1" ]]; then
+  #  plain ""
+  #  msg2 "Disable CONFIG_HAVE_GCC_PLUGINS/CONFIG_GCC_PLUGINS (Quick fix for gcc 12.0.0 git version)"
+  #  scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
+  #  scripts/config --disable CONFIG_GCC_PLUGINS
+  #  plain ""
+  #  sleep 2s
+  #fi
+
   # Customize the kernel
   source "${startdir}"/prepare
 
@@ -272,22 +301,6 @@ prepare(){
   # Uncomment rapid_config and comment out configure and cpu_arch
   # rapid_config is meant to work with build.sh for automation building
   #rapid_config
-
-  # strip_down script
-  #strip_down
-
-  # fix for GCC 12.0.0 (git version)
-  # plugins don't work
-  # disable plugins
-  #if [[ "$GCC_VERSION" = "12.0.0" ]]; then
-  #sleep 2s
-  #plain ""
-  #msg2 "Disable CONFIG_HAVE_GCC_PLUGINS/CONFIG_GCC_PLUGINS (Quick fix for gcc 12.0.0 git version)"
-  #scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
-  #scripts/config --disable CONFIG_GCC_PLUGINS
-  #plain ""
-  #sleep 2s
-  #fi
 
   # Setting localversion
   msg2 "Setting localversion..."
