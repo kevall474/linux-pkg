@@ -165,7 +165,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/misc-patches/0006-add-acs-overrides_iommu.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
 md5sums=("6499bdaa4ee1ef873ffd6533492140e7"  #linux-5.13.1.tar.xz
-         "c63055f27e0773e0532e176a575e5aaf"  #config-5.13
+         "e7934271b7973cee2619aff94cf3265a"  #config-5.13
          "1bd37d8e71b2a7aae8ebd2853a08f445"  #0001-bbr2-patches.patch
          "f9dd96a59d6a84e451736e697a897227"  #0001-bcachefs-5.13-introduce-bcachefs-patchset.patch
          "396c84c4a6557db27f9c3bbfa656ac3e"  #0001-block-patches.patch
