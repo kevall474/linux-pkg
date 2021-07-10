@@ -332,10 +332,11 @@ build(){
 }
 
 _package(){
-  pkgdesc="Stable linux kernel and modules with a set of patches by TK-Glitch and Piotr Górski"
+  pkgdesc="Latest stable linux kernel and modules with a set of patches by TK-Glitch and Piotr Górski"
   depends=("coreutils" "kmod" "initramfs" "mkinitcpio")
   optdepends=("linux-firmware: firmware images needed for some devices"
-              "crda: to set the correct wireless channels of your country")
+              "crda: to set the correct wireless channels of your country"
+              "winesync-headers: headers file for winesync module")
   provides=("VIRTUALBOX-GUEST-MODULES" "WIREGUARD-MODULE")
 
   cd "${srcdir}"/linux-$pkgver
@@ -364,24 +365,6 @@ _package(){
   # remove build and source links
   msg2 "Remove build dir and source dir..."
   rm -rf "$modulesdir"/{source,build}
-
-  # workaround for missing header with winesync
-  #if [ -e "${srcdir}/linux-$pkgver/include/uapi/linux/winesync.h" ]; then
-  #  msg2 "Workaround missing winesync header"
-  #  install -Dm644 "${srcdir}/linux-$pkgver"/include/uapi/linux/winesync.h "${pkgdir}/usr/include/linux/winesync.h"
-  #fi
-
-  # load winesync module at boot
-  #if [ -e "${srcdir}/winesync.conf" ]; then
-  #  msg2 "Set the winesync module to be loaded at boot through /etc/modules-load.d"
-  #  install -Dm644 "${srcdir}"/winesync.conf "${pkgdir}/etc/modules-load.d/winesync.conf"
-  #fi
-
-  # install udev rule for winesync
-  #if [ -e "${srcdir}/winesync.rules" ]; then
-  #  msg2 "Installing udev rule for winesync"
-  #  install -Dm644 "${srcdir}"/winesync.rules "${pkgdir}/etc/udev/rules.d/winesync.rules"
-  #fi
 }
 
 _package-headers(){
