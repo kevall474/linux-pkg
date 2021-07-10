@@ -245,7 +245,7 @@ configure(){
   plain "This setting can be overridden at runtime via the"
   plain "kernel.unprivileged_userns_clone sysctl."
   plain ""
-  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Disable)\nchoice[1-2]: '`" _ns;
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _ns;
   if [[ $_ns = "1" ]]; then
     msg2 "Enable CONFIG_USER_NS_UNPRIVILEGED"
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
@@ -253,8 +253,8 @@ configure(){
     msg2 "Disable CONFIG_USER_NS_UNPRIVILEGED"
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   else
-    msg2 "Disable CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+    msg2 "Enable CONFIG_USER_NS_UNPRIVILEGED"
+    scripts/config --enable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
   sleep 2s
@@ -858,7 +858,7 @@ configure(){
   plain ""
   plain "#########################################"
   plain "Enable/disable Device Tree and Open Firmware support"
-  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Disable)\nchoice[1-2]: '`" _of
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _of
   if [[ "$_of" = "1" ]]; then
     msg2 "Enable Device Tree and Open Firmware support"
     scripts/config --enable CONFIG_OF
@@ -867,7 +867,7 @@ configure(){
     scripts/config --disable CONFIG_OF
   else
     msg2 "Disable Device Tree and Open Firmware support"
-    scripts/config --disable CONFIG_OF
+    scripts/config --Enable CONFIG_OF
   fi
 
   sleep 2s
@@ -2151,7 +2151,7 @@ rapid_config(){
   sleep 2s
 
   msg2 "Disable CONFIG_USER_NS_UNPRIVILEGED"
-  scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+  scripts/config --enable CONFIG_USER_NS_UNPRIVILEGED
 
   sleep 2s
 
