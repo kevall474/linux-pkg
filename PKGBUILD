@@ -22,6 +22,7 @@
 #Set '2' for CacULE-RDB CPU Scheduler
 #Set '3' for BMQ CPU Scheduler
 #Set '4' for PDS CPU Scheduler
+#Set '5' for MuQSS CPUC Scheduler
 #Leave empty for no CPU Scheduler
 #Default is empty. It will build with no cpu scheduler. To build with cpu shceduler just use : env _cpu_sched=(1,2,3,4 or 5) makepkg -s
 if [ -z ${_cpu_sched+x} ]; then
@@ -97,6 +98,12 @@ elif [[ $_cpu_sched = "4" ]]; then
   elif [[ "$_compiler" = "2" ]]; then
     pkgbase=linux-kernel-pds-clang
   fi
+elif [[ $_cpu_sched = "5" ]]; then
+  if [[ "$_compiler" = "1" ]]; then
+    pkgbase=linux-kernel-muqss-gcc
+  elif [[ "$_compiler" = "2" ]]; then
+    pkgbase=linux-kernel-muqss-clang
+  fi
 else
   if [[ "$_compiler" = "1" ]]; then
     pkgbase=linux-kernel-gcc
@@ -141,7 +148,6 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/ksm-patches/0001-ksm-patches.patch"
         "$patchsource/loopback-patches/0001-v4l2loopback-patches.patch"
         "$patchsource/lqx-patches/0001-zen-Allow-MSR-writes-by-default.patch"
-        "$patchsource/mm-patches/0001-mm-5.13-protect-file-mappings-under-memory-pressure.patch"
         "$patchsource/ntfs3-patches/0001-ntfs3-patches.patch"
         "$patchsource/pf-patches/0001-pf-patches.patch"
         "$patchsource/security-patches/0001-security-patches.patch"
@@ -184,7 +190,6 @@ md5sums=("6499bdaa4ee1ef873ffd6533492140e7"  #linux-5.13.1.tar.xz
          "ce9beff503ee9e6ce6fd983c1bbbdd9e"  #0001-ksm-patches.patch
          "ef7748efcae55f7db8961227cbae3677"  #0001-v4l2loopback-patches.patch
          "09a9e83b7b828fae46fd1a4f4cc23c28"  #0001-zen-Allow-MSR-writes-by-default.patch
-         "d27d970188b39b775830a86472cda673"  #0001-mm-5.13-protect-file-mappings-under-memory-pressure.patch
          "86825a0c5716a1d9c6a39f9d3886b1bf"  #0001-ntfs3-patches.patch
          "ed46a39e062f07693f52981fbd7350b7"  #0001-pf-patches.patch
          "9977ba0e159416108217a45438ebebb4"  #0001-security-patches.patch
@@ -209,25 +214,58 @@ md5sums=("6499bdaa4ee1ef873ffd6533492140e7"  #linux-5.13.1.tar.xz
          "8d51ee9dd00a1b0c75dc076b4710d5ca"  #0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch
          "168a924c7c83ecdc872a9a1c6d1c8bdb"  #0006-add-acs-overrides_iommu.patch
          "27e6001bacfcfca1c161bf6ef946a79b") #vm.max_map_count.patch
+
+# 0001-mm-5.13-protect-file-mappings-under-memory-pressure.patch workarround with MuQSS
+#if [[ $_cpu_sched != "5" ]]; then
+  #source+=("$patchsource/mm-patches/0001-mm-5.13-protect-file-mappings-under-memory-pressure.patch")
+  #md5sums+=("d27d970188b39b775830a86472cda673")  #0001-mm-5.13-protect-file-mappings-under-memory-pressure.patch
+#fi
+
+# 0005-XANMOD-kconfig-set-PREEMPT-and-RCU_BOOST-without-del.patch workarround with MuQSS
+#if [[ $_cpu_sched != "5" ]]; then
+  #source+=("$patchsource/xanmod-patches/0005-XANMOD-kconfig-set-PREEMPT.patch")
+  #md5sums+=("SKIP")
+#fi
+
+# 0008-XANMOD-mm-vmscan-vm_swappiness-30-decreases-the-amou.patch workarround with MuQSS
+#if [[ $_cpu_sched != "5" ]]; then
+  #source+=("$patchsource/xanmod-patches/0008-XANMOD-mm-vmscan-vm_swappiness-30-decreases-the-amou.patch")
+  #md5sums+=("45e37e9feb1010271d6c537a3c2f3bf5")  #0008-XANMOD-mm-vmscan-vm_swappiness-30-decreases-the-amou.patch
+#fi
+
+# 0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch workarround with CaCULE
+if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
+  source+=("$patchsource/xanmod-patches/0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch")
+  md5sums+=("75e2d936e50f00bf3860385846cceb9a")  #0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch
+fi
+
 # zenify workarround with CacULE
 if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
   source+=("$patchsource/misc-patches/zenify.patch")
   md5sums+=("dbeccd72f6b3d8245a216b572780e170")  #zenify.patch
 fi
-# 0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch with CaCULE
-if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
-  source+=("$patchsource/xanmod-patches/0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch")
-  md5sums+=("75e2d936e50f00bf3860385846cceb9a")  #0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch
-fi
+
+# CacULE patch
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/cacule-$major.patch"
            "$patchsource/xanmod-patches/0002-XANMOD-cacule-remove-delta-since-it-is-not-used.patch")
   md5sums+=("8fab6f0acf86d138a283c4dd044198ed"  #cacule-5.13.patch
             "2dd03c0bfc68441eff4f71713738ea57") #0002-XANMOD-cacule-remove-delta-since-it-is-not-used.patch
-elif [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
+fi
+
+# prjc patch
+if [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
   source+=("${patchsource}/prjc-patches/prjc_v$major-r1.patch")
   md5sums+=("887404c001eee64ee281a1607f895d63")  #prjc_v5.13-r1.patch
 fi
+
+# MuQSS patch. Apply patch-5.12-ck1 with 5.13 kernel. The patch is forced because there is no release from Con Kolivas
+# for 5.13 kernel. Bugs in the kernel may occur.
+if [[ $_cpu_sched = "5" ]]; then
+  source+=("${patchsource}/muqss-patches/0001-MultiQueue-Skiplist-Scheduler-v0.210.patch")
+  md5sums+=("SKIP")
+fi
+  
 # rdb patch
 if [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/rdb-$major.patch")
@@ -252,11 +290,16 @@ prepare(){
     patch -Np1 < "../$src"
   done
 
-  # patch command for muqss
-  if [[ $_cpu_sched = "5" ]]; then
-    msg2 "Applying patch patch-$major-ck1"
-    patch -Np1 < ../patch-$major-ck1
-  fi
+  # Apply MuQSS patch
+  #if [[ $_cpu_sched = "5" ]]; then
+    #msg2 "Applying patch patch-$major-ck1"
+    #patch -Np1 < ../patch-$major-ck1
+    # Apply patch-5.12-ck1 with 5.13 kernel. The patch is forced because there is no release from Con Kolivas
+    # for 5.13 kernel. Bugs in the kernel may occur. Patch renamed to patch-5.13-pre-release.
+    #msg2 "Apply patch-5.12-ck1 with 5.13 kernel. The patch is forced because there"
+    #msg2 "is no release from Con Kolivas for 5.13 kernel. Bugs in the kernel may occur"
+    #patch -Np1 --force < ../patch-$major-pre-release || true
+  #fi
 
   # Copy the config file first
   # Copy "${srcdir}"/config-$major to "${srcdir}"/linux-${pkgver}/.config
