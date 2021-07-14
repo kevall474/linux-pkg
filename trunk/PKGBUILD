@@ -274,7 +274,7 @@ md5sums=("SKIP"
 # 0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch workarround with CaCULE
 if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
   source+=("$patchsource/xanmod-patches/0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch")
-  md5sums+=("75e2d936e50f00bf3860385846cceb9a")  #0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch
+  md5sums+=("SKIP")  #0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch
 fi
 
 # zen_interactive workarround with CacULE
@@ -287,14 +287,14 @@ fi
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/cacule-$major.patch"
            "$patchsource/cacule-patches/0002-XANMOD-cacule-remove-delta-since-it-is-not-used.patch")
-  md5sums+=("8fab6f0acf86d138a283c4dd044198ed"  #cacule-5.13.patch
-            "2dd03c0bfc68441eff4f71713738ea57") #0002-XANMOD-cacule-remove-delta-since-it-is-not-used.patch
+  md5sums+=("SKIP"  #cacule-5.13.patch
+            "SKIP") #0002-XANMOD-cacule-remove-delta-since-it-is-not-used.patch
 fi
 
 # prjc patch
 if [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
   source+=("${patchsource}/prjc-kevall474-patches/prjc_v$major-r1.patch")
-  md5sums+=("887404c001eee64ee281a1607f895d63")  #prjc_v5.13-r1.patch
+  md5sums+=("SKIP")  #prjc_v5.13-r1.patch
 fi
 
 # MuQSS patch. 0001-MultiQueue-Skiplist-Scheduler-v0.210.patch with 5.13 kernel.
@@ -307,7 +307,7 @@ fi
 # rdb patch
 if [[ $_cpu_sched = "2" ]]; then
   source+=("${patchsource}/cacule-patches/rdb-$major.patch")
-  md5sums+=("efb4f07f10058ec12933ba3ea12aa983")  #rdb-5.13.patch
+  md5sums+=("SKIP")  #rdb-5.13.patch
 fi
 
 export KBUILD_BUILD_HOST=archlinux
