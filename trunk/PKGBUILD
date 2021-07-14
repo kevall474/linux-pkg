@@ -271,12 +271,6 @@ md5sums=("SKIP"
          "SKIP"
          "SKIP")
 
-# 0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch workarround with CaCULE
-if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]] && [[ $_cpu_sched != "3" ]] && [[ $_cpu_sched != "4" ]] && [[ $_cpu_sched != "5" ]]; then
-  source+=("$patchsource/xanmod-patches/0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch")
-  md5sums+=("SKIP")  #0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch
-fi
-
 # zen_interactive workarround with CacULE
 if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
   source+=("$patchsource/zen-interactive-patches/ZEN_INTERACTIVE.patch")
