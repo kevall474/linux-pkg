@@ -338,21 +338,19 @@ prepare(){
   # Copy "${srcdir}"/config-$major to "${srcdir}"/linux-${pkgver}/.config
   msg2 "Copy "${srcdir}"/config-$major to "${srcdir}"/linux-$pkgver/.config"
   cp "${srcdir}"/config-$major .config
-
-  # Disable LTO
-  if [[ "$_compiler" = "1" ]] || [[ "$_compiler" = "2" ]]; then
-    plain ""
-    msg2 "Disable LTO"
-    scripts/config --disable CONFIG_LTO
-    scripts/config --disable CONFIG_LTO_CLANG
-    scripts/config --disable CONFIG_ARCH_SUPPORTS_LTO_CLANG
-    scripts/config --disable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN
-    scripts/config --disable CONFIG_HAS_LTO_CLANG
-    scripts/config --disable CONFIG_LTO_NONE
-    scripts/config --disable CONFIG_LTO_CLANG_FULL
-    scripts/config --disable CONFIG_LTO_CLANG_THIN
-    sleep 2s
-  fi
+  
+  plain ""
+  msg2 "Disable LTO"
+  scripts/config --disable CONFIG_LTO
+  scripts/config --disable CONFIG_LTO_CLANG
+  scripts/config --disable CONFIG_ARCH_SUPPORTS_LTO_CLANG
+  scripts/config --disable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN
+  scripts/config --disable CONFIG_HAS_LTO_CLANG
+  scripts/config --disable CONFIG_LTO_NONE
+  scripts/config --disable CONFIG_LTO_CLANG_FULL
+  scripts/config --disable CONFIG_LTO_CLANG_THIN
+  
+  sleep 2s
 
   # fix for GCC 12.0.0 (git version)
   # plugins don't work
