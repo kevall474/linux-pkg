@@ -801,17 +801,30 @@ configure(){
 
   plain ""
   plain "#########################################"
-  plain "Enable/disable CONFIG_IRQ_FORCE_THREADING"
-  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _irq
-  if [[ "$_irq" = "1" ]]; then
-    msg2 "Enable CONFIG_IRQ_FORCE_THREADING"
-    scripts/config --enable CONFIG_IRQ_FORCE_THREADING
-  elif [[ "$_irq" = "2" ]]; then
-    msg2 "Disable CONFIG_IRQ_FORCE_THREADING"
-    scripts/config --disable CONFIG_IRQ_FORCE_THREADING
+  plain "Enable/disable FORCE_IRQ_THREADING"
+  plain ""
+  plain "Make IRQ threading compulsory :"
+  plain "Make IRQ threading mandatory for any IRQ handlers that support it"
+  plain "instead of being optional and requiring the threadirqs kernel"
+  plain "parameter. Instead they can be optionally disabled with the"
+  plain "nothreadirqs kernel parameter."
+  plain ""
+  plain "Enabling this may make some architectures not boot with runqueue"
+  plain "sharing and MuQSS."
+  plain ""
+  plain "Enable if you are building for a desktop or low latency system,"
+  plain "otherwise say N."
+  plain ""
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _force_irq
+  if [[ "$_force_irq" = "1" ]]; then
+    msg2 "Enable FORCE_IRQ_THREADING"
+    scripts/config --enable CONFIG_FORCE_IRQ_THREADING
+  elif [[ "$_force_irq" = "2" ]]; then
+    msg2 "Disable FORCE_IRQ_THREADING"
+    scripts/config --disable CONFIG_FORCE_IRQ_THREADING
   else
-    msg2 "Enable CONFIG_IRQ_FORCE_THREADING"
-    scripts/config --enable CONFIG_IRQ_FORCE_THREADING
+    msg2 "Enable FORCE_IRQ_THREADING"
+    scripts/config --enable CONFIG_FORCE_IRQ_THREADING
   fi
 
   sleep 2s
@@ -2199,8 +2212,8 @@ rapid_config(){
 
   sleep 2s
 
-  msg2 "Enable CONFIG_IRQ_FORCE_THREADING"
-  scripts/config --enable CONFIG_IRQ_FORCE_THREADING
+  msg2 "Enable CONFIG_FORCE_IRQ_THREADING"
+  scripts/config --enable CONFIG_FORCE_IRQ_THREADING
 
   sleep 2s
 
