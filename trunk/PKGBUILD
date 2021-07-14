@@ -185,7 +185,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/mm-zen-patches/0015-ZEN-mm-Don-t-stop-kswapd-on-a-per-node-basis-when-th.patch"
         "$patchsource/mq-deadline-patches/0009-ZEN-Add-CONFIG-to-rename-the-mq-deadline-scheduler-v2.patch"
         "$patchsource/ntfs3-xanmod-patches/ntfs3-xanmod-patches.patch"
-        "$patchsource/openrgb-patches/OpenRGB.patch"
+        "$patchsource/openrgb-zen-patches/0003-ZEN-Add-OpenRGB-patches.patch"
         "$patchsource/security/security-xanmod-patches.patch"
         "$patchsource/timer-xanmod-patches/0004-XANMOD-kconfig-add-500Hz-timer-interrupt-kernel-conf.patch"
         "$patchsource/wine-patches/0007-v5.13-winesync.patch"
