@@ -885,7 +885,7 @@ configure(){
     msg2 "Disable Device Tree and Open Firmware support"
     scripts/config --disable CONFIG_OF
   else
-    msg2 "Disable Device Tree and Open Firmware support"
+    msg2 "Enable Device Tree and Open Firmware support"
     scripts/config --enable CONFIG_OF
   fi
 
