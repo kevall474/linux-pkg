@@ -1355,13 +1355,13 @@ configure(){
     plain "Tunes the kernel for responsiveness at the cost of throughput and power usage."
     read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _zenify
     if [[ "$_zenify" = "1" ]]; then
-      msg2 "Enable CONFIG_ZENIFY"
+      msg2 "Enable ZEN_INTERACTIVE"
       scripts/config --enable ZEN_INTERACTIVE
     elif [[ "$_zenify" = "2" ]]; then
-      msg2 "Disable CONFIG_ZENIFY"
+      msg2 "Disable ZEN_INTERACTIVE"
       scripts/config --disable ZEN_INTERACTIVE
     else
-      msg2 "Enable CONFIG_ZENIFY"
+      msg2 "Enable ZEN_INTERACTIVE"
       scripts/config --enable ZEN_INTERACTIVE
     fi
 
@@ -2373,7 +2373,7 @@ rapid_config(){
   sleep 2s
 
   if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
-    msg2 "Enable CONFIG_ZENIFY"
+    msg2 "Enable ZEN_INTERACTIVE"
     scripts/config --enable ZEN_INTERACTIVE
 
     sleep 2s
