@@ -1366,7 +1366,7 @@ configure(){
     plain "and additional tweaks for a better gaming experience (ZENIFY)"
     plain ""
     plain "Tunes the kernel for responsiveness at the cost of throughput and power usage."
-    read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _zenify
+    read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _zenify
     if [[ "$_zenify" = "1" ]]; then
       msg2 "Enable ZEN_INTERACTIVE"
       scripts/config --enable ZEN_INTERACTIVE
@@ -1385,7 +1385,7 @@ configure(){
   plain "#########################################"
   plain "Enable support for fsync, an experimental replacement for esync in"
   plain "Valve Proton 4.11+"
-  read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _fsync
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _fsync
   if [[ "$_fsync" = "1" ]]; then
     msg2 "Enable Fsync support"
     scripts/config --enable CONFIG_FUTEX
@@ -1411,7 +1411,7 @@ configure(){
   plain "https://gitlab.collabora.com/tonyk/linux/-/tree/futex2-dev"
   plain "https://github.com/ValveSoftware/Proton/issues/4568"
   plain ""
-  read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _futex2
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _futex2
   if [[ "$_futex2" = "1" ]]; then
     msg2 "Enable Futex2 support"
     scripts/config --enable CONFIG_FUTEX2
@@ -1429,7 +1429,7 @@ configure(){
   plain "#########################################"
   plain "Enable support for winesync, an experimental replacement for esync"
   plain "https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync"
-  read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _wine
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _wine
   if [[ "$_wine" = "1" ]]; then
     msg2 "Enable winesync support"
     scripts/config --module CONFIG_WINESYNC
@@ -1455,7 +1455,7 @@ configure(){
   plain "attack will be marked as not allowed and new execve system calls"
   plain "using this file will fail. Like capabilities, this security module"
   plain "stacks with other LSMs."
-  read -rp "`echo $' > 1.Yes\n > 2.No\n > Default (Yes)\nchoice[1-2]: '`" _security
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _security
   if [[ "$_security" = "1" ]]; then
     msg2 "Enable SECURITY_FORK_BRUT"
     scripts/config --enable CONFIG_SECURITY_FORK_BRUT
@@ -1467,6 +1467,36 @@ configure(){
     scripts/config --enable CONFIG_SECURITY_FORK_BRUT
   fi
 
+  sleep 2s
+  
+  plain ""
+  plain "#########################################"
+  plain "Enable/disable OpenRGB SMBus access?"
+  plain ""
+  plain "Nuvoton NCT6775 and compatible SMBus controller"
+  plain ""
+  plain "If you say yes to this option, support will be included for the"
+  plain "Nuvoton NCT6775 and compatible SMBus controllers."
+  plain ""
+  plain "SMBus access is necessary for controlling RGB RAM and" 
+  plain "certain motherboard on-board LEDs."
+  plain "If you are not trying to use OpenRGB to control RGB RAM or motherboard" 
+  plain "LEDs, you may skip this section."
+  plain ""
+  plain "ASUS and ASRock motherboards have their RGB controller on an SMBus interface that" 
+  plain "is not accessible by an unmodified Linux kernel (for now)."
+  read -rp "`echo $' > 1.Enable\n > 2.Disable\n > Default (Enable)\nchoice[1-2]: '`" _openrgb
+  if [[ "$_openrgb" = "1" ]]; then
+    msg2 "Enable OpenRGB SMBus access"
+    scripts/config --module CONFIG_I2C_NCT6775
+  elif [[ "$_openrgb" = "2" ]]; then
+    msg2 "Disable OpenRGB SMBus access"
+    scripts/config --disable CONFIG_I2C_NCT6775
+  else
+    msg2 "Enable OpenRGB SMBus access"
+    scripts/config --module CONFIG_I2C_NCT6775
+  fi
+   
   sleep 2s
 
   plain ""
@@ -2410,6 +2440,11 @@ rapid_config(){
 
   msg2 "Enable SECURITY_FORK_BRUT"
   scripts/config --enable CONFIG_SECURITY_FORK_BRUT
+  
+  sleep 2s
+  
+  msg2 "Enable OpenRGB SMBus access"
+  scripts/config --module CONFIG_I2C_NCT677
 
   sleep 2s
 
