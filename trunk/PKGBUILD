@@ -183,7 +183,7 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/mm-zen-patches/0013-ZEN-mm-Disable-watermark-boosting-by-default.patch"
         "$patchsource/mm-zen-patches/0014-ZEN-mm-Stop-kswapd-early-when-nothing-s-waiting-for-.patch"
         "$patchsource/mm-zen-patches/0015-ZEN-mm-Don-t-stop-kswapd-on-a-per-node-basis-when-th.patch"
-        "$patchsource/mq-deadline-patches/0009-ZEN-Add-CONFIG-to-rename-the-mq-deadline-scheduler-v2.patch"
+        "$patchsource/mq-deadline-patches/0009-ZEN-Add-CONFIG-to-rename-the-mq-deadline-scheduler-v3.patch"
         "$patchsource/ntfs3-xanmod-patches/ntfs3-xanmod-patches.patch"
         "$patchsource/openrgb-zen-patches/0003-ZEN-Add-OpenRGB-patches.patch"
         "$patchsource/security/security-xanmod-patches.patch"
