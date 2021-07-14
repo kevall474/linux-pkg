@@ -300,7 +300,7 @@ fi
 # MuQSS patch. 0001-MultiQueue-Skiplist-Scheduler-v0.210.patch with 5.13 kernel.
 # The patch is forced because there is no release from Con Kolivas for 5.13 kernel. Bugs in the kernel may occur.
 if [[ $_cpu_sched = "5" ]]; then
-  source+=("${patchsource}/muqss-patches/0001-MultiQueue-Skiplist-Scheduler-v0.210.patch")
+  source+=("${patchsource}/muqss-kevall474-patches/0001-MultiQueue-Skiplist-Scheduler-v0.210.patch")
   md5sums+=("SKIP")
 fi
 
