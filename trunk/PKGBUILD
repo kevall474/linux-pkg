@@ -118,7 +118,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13.1
+pkgver=5.13.2
 major=5.13
 pkgrel=1
 arch=(x86_64)
@@ -136,7 +136,6 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/bbr2-xanmod-patches/bbr2-xanmod-patches.patch"
         "$patchsource/block-patches/0002-XANMOD-block-bfq-change-BLK_DEV_ZONED-depends-to-IOS.patch"
         "$patchsource/block-patches/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
-        "$patchsource/bfq-patches/0001-bfq-patches.patch"
         "$patchsource/clearlinux-patches/0101-i8042-decrease-debug-message-level-to-info.patch"
         "$patchsource/clearlinux-patches/0102-increase-the-ext4-default-commit-age.patch"
         "$patchsource/clearlinux-patches/0103-silence-rapl.patch"
@@ -270,7 +269,6 @@ md5sums=("SKIP"
          "SKIP"
          "SKIP"
          "SKIP"
-         "SKIP"
          "SKIP")
 
 # 0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch workarround with CaCULE
@@ -295,7 +293,7 @@ fi
 
 # prjc patch
 if [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
-  source+=("${patchsource}/prjc-patches/prjc_v$major-r1.patch")
+  source+=("${patchsource}/prjc-kevall474-patches/prjc_v$major-r1.patch")
   md5sums+=("887404c001eee64ee281a1607f895d63")  #prjc_v5.13-r1.patch
 fi
 
