@@ -272,7 +272,7 @@ md5sums=("SKIP"
          "SKIP")
 
 # 0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch workarround with CaCULE
-if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
+if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]] [[ $_cpu_sched != "3" ]] && [[ $_cpu_sched != "4" ]]; then
   source+=("$patchsource/xanmod-patches/0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch")
   md5sums+=("SKIP")  #0014-XANMOD-fair-Remove-all-energy-efficiency-functions.patch
 fi
@@ -293,7 +293,7 @@ fi
 
 # prjc patch
 if [[ $_cpu_sched = "3" ]] || [[ $_cpu_sched = "4" ]]; then
-  source+=("${patchsource}/prjc-kevall474-patches/prjc_v$major-r1.patch")
+  source+=("${patchsource}/prjc-patches/prjc_v$major-r1.patch")
   md5sums+=("SKIP")  #prjc_v5.13-r1.patch
 fi
 
@@ -338,7 +338,7 @@ prepare(){
   # Copy "${srcdir}"/config-$major to "${srcdir}"/linux-${pkgver}/.config
   msg2 "Copy "${srcdir}"/config-$major to "${srcdir}"/linux-$pkgver/.config"
   cp "${srcdir}"/config-$major .config
-  
+
   plain ""
   msg2 "Disable LTO"
   scripts/config --disable CONFIG_LTO
@@ -349,7 +349,7 @@ prepare(){
   scripts/config --disable CONFIG_LTO_NONE
   scripts/config --disable CONFIG_LTO_CLANG_FULL
   scripts/config --disable CONFIG_LTO_CLANG_THIN
-  
+
   sleep 2s
 
   # fix for GCC 12.0.0 (git version)
@@ -367,9 +367,9 @@ prepare(){
   # Customize the kernel
   source "${startdir}"/prepare
 
-  configure
+  #configure
 
-  cpu_arch
+  #cpu_arch
 
   # Automation building with rapid_config
   # Uncomment rapid_config and comment out configure and cpu_arch
