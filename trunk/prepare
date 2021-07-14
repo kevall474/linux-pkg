@@ -1665,8 +1665,13 @@ configure(){
     fi
   else
     msg2 "Enable CFS"
+    scripts/config --enable SCHED_NORMAL
+    scripts/config --enable SCHED_BATCH
+    scripts/config --enable SCHED_IDLE
+    scripts/config --enable CONFIG_CGROUP_SCHED
     scripts/config --enable CONFIG_FAIR_GROUP_SCHED
     scripts/config --enable CONFIG_CFS_BANDWIDTH
+    scripts/config --enable CONFIG_SCHED_DEBUG
   fi
 
   sleep 2s
