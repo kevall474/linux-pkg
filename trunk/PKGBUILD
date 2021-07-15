@@ -273,7 +273,7 @@ md5sums=("SKIP"
 
 # 0014-XANMOD-fair-Remove-all-energy-efficiency-functions-v.patch workarround with CacULE
 if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
-  source+=("$patchsource/zen-interactive-patches/ZEN_INTERACTIVE.patch")
+  source+=("$patchsource/zen-interactive-patches/0014-XANMOD-fair-Remove-all-energy-efficiency-functions-v.patch")
   md5sums+=("SKIP")
 fi
 
