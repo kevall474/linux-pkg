@@ -6,7 +6,7 @@ Linux kernel build for Archlinux with a patch set by TK-Glitch, Piotr Górski, H
 
 # Version
 
-- 5.13.1
+- 5.13.2
 
 # Build
 
