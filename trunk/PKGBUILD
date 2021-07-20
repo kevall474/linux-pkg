@@ -343,10 +343,8 @@ fi
 
 # CacULE patch
 if [[ $_cpu_sched = "1" ]] || [[ $_cpu_sched = "2" ]]; then
-  source+=("${patchsource}/cacule-patches/cacule-$major.patch"
-           "$patchsource/cacule-patches/0002-XANMOD-cacule-remove-delta-since-it-is-not-used.patch")
-  md5sums+=("SKIP"
-            "SKIP")
+  source+=("${patchsource}/cacule-patches/cacule-$major.patch")
+  md5sums+=("SKIP")
 fi
 
 # prjc patch
