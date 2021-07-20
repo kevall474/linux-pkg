@@ -118,7 +118,7 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=5.13.2
+pkgver=5.13.3
 major=5.13
 pkgrel=1
 arch=(x86_64)
@@ -133,7 +133,27 @@ patchsource=https://raw.githubusercontent.com/kevall474/kernel-patches-v2/main/$
 source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
         "config-$major"
         "$patchsource/acs-patches/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
-        "$patchsource/bbr2-xanmod-patches/bbr2-xanmod-patches.patch"
+        "$patchsource/bbr2-xanmod-patches/0001-net-tcp_bbr-broaden-app-limited-rate-sample-detectio.patch"
+        "$patchsource/bbr2-xanmod-patches/0002-net-tcp_rate-consolidate-inflight-tracking-approache.patch"
+        "$patchsource/bbr2-xanmod-patches/0003-net-tcp_rate-account-for-CE-marks-in-rate-sample.patch"
+        "$patchsource/bbr2-xanmod-patches/0004-net-tcp_bbr-v2-shrink-delivered_mstamp-first_tx_msta.patch"
+        "$patchsource/bbr2-xanmod-patches/0005-net-tcp_bbr-v2-snapshot-packets-in-flight-at-transmi.patch"
+        "$patchsource/bbr2-xanmod-patches/0006-net-tcp_bbr-v2-count-packets-lost-over-TCP-rate-samp.patch"
+        "$patchsource/bbr2-xanmod-patches/0007-net-tcp_bbr-v2-export-FLAG_ECE-in-rate_sample.is_ece.patch"
+        "$patchsource/bbr2-xanmod-patches/0008-net-tcp_bbr-v2-introduce-ca_ops-skb_marked_lost-CC-m.patch"
+        "$patchsource/bbr2-xanmod-patches/0009-net-tcp_bbr-v2-factor-out-tx.in_flight-setting-into-.patch"
+        "$patchsource/bbr2-xanmod-patches/0010-net-tcp_bbr-v2-adjust-skb-tx.in_flight-upon-merge-in.patch"
+        "$patchsource/bbr2-xanmod-patches/0011-net-tcp_bbr-v2-adjust-skb-tx.in_flight-upon-split-in.patch"
+        "$patchsource/bbr2-xanmod-patches/0012-net-tcp_bbr-v2-set-tx.in_flight-for-skbs-in-repair-w.patch"
+        "$patchsource/bbr2-xanmod-patches/0013-net-tcp-add-new-ca-opts-flag-TCP_CONG_WANTS_CE_EVENT.patch"
+        "$patchsource/bbr2-xanmod-patches/0014-net-tcp-re-generalize-TSO-sizing-in-TCP-CC-module-AP.patch"
+        "$patchsource/bbr2-xanmod-patches/0015-net-tcp-add-fast_ack_mode-1-skip-rwin-check-in-tcp_f.patch"
+        "$patchsource/bbr2-xanmod-patches/0016-net-tcp_bbr-v2-BBRv2-bbr2-congestion-control-for-Lin.patch"
+        "$patchsource/bbr2-xanmod-patches/0017-net-tcp_bbr-v2-remove-unnecessary-rs.delivered_ce-lo.patch"
+        "$patchsource/bbr2-xanmod-patches/0018-net-tcp_bbr-v2-remove-field-bw_rtts-that-is-unused-i.patch"
+        "$patchsource/bbr2-xanmod-patches/0019-net-tcp_bbr-v2-remove-cycle_rand-parameter-that-is-u.patch"
+        "$patchsource/bbr2-xanmod-patches/0020-net-tcp_bbr-v2-don-t-assume-prior_cwnd-was-set-enter.patch"
+        "$patchsource/bbr2-xanmod-patches/0021-net-tcp_bbr-v2-Fix-missing-ECT-markings-on-retransmi.patch"
         "$patchsource/block-patches/0002-XANMOD-block-bfq-change-BLK_DEV_ZONED-depends-to-IOS.patch"
         "$patchsource/block-patches/0003-XANMOD-block-set-rq_affinity-to-force-full-multithre.patch"
         "$patchsource/clearlinux-patches/0101-i8042-decrease-debug-message-level-to-info.patch"
@@ -154,7 +174,6 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/clearlinux-patches/0117-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch"
         "$patchsource/clearlinux-patches/0118-add-scheduler-turbo3-patch.patch"
         "$patchsource/clearlinux-patches/0119-use-lfence-instead-of-rep-and-nop.patch"
-        "$patchsource/clearlinux-patches/0120-do-accept-in-LIFO-order-for-cache-efficiency.patch"
         "$patchsource/clearlinux-patches/0121-locking-rwsem-spin-faster.patch"
         "$patchsource/clearlinux-patches/0122-ata-libahci-ignore-staggered-spin-up.patch"
         "$patchsource/clearlinux-patches/0123-print-CPU-that-faults.patch"
@@ -196,12 +215,47 @@ source=("https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar
         "$patchsource/zen-patches/0002-ZEN-Add-VHBA-driver.patch"
         "$patchsource/zen-patches/0006-ZEN-Disable-stack-conservation-for-GCC.patch"
         "$patchsource/zen-patches/0008-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "$patchsource/zstd-patches/0001-zstd-patches.patch"
-        "$patchsource/zstd-xanmod-patches/zstd-xanmod-patches.patch"
+        "$patchsource/zstd-patches/0001-kbuild-allow-setting-zstd-compression-level-for-modu.patch"
+        "$patchsource/zstd-patches/0002-kbuild-allow-setting-zstd-compression-level-for-kern.patch"
+        "$patchsource/zstd-patches/0003-kbuild-optimize-zstd-compression-settings.patch"
+        "$patchsource/zstd-patches/0004-kbuild-allow-setting-ultra-zstd-compression-level-fo.patch"
+        "$patchsource/zstd-patches/0005-kbuild-add-proper-bool-for-MODULE_COMPRESS_ZSTD_ULTR.patch"
+        "$patchsource/zstd-patches/0006-kbuild-add-proper-help-for-MODULE_COMPRESS_ZSTD_LEVE.patch"
+        "$patchsource/zstd-xanmod-patches/0001-lib-zstd-Add-kernel-specific-API.patch"
+        "$patchsource/zstd-xanmod-patches/0002-lib-zstd-Add-decompress_sources.h-for-decompress_unz.patch"
+        "$patchsource/zstd-xanmod-patches/0003-lib-zstd-Upgrade-to-latest-upstream-zstd-version-1.4.patch"
+        "$patchsource/zstd-xanmod-patches/0004-MAINTAINERS-Add-maintainer-entry-for-zstd.patch"
         "$patchsource/misc-patches/0003-sched-core-nr_migrate-256-increases-number-of-tasks-.patch"
         "$patchsource/misc-patches/0005-Disable-CPU_FREQ_GOV_SCHEDUTIL.patch"
         "$patchsource/misc-patches/vm.max_map_count.patch")
 md5sums=("SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
+         "SKIP"
          "SKIP"
          "SKIP"
          "SKIP"
@@ -281,8 +335,10 @@ fi
 
 # zen_interactive workarround with CacULE
 if [[ $_cpu_sched != "1" ]] && [[ $_cpu_sched != "2" ]]; then
-  source+=("$patchsource/zen-interactive-patches/ZEN_INTERACTIVE.patch")
-  md5sums+=("SKIP")
+  source+=("$patchsource/zen-interactive-patches/ZEN_INTERACTIVE.patch"
+           "$patchsource/zen-interactive-patches/0027-ZEN-Restore-dirty-background-ratios-to-mainline-defa.patch")
+  md5sums+=("SKIP"
+            "SKIP")
 fi
 
 # CacULE patch
